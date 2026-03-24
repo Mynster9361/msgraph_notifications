@@ -1,5 +1,128 @@
 [
   {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/decisions",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/decisions/{id}",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/decisions/filterbycurrentuser(on={value})",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}/decisions",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}/decisions/{id}",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}/decisions/filterbycurrentuser(on={value})",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/filterbycurrentuser(on={value})",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/{id}/instances/filterbycurrentuser(on={value})",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
+    "name": "/identitygovernance/accessreviews/definitions/filterbycurrentuser(on={value})",
+    "displayName": "Read all access reviews that user can access",
+    "date": "2026-03-24",
+    "description": "Allows the app to read access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.",
+    "permissions": [
+      "AccessReview.Read.All",
+      "AccessReview.ReadWrite.All"
+    ],
+    "type": "Endpoint"
+  },
+  {
     "displayName": "",
     "paths": [
       "/sites/{id}/archive",
