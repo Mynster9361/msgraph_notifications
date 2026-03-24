@@ -1,5 +1,12 @@
 [
   {
+    "name": "TeamsTab.Read.All",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-03-24",
+    "scheme": "DelegatedWork",
+    "description": "Read the names and settings of tabs inside any team in Microsoft Teams, on behalf of the signed-in user. This does not give access to the content inside the tabs."
+  },
+  {
     "scheme": "Application",
     "date": "2026-03-24",
     "type": "New Application Scope",
