@@ -1,5 +1,172 @@
 [
   {
+    "description": "",
+    "type": "Permission",
+    "displayName": "",
+    "paths": [
+      "/applications/{id}",
+      "/applications/graph.agentIdentityBlueprintPrincipal/{id}"
+    ],
+    "date": "2026-03-24",
+    "name": "AgentIdentityBlueprintPrincipal.ReadWrite.All"
+  },
+  {
+    "description": "Allows the app to read device local credential properties excluding passwords, on behalf of the signed-in user.",
+    "type": "Permission",
+    "displayName": "Read device local credential properties",
+    "paths": [
+      "/devicelocalcredentials"
+    ],
+    "date": "2026-03-24",
+    "name": "DeviceLocalCredential.ReadBasic.All"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All",
+      "WindowsUpdates.Read.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/microsoft.graph.windowsupdates.updatableassetgroup"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All",
+      "WindowsUpdates.Read.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatepolicies"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All",
+      "WindowsUpdates.Read.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatepolicies/{id}"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All",
+      "WindowsUpdates.Read.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatepolicies/{id}/compliancechanges"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All",
+      "WindowsUpdates.Read.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatepolicies/{id}/compliancechanges/{id}"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All",
+      "WindowsUpdates.Read.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatepolicies/{id}/compliancechanges/microsoft.graph.windowsupdates.contentapproval"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/deployments/{id}/audience/updateaudiencebyid"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/{id}/addmembers"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/{id}/addmembersbyid"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/{id}/removemembers"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/{id}/removemembersbyid"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/enrollassets"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/enrollassetsbyid"
+  },
+  {
+    "description": "Allows the app to read and write all Windows update deployment settings for the organization on behalf of the signed-in user.",
+    "type": "Endpoint",
+    "displayName": "Read and write all Windows update deployment settings",
+    "permissions": [
+      "WindowsUpdates.ReadWrite.All"
+    ],
+    "date": "2026-03-24",
+    "name": "/admin/windows/updates/updatableassets/unenrollassets"
+  },
+  {
     "name": "PrintJob.Create",
     "type": "Permission",
     "paths": [
