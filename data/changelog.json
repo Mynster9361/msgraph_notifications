@@ -5,30 +5,11 @@
     "paths": [
       "/print/printers/{id}/jobs",
       "/print/printers/{id}/jobs/{id}/documents/{id}/createuploadsession",
-      "/print/shares/{id}/jobs/{id}/documents/{id}/createuploadsession",
-      "/print/shares/{id}/jobs/{id}/start",
-      "/print/services",
-      "/print/services/{id}",
-      "/print/services/{id}/endpoints",
-      "/print/services/{id}/endpoints/{id}"
+      "/print/shares/{id}/jobs/{id}/documents/{id}/createuploadsession"
     ],
     "displayName": "Create print jobs",
     "date": "2026-03-24",
     "description": "Allows the application to create print jobs on behalf of the signed-in user and upload document content to print jobs that the signed-in user created."
-  },
-  {
-    "name": "AppCertTrustConfiguration.Read.All",
-    "type": "Permission",
-    "paths": [
-      "/certificateauthoritypath/certificatebasedapplicationconfigurations/{id}",
-      "/directory/certificateauthorities/certificatebasedapplicationconfigurations",
-      "/directory/certificateauthorities/certificatebasedapplicationconfigurations/{id}/trustedcertificateauthorities",
-      "/directory/certificateauthorities/certificatebasedapplicationconfigurations/{id}",
-      "/directory/certificateauthorities/certificatebasedapplicationconfigurations/{id}/trustedcertificateauthorities/{id}"
-    ],
-    "displayName": "Read the trusted certificate authority configuration for applications",
-    "date": "2026-03-24",
-    "description": "Allows the app to read the trusted certificate authority configuration which can be used to restrict application certificates based on their issuing authority, on behalf of the signed-in user."
   },
   {
     "name": "RoleManagement.Read.Exchange",

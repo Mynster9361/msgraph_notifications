@@ -7088,20 +7088,6 @@
     "/admin/windows/updates/updatableassets/{id}",
     "/admin/windows/updates/updatableassets/{id}/microsoft.graph.windowsupdates.updatableassetgroup/members",
     "/admin/windows/updates/updatableassets/microsoft.graph.windowsupdates.azureaddevice",
-    "/admin/windows/updates/updatableassets/microsoft.graph.windowsupdates.updatableassetgroup",
-    "/admin/windows/updates/updatepolicies",
-    "/admin/windows/updates/updatepolicies/{id}",
-    "/admin/windows/updates/updatepolicies/{id}/compliancechanges",
-    "/admin/windows/updates/updatepolicies/{id}/compliancechanges/{id}",
-    "/admin/windows/updates/updatepolicies/{id}/compliancechanges/microsoft.graph.windowsupdates.contentapproval",
-    "/admin/windows/updates/deployments/{id}/audience/updateaudiencebyid",
-    "/admin/windows/updates/updatableassets/{id}/addmembers",
-    "/admin/windows/updates/updatableassets/{id}/addmembersbyid",
-    "/admin/windows/updates/updatableassets/{id}/removemembers",
-    "/admin/windows/updates/updatableassets/{id}/removemembersbyid",
-    "/admin/windows/updates/updatableassets/enrollassets",
-    "/admin/windows/updates/updatableassets/enrollassetsbyid",
-    "/admin/windows/updates/updatableassets/unenrollassets",
     "/admin/windows/updates/updatableassets/unenrollassetsbyid",
     "/teamwork/workforceintegrations",
     "/teamwork/workforceintegrations/{id}"
@@ -7116,16 +7102,6 @@
       "displayName": "Read the trusted certificate authority configuration for applications",
       "description": "Allows the app to read the trusted certificate authority configuration which can be used to restrict application certificates based on their issuing authority, on behalf of the signed-in user.",
       "pathCount": 5
-    },
-    "RoleManagement.Read.Exchange": {
-      "displayName": "Read Exchange Online RBAC configuration",
-      "description": "Allows the app to read the role-based access control (RBAC) settings for your organization's Exchange Online service, on behalf of the signed-in user. This includes reading Exchange management role definitions, role groups, role group membership, role assignments, management scopes, and role assignment policies.",
-      "pathCount": 6
-    },
-    "ResourceSpecificPermissionGrant.ReadForTeam": {
-      "displayName": "Read resource specific permissions granted on a team",
-      "description": "Allows the app to read the resource specific permissions granted on the team, on behalf of the signed-in user.",
-      "pathCount": 1
     },
     "Files.Read": {
       "displayName": "Read user files",
