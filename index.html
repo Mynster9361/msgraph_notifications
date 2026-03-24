@@ -1,295 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MS Graph Tracker | Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    /* Global Variables & Colors */
-    :root {
-      --bg-base: #f8f9fa; --bg-surface: #ffffff; --bg-card: #ffffff;
-      --border: #e0e6ed; --border-glow: #c5d3e0;
-      --cyan: #0066cc; --amber: #ff8c00; --green: #00c853; --rose: #d32f2f;
-      --text-primary: #1a1a1a; --text-secondary: #555555; --text-muted: #999999;
-      --mono: 'JetBrains Mono', monospace; --display: 'Syne', sans-serif;
-    }
-
-    html.dark {
-      --bg-base: #080d14; --bg-surface: #0d1520; --bg-card: #111b2a;
-      --border: #1e2f44; --border-glow: #1a3a5c;
-      --cyan: #00e5ff; --amber: #ffb300; --green: #00e676; --rose: #ff4569;
-      --text-primary: #cdd9e5; --text-secondary: #7a96b0; --text-muted: #3d5570;
-    }
-
-    body {
-      background: var(--bg-base); color: var(--text-primary);
-      font-family: var(--mono); font-size: 13px; line-height: 1.6;
-      min-height: 100vh; transition: background 0.3s ease;
-    }
-
-    /* Grid & Scanlines Effect */
-    .bg-grid {
-      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    body::after {
-      content: ""; position: fixed; inset: 0; pointer-events: none;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-      background-size: 100% 2px, 3px 100%; z-index: 1000;
-    }
-
-    /* Header & Navigation */
-    .site-header {
-      background: rgba(var(--bg-surface), 0.8); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
-    }
-
-    /* Stats & Cards */
-    .stat-chip {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 4px; padding: 12px; min-width: 140px;
-      transition: all 0.2s ease;
-    }
-    .stat-chip:hover { border-color: var(--cyan); transform: translateY(-2px); }
-
-    .change-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 8px; transition: all 0.2s ease; cursor: pointer;
-    }
-    .change-card:hover { 
-      border-color: var(--cyan); transform: translateX(4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-    }
-    .type-permission { border-left: 4px solid var(--cyan); }
-    .type-endpoint { border-left: 4px solid var(--amber); }
-
-    /* Modal Styling */
-    .modal-overlay {
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      align-items: center; justify-content: center;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-content {
-      background: var(--bg-card); border: 1px solid var(--border);
-      width: 90%; max-width: 800px; max-height: 85vh; border-radius: 12px;
-      display: flex; flex-direction: column; overflow: hidden;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-
-    /* Utility */
-    .text-cyan { color: var(--cyan); }
-    .text-amber { color: var(--amber); }
-    .text-green { color: var(--green); }
-    .bg-cyan-soft { background: rgba(0, 229, 255, 0.1); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Graph Registry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f1a; --card: #161b2a; --border: #242c40; --cyan: #00f2ff;
+        }
+        body { background: var(--bg); color: #cdd9e5; font-family: 'JetBrains Mono', monospace; }
+        .syne { font-family: 'Syne', sans-serif; }
+        .glass { background: var(--card); border: 1px solid var(--border); }
+        .btn-tab { padding: 8px 20px; font-size: 11px; font-weight: bold; border: 1px solid var(--border); transition: 0.2s; }
+        .btn-tab.active { background: var(--cyan); color: black; border-color: var(--cyan); }
+        .path-tag { font-size: 9px; background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--cyan); }
+    </style>
 </head>
-<body class="bg-grid">
+<body class="p-4 md:p-8">
 
-  <header class="site-header py-4 px-6 mb-8">
-    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-3 h-3 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_10px_#00e5ff]"></div>
-        <h1 class="text-xl font-black uppercase tracking-tighter italic" style="font-family: var(--display);">
-          Graph<span class="text-cyan">Tracker</span>
-        </h1>
-      </div>
-      
-      <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest">
-        <span id="last-updated" class="text-muted opacity-60">Syncing...</span>
-        <button onclick="toggleTheme()" class="px-3 py-1 border border-[var(--border)] rounded hover:bg-[var(--cyan)] hover:text-white transition-all">
-          Toggle Mode
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main class="max-w-6xl mx-auto px-6 pb-20">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-      <div class="stat-chip">
-        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">New Permissions</div>
-        <div id="count-perms" class="text-3xl font-black text-cyan" style="font-family: var(--display);">0</div>
-      </div>
-      <div class="stat-chip">
-        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">New Endpoints</div>
-        <div id="count-eps" class="text-3xl font-black text-amber" style="font-family: var(--display);">0</div>
-      </div>
-      <div class="stat-chip">
-        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">Total Changes</div>
-        <div id="count-total" class="text-3xl font-black text-green" style="font-family: var(--display);">0</div>
-      </div>
-      <div class="stat-chip">
-        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">Status</div>
-        <div class="text-xs font-bold flex items-center gap-2 mt-3">
-            <span class="w-2 h-2 bg-green-500 rounded-full"></span> LIVE
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-col md:flex-row gap-4 mb-8">
-      <div class="flex-1 relative">
-        <input id="search-box" type="text" placeholder="Filter by path, scope, or description..." 
-               class="w-full bg-[var(--bg-card)] border border-[var(--border)] px-10 py-3 rounded-lg focus:outline-none focus:border-[var(--cyan)] transition-all">
-        <span class="absolute left-4 top-3.5 opacity-30">🔍</span>
-      </div>
-      <div class="flex gap-2">
-        <button onclick="setFilter('all')" class="filter-btn px-4 py-2 rounded-lg border border-[var(--border)] text-xs font-bold active">ALL</button>
-        <button onclick="setFilter('Permission')" class="filter-btn px-4 py-2 rounded-lg border border-[var(--border)] text-xs font-bold">SCOPES</button>
-        <button onclick="setFilter('Endpoint')" class="filter-btn px-4 py-2 rounded-lg border border-[var(--border)] text-xs font-bold">PATHS</button>
-      </div>
-    </div>
-
-    <div id="change-feed" class="space-y-12">
-      <div class="text-center py-20 opacity-50 animate-pulse">Initializing Neural Link to Microsoft Graph...</div>
-    </div>
-  </main>
-
-  <div id="modal" class="modal-overlay" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div class="p-6 border-b border-[var(--border)] flex justify-between items-start">
+    <header class="max-w-6xl mx-auto mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-          <div id="modal-type" class="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-cyan-soft text-cyan inline-block mb-2">TYPE</div>
-          <h2 id="modal-title" class="text-xl font-bold break-all leading-tight">Title Placeholder</h2>
+            <h1 class="syne text-4xl uppercase italic text-white leading-none mb-2">GRAPH<span class="text-[var(--cyan)]">REGISTRY</span></h1>
+            <p class="text-[10px] opacity-50 font-bold tracking-widest uppercase">Permission Explorer & History Tracker</p>
         </div>
-        <button onclick="closeModal()" class="text-2xl opacity-50 hover:opacity-100">&times;</button>
-      </div>
-      <div id="modal-body" class="p-6 overflow-y-auto space-y-6">
+        
+        <div class="flex flex-col items-end gap-3 w-full md:w-auto">
+            <div class="flex rounded-md overflow-hidden">
+                <button id="tab-history" onclick="setView('history')" class="btn-tab active">HISTORY</button>
+                <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab">EXPLORER</button>
+            </div>
+            <input id="search" type="text" placeholder="Filter permissions..." class="w-full md:w-64 bg-[var(--card)] border border-[var(--border)] p-2 rounded text-xs outline-none focus:border-[var(--cyan)]">
+        </div>
+    </header>
+
+    <main id="content" class="max-w-6xl mx-auto space-y-8">
+        <div class="animate-pulse opacity-20 text-center py-20">Initializing Data Streams...</div>
+    </main>
+
+    <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4" onclick="closeModal()">
+        <div class="glass max-w-2xl w-full rounded-xl overflow-hidden" onclick="event.stopPropagation()">
+            <div class="p-6 border-b border-[var(--border)] flex justify-between items-start">
+                <h2 id="m-name" class="syne text-xl text-white break-all"></h2>
+                <button onclick="closeModal()" class="text-2xl">&times;</button>
+            </div>
+            <div id="m-body" class="p-6 space-y-4 max-h-[70vh] overflow-y-auto"></div>
         </div>
     </div>
-  </div>
 
-  <script>
-    let rawData = [];
-    let currentFilter = 'all';
+    <script>
+        let history = [];
+        let library = [];
+        let view = 'history';
 
-    async function init() {
-      try {
-        const response = await fetch('data/changelog.json');
-        rawData = await response.json();
-        
-        // Update Stats
-        document.getElementById('count-total').innerText = rawData.length;
-        document.getElementById('count-perms').innerText = rawData.filter(x => x.type === 'Permission').length;
-        document.getElementById('count-eps').innerText = rawData.filter(x => x.type === 'Endpoint').length;
-        
-        renderFeed();
-        
-        // Update timestamp if data/last-seen.json exists
-        fetch('data/last-seen.json').then(r => r.json()).then(data => {
-            if(data.lastUpdated) document.getElementById('last-updated').innerText = `Last Scan: ${new Date(data.lastUpdated).toLocaleString()}`;
-        }).catch(() => {});
+        async function init() {
+            try {
+                const [hData, lData] = await Promise.all([
+                    fetch('data/changelog.json').then(r => r.json()),
+                    fetch('data/current-state.json').then(r => r.json())
+                ]);
+                history = hData;
+                library = lData;
+                render();
+            } catch (e) {
+                document.getElementById('content').innerHTML = `<div class="text-red-400">Error loading data. Ensure 'data/current-state.json' exists.</div>`;
+            }
+        }
 
-      } catch (err) {
-        document.getElementById('change-feed').innerHTML = `<div class="p-10 border border-red-900/30 rounded-xl text-center">
-            <p class="text-rose-500 font-bold mb-2">Failed to synchronize data.</p>
-            <p class="opacity-50 text-xs">Verify data/changelog.json exists in the repository.</p>
-        </div>`;
-      }
-    }
+        function setView(v) {
+            view = v;
+            document.getElementById('tab-history').className = `btn-tab ${v === 'history' ? 'active' : ''}`;
+            document.getElementById('tab-explorer').className = `btn-tab ${v === 'explorer' ? 'active' : ''}`;
+            render();
+        }
 
-    function renderFeed() {
-      const query = document.getElementById('search-box').value.toLowerCase();
-      const filtered = rawData.filter(item => {
-        const matchesType = currentFilter === 'all' || item.type === currentFilter;
-        const matchesSearch = item.name.toLowerCase().includes(query) || 
-                              (item.description && item.description.toLowerCase().includes(query));
-        return matchesType && matchesSearch;
-      });
+        function render() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const container = document.getElementById('content');
+            container.innerHTML = '';
 
-      // Group by Date
-      const groups = filtered.reduce((acc, item) => {
-        const date = item.date || 'Unknown Date';
-        if (!acc[date]) acc[date] = [];
-        acc[date].push(item);
-        return acc;
-      }, {});
+            if (view === 'history') {
+                const filtered = history.filter(i => i.name.toLowerCase().includes(query));
+                const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
+                
+                Object.keys(groups).sort().reverse().forEach(date => {
+                    let html = `<div class="space-y-4"><div class="flex items-center gap-4"><span class="text-[10px] font-bold opacity-30">${date}</span><div class="h-px flex-1 bg-[var(--border)]"></div></div>`;
+                    groups[date].forEach(item => {
+                        html += `<div onclick="showDetail('${item.name}')" class="glass p-4 rounded-lg cursor-pointer hover:border-[var(--cyan)] transition-colors">
+                            <div class="text-[9px] text-[var(--cyan)] font-bold mb-1">NEW PERMISSION</div>
+                            <div class="text-white font-bold">${item.name}</div>
+                        </div>`;
+                    });
+                    container.innerHTML += html + '</div>';
+                });
+            } else {
+                const filtered = library.filter(i => i.name.toLowerCase().includes(query) || (i.description && i.description.toLowerCase().includes(query)));
+                let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+                filtered.sort((a,b) => a.name.localeCompare(b.name)).forEach(item => {
+                    html += `<div onclick="showDetail('${item.name}', true)" class="glass p-4 rounded-lg cursor-pointer hover:border-[var(--cyan)] transition-all">
+                        <div class="text-white font-bold text-sm truncate mb-1">${item.name}</div>
+                        <div class="text-[10px] opacity-50 line-clamp-2 leading-relaxed">${item.description || 'No description provided.'}</div>
+                    </div>`;
+                });
+                container.innerHTML = html + '</div>';
+            }
+        }
 
-      const container = document.getElementById('change-feed');
-      container.innerHTML = '';
+        function showDetail(name, fromLib = false) {
+            const list = fromLib || view === 'explorer' ? library : history;
+            const item = list.find(x => x.name === name);
+            if (!item) return;
 
-      Object.keys(groups).sort((a,b) => new Date(b) - new Date(a)).forEach(date => {
-        const section = document.createElement('div');
-        section.innerHTML = `
-          <div class="flex items-center gap-4 mb-6">
-            <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
-            <div class="text-[10px] font-bold opacity-40 uppercase tracking-[0.2em]">${date}</div>
-            <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
-          </div>
-          <div class="grid grid-cols-1 gap-3">
-            ${groups[date].map(item => `
-              <div class="change-card p-4 type-${item.type.toLowerCase()}" onclick="openDetails('${item.name}')">
-                <div class="flex justify-between items-start gap-4">
-                  <div class="min-w-0">
-                    <div class="text-[10px] font-bold opacity-50 mb-1">${item.type}</div>
-                    <div class="font-bold truncate text-sm mb-1">${item.name}</div>
-                    <div class="text-xs opacity-60 line-clamp-1">${item.description || 'No description available for this update.'}</div>
-                  </div>
-                  <div class="text-[18px] opacity-20">→</div>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        `;
-        container.appendChild(section);
-      });
-    }
+            document.getElementById('m-name').innerText = item.name;
+            document.getElementById('m-body').innerHTML = `
+                <div><div class="text-[10px] font-bold opacity-40 mb-2 uppercase">Description</div><p class="text-sm leading-relaxed">${item.description || 'N/A'}</p></div>
+                <div><div class="text-[10px] font-bold opacity-40 mb-2 uppercase">Impacted API Paths (${item.paths?.length || 0})</div>
+                <div class="flex flex-wrap gap-1">${(item.paths || []).map(p => `<span class="path-tag px-2 py-1 rounded">${p}</span>`).join('')}</div></div>
+            `;
+            document.getElementById('modal').style.display = 'flex';
+        }
 
-    function openDetails(name) {
-      const item = rawData.find(x => x.name === name);
-      if(!item) return;
-
-      document.getElementById('modal-title').innerText = item.name;
-      document.getElementById('modal-type').innerText = item.type;
-      
-      let bodyHtml = `
-        <section>
-            <h4 class="text-[10px] uppercase font-bold opacity-40 mb-3 tracking-widest">Description</h4>
-            <p class="text-sm leading-relaxed">${item.description || 'No technical description was provided for this entry.'}</p>
-        </section>
-      `;
-
-      if(item.paths && item.paths.length > 0) {
-        bodyHtml += `
-            <section>
-                <h4 class="text-[10px] uppercase font-bold opacity-40 mb-3 tracking-widest">Impacted Endpoints</h4>
-                <div class="flex flex-wrap gap-2">
-                    ${item.paths.map(p => `<code class="bg-[var(--bg-base)] border border-[var(--border)] px-2 py-1 rounded text-[11px] text-cyan">${p}</code>`).join('')}
-                </div>
-            </section>
-        `;
-      }
-
-      document.getElementById('modal-body').innerHTML = bodyHtml;
-      document.getElementById('modal').classList.add('active');
-    }
-
-    function closeModal() {
-      document.getElementById('modal').classList.remove('active');
-    }
-
-    function setFilter(type) {
-      currentFilter = type;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'border-cyan-500'));
-      event.target.classList.add('active', 'border-cyan-500');
-      renderFeed();
-    }
-
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-    }
-
-    document.getElementById('search-box').addEventListener('input', renderFeed);
-    
-    // Start
-    init();
-  </script>
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        document.getElementById('search').addEventListener('input', render);
+        init();
+    </script>
 </body>
 </html>
