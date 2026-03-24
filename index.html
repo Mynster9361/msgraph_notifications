@@ -3,1235 +3,293 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MS Graph Change Tracker</title>
+  <title>MS Graph Tracker | Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── Light Mode (default) ── */
+    /* Global Variables & Colors */
     :root {
-      --bg-base:      #f8f9fa;
-      --bg-surface:   #ffffff;
-      --bg-card:      #ffffff;
-      --bg-card-alt:  #f5f7fa;
-      --border:       #e0e6ed;
-      --border-glow:  #c5d3e0;
-      --cyan:         #0066cc;
-      --cyan-dim:     #004499;
-      --cyan-muted:   #e6f2ff;
-      --amber:        #ff8c00;
-      --amber-dim:    #cc6600;
-      --green:        #00c853;
-      --green-dim:    #00a040;
-      --rose:         #d32f2f;
-      --text-primary: #1a1a1a;
-      --text-secondary:#555555;
-      --text-muted:   #999999;
-      --mono:         'JetBrains Mono', monospace;
-      --display:      'Syne', sans-serif;
-      --shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
-      --shadow-md:    0 4px 12px rgba(0,0,0,0.1);
+      --bg-base: #f8f9fa; --bg-surface: #ffffff; --bg-card: #ffffff;
+      --border: #e0e6ed; --border-glow: #c5d3e0;
+      --cyan: #0066cc; --amber: #ff8c00; --green: #00c853; --rose: #d32f2f;
+      --text-primary: #1a1a1a; --text-secondary: #555555; --text-muted: #999999;
+      --mono: 'JetBrains Mono', monospace; --display: 'Syne', sans-serif;
     }
 
-    /* ── Dark Mode ── */
     html.dark {
-      --bg-base:      #080d14;
-      --bg-surface:   #0d1520;
-      --bg-card:      #111b2a;
-      --bg-card-alt:  #0f1923;
-      --border:       #1e2f44;
-      --border-glow:  #1a3a5c;
-      --cyan:         #00e5ff;
-      --cyan-dim:     #00b8cc;
-      --cyan-muted:   #0d4a56;
-      --amber:        #ffb300;
-      --amber-dim:    #cc8f00;
-      --green:        #00e676;
-      --green-dim:    #00b05a;
-      --rose:         #ff4569;
-      --text-primary: #cdd9e5;
-      --text-secondary:#7a96b0;
-      --text-muted:   #3d5570;
-      --shadow-sm:    0 1px 3px rgba(0,0,0,0.3);
-      --shadow-md:    0 4px 12px rgba(0,0,0,0.5);
+      --bg-base: #080d14; --bg-surface: #0d1520; --bg-card: #111b2a;
+      --border: #1e2f44; --border-glow: #1a3a5c;
+      --cyan: #00e5ff; --amber: #ffb300; --green: #00e676; --rose: #ff4569;
+      --text-primary: #cdd9e5; --text-secondary: #7a96b0; --text-muted: #3d5570;
     }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg-base);
-      color: var(--text-primary);
-      font-family: var(--mono);
-      font-size: 13px;
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      background: var(--bg-base); color: var(--text-primary);
+      font-family: var(--mono); font-size: 13px; line-height: 1.6;
+      min-height: 100vh; transition: background 0.3s ease;
     }
 
-    /* ── Subtle overlay for depth ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.02) 2px,
-        rgba(0,0,0,0.02) 4px
-      );
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* ── Grid noise background ── */
+    /* Grid & Scanlines Effect */
     .bg-grid {
-      background-image:
-        linear-gradient(rgba(0,102,204,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,102,204,0.04) 1px, transparent 1px);
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
       background-size: 40px 40px;
     }
-
-    html.dark .bg-grid {
-      background-image:
-        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
-      background-size: 32px 32px;
+    body::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+      background-size: 100% 2px, 3px 100%; z-index: 1000;
     }
 
-    /* ── Glow effects (subtle in light, more prominent in dark) ── */
-    .glow-cyan   { box-shadow: 0 0 0 1px rgba(0,102,204,0.1), var(--shadow-sm); }
-    .glow-amber  { box-shadow: 0 0 0 1px rgba(255,140,0,0.1),  var(--shadow-sm); }
-    .glow-green  { box-shadow: 0 0 0 1px rgba(0,200,83,0.1),   var(--shadow-sm); }
-    
-    html.dark .glow-cyan   { box-shadow: 0 0 0 1px rgba(0,229,255,0.15), 0 0 20px rgba(0,229,255,0.06); }
-    html.dark .glow-amber  { box-shadow: 0 0 0 1px rgba(255,179,0,0.15),  0 0 20px rgba(255,179,0,0.06); }
-    html.dark .glow-green  { box-shadow: 0 0 0 1px rgba(0,230,118,0.15),  0 0 20px rgba(0,230,118,0.06); }
-    
-    .text-glow-cyan  { text-shadow: none; }
-    .text-glow-amber { text-shadow: none; }
-    
-    html.dark .text-glow-cyan  { text-shadow: 0 0 18px rgba(0,229,255,0.5); }
-    html.dark .text-glow-amber { text-shadow: 0 0 18px rgba(255,179,0,0.5); }
-
-    /* ── Header ── */
+    /* Header & Navigation */
     .site-header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-      box-shadow: var(--shadow-sm);
+      background: rgba(var(--bg-surface), 0.8); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
     }
 
-    html.dark .site-header {
-      background: rgba(8,13,20,0.95);
-    }
-
-    /* ── Theme toggle ── */
-    .theme-toggle {
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .theme-toggle:hover {
-      color: var(--text-primary);
-      border-color: var(--border-glow);
-      background: rgba(0,0,0,0.02);
-    }
-
-    html.dark .theme-toggle:hover {
-      background: rgba(255,255,255,0.03);
-    }
-
-    .logo-pulse {
-      width: 8px; height: 8px;
-      background: var(--cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(0,229,255,0.6);
-      animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-    }
-    @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0   rgba(0,229,255,0.6); }
-      70%  { box-shadow: 0 0 0 8px rgba(0,229,255,0);   }
-      100% { box-shadow: 0 0 0 0   rgba(0,229,255,0);   }
-    }
-
-    /* ── Stats bar ── */
+    /* Stats & Cards */
     .stat-chip {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 6px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 12px; min-width: 140px;
+      transition: all 0.2s ease;
     }
-    .stat-chip .val {
-      font-family: var(--display);
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .stat-chip .lbl {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-secondary);
-    }
+    .stat-chip:hover { border-color: var(--cyan); transform: translateY(-2px); }
 
-    /* ── Filter bar ── */
-    .filter-bar {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      display: flex;
-      align-items: stretch;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .filter-bar input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-primary);
-      font-family: var(--mono);
-      font-size: 13px;
-      padding: 10px 14px;
-      flex: 1;
-      min-width: 0;
-      transition: background-color 0.15s ease;
-    }
-    
-    .filter-bar input:focus {
-      background: rgba(0,102,204,0.03);
-    }
-    
-    html.dark .filter-bar input:focus {
-      background: rgba(0,229,255,0.03);
-    }
-    
-    .filter-bar input::placeholder { color: var(--text-muted); }
-    .filter-bar .sep {
-      width: 1px;
-      background: var(--border);
-      flex-shrink: 0;
-    }
-    .filter-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      font-family: var(--mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 10px 16px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-    .filter-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.03); }
-    .filter-btn.active-perm  { color: var(--cyan);  background: rgba(0,229,255,0.06); }
-    .filter-btn.active-ep    { color: var(--amber); background: rgba(255,179,0,0.06); }
-    .filter-btn.active-all   { color: var(--green); background: rgba(0,230,118,0.06); }
-
-    /* ── Change cards ── */
     .change-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-      transition: all 0.2s ease;
-      animation: slideIn 0.3s ease both;
-      box-shadow: var(--shadow-sm);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; transition: all 0.2s ease; cursor: pointer;
     }
-    
-    .change-card:hover {
-      border-color: var(--border-glow);
-      transform: translateX(2px);
-      box-shadow: var(--shadow-md);
+    .change-card:hover { 
+      border-color: var(--cyan); transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
     }
-    
-    .change-card.type-permission { border-left: 3px solid var(--cyan); }
-    .change-card.type-endpoint   { border-left: 3px solid var(--amber); }
+    .type-permission { border-left: 4px solid var(--cyan); }
+    .type-endpoint { border-left: 4px solid var(--amber); }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0);   }
-    }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 16px 10px;
-    }
-    .card-body   { padding: 0 16px 14px; }
-
-    .type-badge {
-      font-size: 9px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 3px 8px;
-      border-radius: 3px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .badge-permission {
-      background: rgba(0,102,204,0.1);
-      color: var(--cyan);
-      border: 1px solid rgba(0,102,204,0.2);
-    }
-    
-    html.dark .badge-permission {
-      background: var(--cyan-muted);
-      color: var(--cyan);
-      border: 1px solid rgba(0,229,255,0.2);
-    }
-    
-    .badge-endpoint {
-      background: rgba(255,140,0,0.1);
-      color: var(--amber);
-      border: 1px solid rgba(255,140,0,0.2);
-    }
-    
-    html.dark .badge-endpoint {
-      background: rgba(255,179,0,0.1);
-      color: var(--amber);
-      border: 1px solid rgba(255,179,0,0.2);
-    }
-
-    .card-name {
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
-      word-break: break-all;
-      line-height: 1.4;
-    }
-    .card-name.perm-name  { color: var(--cyan); }
-    .card-name.ep-name    { color: var(--amber-dim); }
-
-    .card-display-name {
-      font-size: 11px;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-    }
-
-    .card-desc {
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      border-top: 1px solid var(--border);
-      padding-top: 10px;
-      margin-top: 6px;
-    }
-    .card-desc:empty, .card-desc.hidden { display: none; }
-
-    .card-paths {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 8px;
-    }
-    .path-tag {
-      background: var(--bg-base);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      font-size: 10px;
-      padding: 2px 7px;
-      color: var(--text-muted);
-      font-family: var(--mono);
-    }
-    .path-tag:hover { border-color: var(--border-glow); color: var(--text-secondary); }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 16px;
-      background: var(--bg-card-alt);
-      border-top: 1px solid var(--border);
-    }
-    .card-date {
-      font-size: 10px;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-    }
-    .card-perms-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-    .perm-ref {
-      font-size: 10px;
-      color: var(--cyan-dim);
-      background: rgba(0,229,255,0.05);
-      border: 1px solid rgba(0,229,255,0.1);
-      border-radius: 3px;
-      padding: 1px 6px;
-    }
-
-    /* ── Clickable cards ── */
-    .change-card.clickable {
-      cursor: pointer;
-    }
-    
-    .change-card.clickable:active {
-      transform: scale(0.98);
-    }
-
-    /* ── Modal overlay ── */
+    /* Modal Styling */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      animation: fadeIn 0.2s ease;
-      align-items: center;
-      justify-content: center;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      align-items: center; justify-content: center;
     }
-
     .modal-overlay.active { display: flex; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    .modal-content {
+      background: var(--bg-card); border: 1px solid var(--border);
+      width: 90%; max-width: 800px; max-height: 85vh; border-radius: 12px;
+      display: flex; flex-direction: column; overflow: hidden;
     }
 
-    .modal-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      max-width: 700px;
-      max-height: 90vh;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-md);
-      animation: slideUp 0.3s ease;
-    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .modal-close {
-      background: transparent;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      padding: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .modal-close:hover {
-      color: var(--text-primary);
-      background: rgba(0,0,0,0.1);
-      border-radius: 4px;
-    }
-
-    html.dark .modal-close:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .modal-title {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .modal-title h2 {
-      font-family: var(--display);
-      font-size: 18px;
-      font-weight: 700;
-      margin: 0 0 6px;
-      color: var(--text-primary);
-      word-break: break-word;
-    }
-
-    .modal-title .subtitle {
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .modal-body {
-      padding: 20px;
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    .detail-section {
-      margin-bottom: 24px;
-    }
-
-    .detail-section:last-child {
-      margin-bottom: 0;
-    }
-
-    .detail-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .detail-content {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text-primary);
-    }
-
-    .endpoint-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .endpoint-item {
-      background: var(--bg-card-alt);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 12px;
-    }
-
-    .endpoint-path {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--cyan);
-      font-weight: 600;
-      margin-bottom: 4px;
-      word-break: break-all;
-    }
-
-    .endpoint-methods {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-
-    .method-badge {
-      font-size: 9px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 2px 6px;
-      border-radius: 3px;
-      border: 1px solid;
-    }
-
-    .method-get {
-      background: rgba(0,200,83,0.1);
-      color: var(--green);
-      border-color: rgba(0,200,83,0.2);
-    }
-
-    .method-post {
-      background: rgba(0,102,204,0.1);
-      color: var(--cyan);
-      border-color: rgba(0,102,204,0.2);
-    }
-
-    .method-patch {
-      background: rgba(255,140,0,0.1);
-      color: var(--amber);
-      border-color: rgba(255,140,0,0.2);
-    }
-
-    .method-delete {
-      background: rgba(211,47,47,0.1);
-      color: var(--rose);
-      border-color: rgba(211,47,47,0.2);
-    }
-
-    .access-level {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 2px 8px;
-      border-radius: 3px;
-      background: rgba(0,229,255,0.1);
-      color: var(--cyan);
-      margin-bottom: 8px;
-    }
-
-    .access-read {
-      background: rgba(0,200,83,0.1);
-      color: var(--green);
-    }
-
-    .access-write {
-      background: rgba(255,140,0,0.1);
-      color: var(--amber);
-    }
-
-    .endpoint-desc {
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .permission-badge-link {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--cyan-dim);
-      background: rgba(0,102,204,0.1);
-      border: 1px solid rgba(0,102,204,0.2);
-      border-radius: 3px;
-      padding: 3px 8px;
-      margin: 2px 4px 2px 0;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .permission-badge-link:hover {
-      background: rgba(0,102,204,0.15);
-      border-color: rgba(0,102,204,0.4);
-    }
-
-    html.dark .permission-badge-link {
-      color: var(--cyan);
-      background: rgba(0,229,255,0.05);
-      border-color: rgba(0,229,255,0.1);
-    }
-
-    html.dark .permission-badge-link:hover {
-      background: rgba(0,229,255,0.1);
-      border-color: rgba(0,229,255,0.3);
-    }
-
-    /* ── Empty / loading ── */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-muted);
-    }
-    .empty-state .icon {
-      font-size: 40px;
-      display: block;
-      margin-bottom: 12px;
-      opacity: 0.4;
-    }
-
-    .loader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 60px;
-      color: var(--text-muted);
-    }
-    .loader-dot {
-      width: 6px; height: 6px;
-      background: var(--cyan);
-      border-radius: 50%;
-      animation: blink 1.2s infinite;
-    }
-    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
-    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes blink {
-      0%, 80%, 100% { opacity: 0.15; transform: scale(0.8); }
-      40%            { opacity: 1;    transform: scale(1);   }
-    }
-
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-base); }
-    ::-webkit-scrollbar-thumb { 
-      background: var(--border); 
-      border-radius: 3px;
-      transition: background-color 0.2s ease;
-    }
-    ::-webkit-scrollbar-thumb:hover { background: var(--border-glow); }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      body { font-size: 12px; }
-      .stat-chip .val { font-size: 18px; }
-      .theme-toggle { font-size: 11px; padding: 3px 8px; }
-      .modal-panel { width: 95%; max-height: 95vh; }
-      .modal-body { max-height: calc(95vh - 80px); }
-    }
-
-    @media (max-width: 640px) {
-      .stat-chip .val { font-size: 16px; }
-      .card-header { flex-direction: column; gap: 6px; }
-      .type-badge { align-self: flex-start; }
-      main { padding: 20px 14px 60px; }
-      .modal-panel { width: 98%; max-height: 98vh; }
-      .modal-title h2 { font-size: 16px; }
-      .modal-body { max-height: calc(98vh - 80px); padding: 16px; }
-    }
+    /* Utility */
+    .text-cyan { color: var(--cyan); }
+    .text-amber { color: var(--amber); }
+    .text-green { color: var(--green); }
+    .bg-cyan-soft { background: rgba(0, 229, 255, 0.1); }
   </style>
 </head>
 <body class="bg-grid">
 
-  <!-- ══════════════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════════════ -->
-  <header class="site-header">
-    <div style="max-width:1100px; margin:0 auto; padding:0 20px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px; flex-wrap:wrap;">
-
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div class="logo-pulse"></div>
-          <span style="font-family:var(--display); font-size:15px; font-weight:700; color:var(--text-primary); letter-spacing:0.02em;">
-            MS Graph <span style="color:var(--cyan);" class="text-glow-cyan">Tracker</span>
-          </span>
-        </div>
-
-        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-          <span id="hdr-last-updated" style="font-size:10px; color:var(--text-muted); letter-spacing:0.05em;">
-            loading…
-          </span>
-          <a
-            href="data/changelog.json"
-            target="_blank"
-            style="font-size:10px; color:var(--cyan-dim); border:1px solid var(--border); border-radius:4px; padding:4px 10px; text-decoration:none; letter-spacing:0.05em; transition:all 0.2s ease;"
-            onmouseover="this.style.background='rgba(0,102,204,0.05)'"
-            onmouseout="this.style.background='transparent'"
-          >↓ JSON</a>
-          <button type="button" class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
-            <span id="theme-icon">🌙</span>
-            <span id="theme-label">Dark</span>
-          </button>
-        </div>
+  <header class="site-header py-4 px-6 mb-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-3 h-3 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_10px_#00e5ff]"></div>
+        <h1 class="text-xl font-black uppercase tracking-tighter italic" style="font-family: var(--display);">
+          Graph<span class="text-cyan">Tracker</span>
+        </h1>
+      </div>
+      
+      <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest">
+        <span id="last-updated" class="text-muted opacity-60">Syncing...</span>
+        <button onclick="toggleTheme()" class="px-3 py-1 border border-[var(--border)] rounded hover:bg-[var(--cyan)] hover:text-white transition-all">
+          Toggle Mode
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- ══════════════════════════════════════════════
-       MAIN
-  ═══════════════════════════════════════════════ -->
-  <main style="max-width:1100px; margin:0 auto; padding:28px 20px 60px;">
-
-    <!-- Stats row -->
-    <div id="stats-row" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;">
-      <div class="stat-chip glow-green">
-        <div>
-          <div class="val" id="stat-total" style="color:var(--green);">—</div>
-          <div class="lbl">Total Changes</div>
-        </div>
+  <main class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      <div class="stat-chip">
+        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">New Permissions</div>
+        <div id="count-perms" class="text-3xl font-black text-cyan" style="font-family: var(--display);">0</div>
       </div>
-      <div class="stat-chip glow-cyan">
-        <div>
-          <div class="val" id="stat-perms" style="color:var(--cyan);">—</div>
-          <div class="lbl">New Permissions</div>
-        </div>
+      <div class="stat-chip">
+        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">New Endpoints</div>
+        <div id="count-eps" class="text-3xl font-black text-amber" style="font-family: var(--display);">0</div>
       </div>
-      <div class="stat-chip glow-amber">
-        <div>
-          <div class="val" id="stat-eps" style="color:var(--amber);">—</div>
-          <div class="lbl">New Endpoints</div>
-        </div>
+      <div class="stat-chip">
+        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">Total Changes</div>
+        <div id="count-total" class="text-3xl font-black text-green" style="font-family: var(--display);">0</div>
       </div>
-      <div class="stat-chip" style="margin-left:auto;">
-        <div>
-          <div class="val" id="stat-days" style="color:var(--text-secondary); font-size:16px;">—</div>
-          <div class="lbl">Days Tracked</div>
+      <div class="stat-chip">
+        <div class="text-[10px] uppercase opacity-50 font-bold mb-1">Status</div>
+        <div class="text-xs font-bold flex items-center gap-2 mt-3">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span> LIVE
         </div>
       </div>
     </div>
 
-    <!-- Filter bar -->
-    <div style="margin-bottom:20px;">
-      <div class="filter-bar" style="margin-bottom:10px;">
-        <span style="padding:0 12px; color:var(--text-muted); display:flex; align-items:center; font-size:13px;">⌕</span>
-        <div class="sep"></div>
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Search permissions, paths, descriptions…"
-          autocomplete="off"
-          spellcheck="false"
-        />
+    <div class="flex flex-col md:flex-row gap-4 mb-8">
+      <div class="flex-1 relative">
+        <input id="search-box" type="text" placeholder="Filter by path, scope, or description..." 
+               class="w-full bg-[var(--bg-card)] border border-[var(--border)] px-10 py-3 rounded-lg focus:outline-none focus:border-[var(--cyan)] transition-all">
+        <span class="absolute left-4 top-3.5 opacity-30">🔍</span>
       </div>
-      <div style="display:flex; gap:6px; flex-wrap:wrap;">
-        <button class="filter-btn active-all"       id="btn-all"  onclick="setFilter('all')">◉ All</button>
-        <button class="filter-btn"                   id="btn-perm" onclick="setFilter('Permission')">◎ Permissions</button>
-        <button class="filter-btn"                   id="btn-ep"   onclick="setFilter('Endpoint')">◎ Endpoints</button>
-        <span style="flex:1;"></span>
-        <span id="result-count" style="font-size:10px; color:var(--text-muted); align-self:center; letter-spacing:0.05em;"></span>
+      <div class="flex gap-2">
+        <button onclick="setFilter('all')" class="filter-btn px-4 py-2 rounded-lg border border-[var(--border)] text-xs font-bold active">ALL</button>
+        <button onclick="setFilter('Permission')" class="filter-btn px-4 py-2 rounded-lg border border-[var(--border)] text-xs font-bold">SCOPES</button>
+        <button onclick="setFilter('Endpoint')" class="filter-btn px-4 py-2 rounded-lg border border-[var(--border)] text-xs font-bold">PATHS</button>
       </div>
     </div>
 
-    <!-- Change feed -->
-    <div id="feed">
-      <div class="loader">
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <span style="margin-left:8px; font-size:11px; letter-spacing:0.08em;">FETCHING CHANGELOG</span>
-      </div>
+    <div id="change-feed" class="space-y-12">
+      <div class="text-center py-20 opacity-50 animate-pulse">Initializing Neural Link to Microsoft Graph...</div>
     </div>
-
   </main>
 
-  <!-- ══════════════════════════════════════════════
-       MODAL OVERLAY
-  ═══════════════════════════════════════════════ -->
-  <div class="modal-overlay" id="detail-modal">
-    <div class="modal-panel">
-      <div class="modal-header">
-        <div class="modal-title">
-          <h2 id="modal-title">Details</h2>
-          <span class="subtitle" id="modal-subtitle"></span>
+  <div id="modal" class="modal-overlay" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="p-6 border-b border-[var(--border)] flex justify-between items-start">
+        <div>
+          <div id="modal-type" class="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-cyan-soft text-cyan inline-block mb-2">TYPE</div>
+          <h2 id="modal-title" class="text-xl font-bold break-all leading-tight">Title Placeholder</h2>
         </div>
-        <button type="button" class="modal-close" onclick="closeModal()">&times;</button>
+        <button onclick="closeModal()" class="text-2xl opacity-50 hover:opacity-100">&times;</button>
       </div>
-      <div class="modal-body" id="modal-body">
-        <!-- Dynamic content loaded here -->
-      </div>
+      <div id="modal-body" class="p-6 overflow-y-auto space-y-6">
+        </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════ -->
-  <footer style="border-top:1px solid var(--border); padding:16px 20px; text-align:center;">
-    <p style="font-size:10px; color:var(--text-muted); letter-spacing:0.06em;">
-      AUTO-UPDATED DAILY VIA GITHUB ACTIONS ·
-      DATA FROM
-      <a href="https://github.com/microsoftgraph/microsoft-graph-devx-content"
-         target="_blank"
-         style="color:var(--cyan-dim); text-decoration:none;">MICROSOFTGRAPH/DEVX-CONTENT</a>
-    </p>
-  </footer>
-
-  <!-- ══════════════════════════════════════════════
-       SCRIPT
-  ═══════════════════════════════════════════════ -->
   <script>
-    // ── Theme Management ──
-    function initTheme() {
-      const stored = localStorage.getItem('theme-mode');
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDark = stored ? stored === 'dark' : systemDark;
-      applyTheme(isDark);
-    }
+    let rawData = [];
+    let currentFilter = 'all';
 
-    function applyTheme(isDark) {
-      const html = document.documentElement;
-      if (isDark) {
-        html.classList.add('dark');
-        localStorage.setItem('theme-mode', 'dark');
-        document.getElementById('theme-icon').textContent = '☀️';
-        document.getElementById('theme-label').textContent = 'Light';
-      } else {
-        html.classList.remove('dark');
-        localStorage.setItem('theme-mode', 'light');
-        document.getElementById('theme-icon').textContent = '🌙';
-        document.getElementById('theme-label').textContent = 'Dark';
-      }
-    }
-
-    function toggleTheme() {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(!isDark);
-    }
-
-    // Initialize theme on page load
-    document.addEventListener('DOMContentLoaded', initTheme);
-    
-    // ── State ──
-    let allEntries  = [];
-    let activeFilter = 'all';
-    let searchQuery  = '';
-    let filteredEntries = []; // Track filtered entries for detail lookup
-
-    // ── Fetch changelog ──
-    async function loadChangelog() {
+    async function init() {
       try {
-        const res  = await fetch('data/changelog.json?_=' + Date.now());
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        allEntries = Array.isArray(data) ? data : [];
-        renderStats();
+        const response = await fetch('data/changelog.json');
+        rawData = await response.json();
+        
+        // Update Stats
+        document.getElementById('count-total').innerText = rawData.length;
+        document.getElementById('count-perms').innerText = rawData.filter(x => x.type === 'Permission').length;
+        document.getElementById('count-eps').innerText = rawData.filter(x => x.type === 'Endpoint').length;
+        
         renderFeed();
-        loadLastSeen();
+        
+        // Update timestamp if data/last-seen.json exists
+        fetch('data/last-seen.json').then(r => r.json()).then(data => {
+            if(data.lastUpdated) document.getElementById('last-updated').innerText = `Last Scan: ${new Date(data.lastUpdated).toLocaleString()}`;
+        }).catch(() => {});
+
       } catch (err) {
-        document.getElementById('feed').innerHTML = `
-          <div class="empty-state">
-            <span class="icon">⚠</span>
-            <div style="color:var(--rose); margin-bottom:6px;">Could not load changelog.json</div>
-            <div style="font-size:11px;">${escHtml(err.message)}</div>
-            <div style="font-size:11px; margin-top:8px; color:var(--text-muted);">
-              Make sure the GitHub Action has run at least once.
-            </div>
-          </div>`;
+        document.getElementById('change-feed').innerHTML = `<div class="p-10 border border-red-900/30 rounded-xl text-center">
+            <p class="text-rose-500 font-bold mb-2">Failed to synchronize data.</p>
+            <p class="opacity-50 text-xs">Verify data/changelog.json exists in the repository.</p>
+        </div>`;
       }
     }
 
-    // Load last-seen for the header timestamp
-    async function loadLastSeen() {
-      try {
-        const res  = await fetch('data/last-seen.json?_=' + Date.now());
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data.lastUpdated) {
-          const d = new Date(data.lastUpdated);
-          document.getElementById('hdr-last-updated').textContent =
-            'Last scan: ' + d.toUTCString().replace('GMT','UTC');
-        }
-      } catch (_) {}
-    }
-
-    // ── Stats ──
-    function renderStats() {
-      const perms = allEntries.filter(e => e.type === 'Permission').length;
-      const eps   = allEntries.filter(e => e.type === 'Endpoint').length;
-      
-      console.log('Stats - Total:', allEntries.length, 'Perms:', perms, 'Endpoints:', eps);
-
-      document.getElementById('stat-total').textContent = allEntries.length;
-      document.getElementById('stat-perms').textContent = perms;
-      document.getElementById('stat-eps').textContent   = eps;
-
-      // Days tracked: range from earliest to latest date
-      if (allEntries.length > 0) {
-        const dates = allEntries.map(e => new Date(e.date)).filter(d => !isNaN(d));
-        if (dates.length > 0) {
-          const min = new Date(Math.min(...dates));
-          const max = new Date(Math.max(...dates));
-          const days = Math.round((max - min) / 86400000) + 1;
-          document.getElementById('stat-days').textContent = days;
-        }
-      }
-    }
-
-    // ── Filter ──
-    function setFilter(f) {
-      activeFilter = f;
-      console.log('Filter set to:', f);
-      document.getElementById('btn-all').className  = 'filter-btn' + (f==='all'        ? ' active-all'  : '');
-      document.getElementById('btn-perm').className = 'filter-btn' + (f==='Permission' ? ' active-perm' : '');
-      document.getElementById('btn-ep').className   = 'filter-btn' + (f==='Endpoint'   ? ' active-ep'   : '');
-      renderFeed();
-    }
-
-    // ── Search ──
-    document.getElementById('search-input').addEventListener('input', function () {
-      searchQuery = this.value.toLowerCase().trim();
-      renderFeed();
-    });
-
-    // ── Render feed ──
     function renderFeed() {
-      const feed = document.getElementById('feed');
-
-      const filtered = allEntries.filter(entry => {
-        const typeMatch = activeFilter === 'all' || entry.type === activeFilter;
-        if (!typeMatch) return false;
-        if (!searchQuery) return true;
-        const haystack = [
-          entry.name        || '',
-          entry.displayName || '',
-          entry.description || '',
-          entry.date        || '',
-          ...(entry.paths       || []),
-          ...(entry.permissions || []),
-        ].join(' ').toLowerCase();
-        return haystack.includes(searchQuery);
+      const query = document.getElementById('search-box').value.toLowerCase();
+      const filtered = rawData.filter(item => {
+        const matchesType = currentFilter === 'all' || item.type === currentFilter;
+        const matchesSearch = item.name.toLowerCase().includes(query) || 
+                              (item.description && item.description.toLowerCase().includes(query));
+        return matchesType && matchesSearch;
       });
 
-      filteredEntries = filtered; // Store for detail lookup
+      // Group by Date
+      const groups = filtered.reduce((acc, item) => {
+        const date = item.date || 'Unknown Date';
+        if (!acc[date]) acc[date] = [];
+        acc[date].push(item);
+        return acc;
+      }, {});
 
-      document.getElementById('result-count').textContent =
-        filtered.length === allEntries.length
-          ? `${allEntries.length} entries`
-          : `${filtered.length} / ${allEntries.length}`;
+      const container = document.getElementById('change-feed');
+      container.innerHTML = '';
 
-      if (filtered.length === 0) {
-        feed.innerHTML = `
-          <div class="empty-state">
-            <span class="icon">○</span>
-            <div>${allEntries.length === 0 ? 'No changes recorded yet.' : 'No results match your filter.'}</div>
-            ${allEntries.length === 0
-              ? '<div style="font-size:11px; margin-top:6px;">The tracker will populate this feed once the GitHub Action runs.</div>'
-              : ''}
-          </div>`;
-        return;
-      }
-
-      // Group by date
-      const groups = {};
-      for (let i = 0; i < filtered.length; i++) {
-        const entry = filtered[i];
-        const key = entry.date || 'Unknown date';
-        if (!groups[key]) groups[key] = [];
-        groups[key].push({ entry, index: i });
-      }
-
-      const sortedDates = Object.keys(groups).sort((a, b) => b.localeCompare(a));
-
-      let html = '';
-      for (const date of sortedDates) {
-        html += `
-          <div style="margin-bottom:24px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-              <span style="font-size:10px; font-weight:600; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">${escHtml(date)}</span>
-              <span style="font-size:10px; background:var(--bg-card); border:1px solid var(--border); border-radius:3px; padding:1px 7px; color:var(--text-muted);">${groups[date].length}</span>
-              <div style="flex:1; height:1px; background:var(--border);"></div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              ${groups[date].map(({entry, index}) => renderCard(entry, index)).join('')}
-            </div>
-          </div>`;
-      }
-
-      feed.innerHTML = html;
-    }
-
-    // ── Render single card ──
-    function renderCard(entry, index) {
-      const isPerm = entry.type === 'Permission';
-      const typeClass  = isPerm ? 'type-permission' : 'type-endpoint';
-      const badgeClass = isPerm ? 'badge-permission' : 'badge-endpoint';
-      const nameClass  = isPerm ? 'perm-name'        : 'ep-name';
-      const typeLabel  = isPerm ? 'Permission'        : 'Endpoint';
-
-      const desc = (entry.description || '').trim();
-      const disp = (entry.displayName || '').trim();
-
-      // Paths (for permission cards)
-      let pathsHtml = '';
-      if (isPerm && entry.paths && entry.paths.length > 0) {
-        const shown = entry.paths.slice(0, 6);
-        const more  = entry.paths.length - shown.length;
-        pathsHtml = `
-          <div class="card-paths">
-            ${shown.map(p => `<span class="path-tag">${escHtml(p)}</span>`).join('')}
-            ${more > 0 ? `<span class="path-tag" style="color:var(--text-muted);">+${more} more</span>` : ''}
-          </div>`;
-      }
-
-      // Related permissions (for endpoint cards)
-      let permsHtml = '';
-      if (!isPerm && entry.permissions && entry.permissions.length > 0) {
-        permsHtml = entry.permissions.slice(0, 4).map(p =>
-          `<span class="perm-ref">${escHtml(p)}</span>`
-        ).join('');
-      }
-
-      // Methods preview (for both permissions and endpoints)
-      let methodsHtml = '';
-      if (isPerm) {
-        // For permissions, infer methods from name
-        let methods = ['GET'];
-        if (entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') || entry.name.toLowerCase().includes('send')) {
-          methods = ['GET', 'POST', 'PATCH', 'DELETE'];
-        } else if (entry.name.toLowerCase().includes('create') || entry.name.toLowerCase().includes('update')) {
-          methods = ['POST', 'PATCH'];
-        }
-        methodsHtml = methods.slice(0, 3).map(m => `<span class="method-badge method-${m.toLowerCase()}" style="font-size: 8px; padding: 1px 4px;">${escHtml(m)}</span>`).join('');
-      } else {
-        // For endpoints, show actual methods
-        methodsHtml = (entry.methods || []).slice(0, 3).map(m => `<span class="method-badge method-${m.toLowerCase()}" style="font-size: 8px; padding: 1px 4px;">${escHtml(m)}</span>`).join('');
-      }
-
-      return `
-        <div class="change-card ${typeClass} clickable" data-entry-index="${index}" onclick="showDetails(${index})">
-          <div class="card-header">
-            <div style="min-width:0; flex:1;">
-              <div class="card-name ${nameClass}">${escHtml(entry.name || '—')}</div>
-              ${disp ? `<div class="card-display-name">${escHtml(disp)}</div>` : ''}
-            </div>
-            <span class="type-badge ${badgeClass}">${typeLabel}</span>
+      Object.keys(groups).sort((a,b) => new Date(b) - new Date(a)).forEach(date => {
+        const section = document.createElement('div');
+        section.innerHTML = `
+          <div class="flex items-center gap-4 mb-6">
+            <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+            <div class="text-[10px] font-bold opacity-40 uppercase tracking-[0.2em]">${date}</div>
+            <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
           </div>
-
-          ${(desc || pathsHtml) ? `
-          <div class="card-body">
-            ${desc ? `<div class="card-desc">${escHtml(desc)}</div>` : ''}
-            ${pathsHtml}
-          </div>` : ''}
-
-          ${(entry.date || permsHtml || methodsHtml) ? `
-          <div class="card-footer">
-            <span class="card-date">DETECTED ${escHtml(entry.date || '')}</span>
-            <div style="display: flex; gap: 8px; align-items: center;">
-              ${methodsHtml ? `<div style="display: flex; gap: 2px;">${methodsHtml}</div>` : ''}
-              ${permsHtml ? `<div class="card-perms-list">${permsHtml}</div>` : ''}
-            </div>
-          </div>` : ''}
-        </div>`;
-    }
-
-    // ── Modal Management ──
-    function showDetails(index) {
-      if (index < 0 || index >= filteredEntries.length) return;
-      const entry = filteredEntries[index];
-      const isPerm = entry.type === 'Permission';
-      
-      let bodyHtml = '';
-      
-      if (isPerm) {
-        // Show permission details with endpoints
-        bodyHtml = `
-          <div class="detail-section">
-            <label class="detail-label">Description</label>
-            <div class="detail-content">${escHtml(entry.description || 'No description available.')}</div>
-          </div>
-
-          <div class="detail-section">
-            <label class="detail-label">Paths with Access</label>
-            <div class="endpoint-list">
-              ${(entry.paths || []).length === 0 ? '<div style="color: var(--text-muted); font-size: 12px;">No paths available</div>' : 
-                (entry.paths || []).map(path => {
-                  // Infer methods based on permission name
-                  let methods = ['GET']; // Default to read
-                  if (entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') || entry.name.toLowerCase().includes('send')) {
-                    methods = ['GET', 'POST', 'PATCH', 'DELETE'];
-                  } else if (entry.name.toLowerCase().includes('create') || entry.name.toLowerCase().includes('update')) {
-                    methods = ['POST', 'PATCH'];
-                  }
-                  
-                  return `
-                    <div class="endpoint-item">
-                      <div class="endpoint-path">${escHtml(path)}</div>
-                      <div class="endpoint-methods">
-                        ${methods.map(m => `<span class="method-badge method-${m.toLowerCase()}">${escHtml(m)}</span>`).join('')}
-                      </div>
-                      <span class="access-level access-${entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') ? 'write' : 'read'}">${entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') ? 'WRITE' : 'READ'}</span>
-                    </div>
-                  `;
-                }).join('')
-              }
-            </div>
-          </div>
-
-          <div class="detail-section">
-            <label class="detail-label">Paths</label>
-            <div class="card-paths">
-              ${(entry.paths || []).map(p => `<span class="path-tag">${escHtml(p)}</span>`).join('')}
-            </div>
+          <div class="grid grid-cols-1 gap-3">
+            ${groups[date].map(item => `
+              <div class="change-card p-4 type-${item.type.toLowerCase()}" onclick="openDetails('${item.name}')">
+                <div class="flex justify-between items-start gap-4">
+                  <div class="min-w-0">
+                    <div class="text-[10px] font-bold opacity-50 mb-1">${item.type}</div>
+                    <div class="font-bold truncate text-sm mb-1">${item.name}</div>
+                    <div class="text-xs opacity-60 line-clamp-1">${item.description || 'No description available for this update.'}</div>
+                  </div>
+                  <div class="text-[18px] opacity-20">→</div>
+                </div>
+              </div>
+            `).join('')}
           </div>
         `;
-      } else {
-        // Show endpoint details with required permissions
-        bodyHtml = `
-          <div class="detail-section">
-            <label class="detail-label">Description</label>
-            <div class="detail-content">${escHtml(entry.description || 'No description available.')}</div>
-          </div>
+        container.appendChild(section);
+      });
+    }
 
-          <div class="detail-section">
-            <label class="detail-label">HTTP Methods</label>
-            <div class="endpoint-methods">
-              ${(entry.methods || []).length === 0 ? '<div style="color: var(--text-muted); font-size: 12px;">No methods available</div>' :
-                (entry.methods || []).map(m => `<span class="method-badge method-${m.toLowerCase()}">${escHtml(m)}</span>`).join('')
-              }
-            </div>
-          </div>
+    function openDetails(name) {
+      const item = rawData.find(x => x.name === name);
+      if(!item) return;
 
-          <div class="detail-section">
-            <label class="detail-label">Required Permissions</label>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-              ${(entry.permissions || []).length === 0 ? '<div style="color: var(--text-muted); font-size: 12px;">No permissions required</div>' :
-                (entry.permissions || []).map(p => {
-                  const permEntry = allEntries.find(e => e.type === 'Permission' && e.name === p);
-                  return `<span class="permission-badge-link" onclick="event.stopPropagation(); showPermissionDetail('${escHtml(p)}')">${escHtml(p)}</span>`;
-                }).join('')
-              }
-            </div>
-          </div>
+      document.getElementById('modal-title').innerText = item.name;
+      document.getElementById('modal-type').innerText = item.type;
+      
+      let bodyHtml = `
+        <section>
+            <h4 class="text-[10px] uppercase font-bold opacity-40 mb-3 tracking-widest">Description</h4>
+            <p class="text-sm leading-relaxed">${item.description || 'No technical description was provided for this entry.'}</p>
+        </section>
+      `;
+
+      if(item.paths && item.paths.length > 0) {
+        bodyHtml += `
+            <section>
+                <h4 class="text-[10px] uppercase font-bold opacity-40 mb-3 tracking-widest">Impacted Endpoints</h4>
+                <div class="flex flex-wrap gap-2">
+                    ${item.paths.map(p => `<code class="bg-[var(--bg-base)] border border-[var(--border)] px-2 py-1 rounded text-[11px] text-cyan">${p}</code>`).join('')}
+                </div>
+            </section>
         `;
       }
 
-      document.getElementById('modal-title').textContent = entry.name || '—';
-      document.getElementById('modal-subtitle').textContent = entry.displayName || entry.type;
       document.getElementById('modal-body').innerHTML = bodyHtml;
-      document.getElementById('detail-modal').classList.add('active');
-    }
-
-    function showPermissionDetail(permName) {
-      // First, try to find in filtered entries
-      let index = filteredEntries.findIndex(e => e.type === 'Permission' && e.name === permName);
-      if (index >= 0) {
-        showDetails(index);
-      } else {
-        // If not in filtered, find in all entries and show it anyway
-        const permEntry = allEntries.find(e => e.type === 'Permission' && e.name === permName);
-        if (permEntry) {
-          // Temporarily add to filtered for display
-          filteredEntries.push(permEntry);
-          showDetails(filteredEntries.length - 1);
-        }
-      }
+      document.getElementById('modal').classList.add('active');
     }
 
     function closeModal() {
-      document.getElementById('detail-modal').classList.remove('active');
+      document.getElementById('modal').classList.remove('active');
     }
 
-    // Close modal on overlay click
-    document.addEventListener('click', function(e) {
-      const modal = document.getElementById('detail-modal');
-      if (e.target === modal) closeModal();
-    });
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // ── HTML escape ──
-    function escHtml(s) {
-      return String(s)
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;');
+    function setFilter(type) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'border-cyan-500'));
+      event.target.classList.add('active', 'border-cyan-500');
+      renderFeed();
     }
 
-    // ── Boot ──
-    initTheme();
-    loadChangelog();
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    document.getElementById('search-box').addEventListener('input', renderFeed);
+    
+    // Start
+    init();
   </script>
 </body>
 </html>
