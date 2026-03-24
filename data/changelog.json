@@ -7,20 +7,6 @@
     "description": "Allows the app to read all channel messages in Microsoft Teams"
   },
   {
-    "scheme": "Application",
-    "date": "2026-03-24",
-    "type": "New Application Scope",
-    "name": "LifecycleWorkflows-Reports.Read.All",
-    "description": "Allows the app to read all Lifecycle workflows reports without a signed-in user."
-  },
-  {
-    "scheme": "DelegatedWork",
-    "date": "2026-03-24",
-    "type": "New DelegatedWork Scope",
-    "name": "DeviceManagementRBAC.Read.All",
-    "description": "Allows the app to read the properties relating to the Microsoft Intune Role-Based Access Control (RBAC) settings."
-  },
-  {
     "scheme": "DelegatedWork",
     "date": "2026-03-24",
     "type": "New DelegatedWork Scope",

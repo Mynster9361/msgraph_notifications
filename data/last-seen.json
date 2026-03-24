@@ -14,17 +14,6 @@
     "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/decisions/filterbycurrentuser(on={value})",
     "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages",
     "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}",
-    "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}/decisions",
-    "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}/decisions/{id}",
-    "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/{id}/decisions/filterbycurrentuser(on={value})",
-    "/identitygovernance/accessreviews/definitions/{id}/instances/{id}/stages/filterbycurrentuser(on={value})",
-    "/identitygovernance/accessreviews/definitions/{id}/instances/filterbycurrentuser(on={value})",
-    "/identitygovernance/accessreviews/definitions/filterbycurrentuser(on={value})",
-    "/accessreviews/{id}/mydecisions",
-    "/me/pendingaccessreviewinstances",
-    "/me/pendingaccessreviewinstances/{id}/decisions",
-    "/users/{id}/pendingaccessreviewinstances",
-    "/users/{id}/pendingaccessreviewinstances/{id}/decisions",
     "/identitygovernance/accessreviews/decisions/filterbycurrentuser(on={value})/recordalldecisions",
     "/accessreviews/{id}/applydecisions",
     "/accessreviews/{id}/resetdecisions",
@@ -18490,19 +18479,6 @@
       ],
       "requiresAdmin": true,
       "displayName": "Read all available Teams Templates"
-    },
-    "TeamsTab.Read.All (DelegatedWork)": {
-      "scheme": "DelegatedWork",
-      "name": "TeamsTab.Read.All",
-      "description": "Read the names and settings of tabs inside any team in Microsoft Teams, on behalf of the signed-in user. This does not give access to the content inside the tabs.",
-      "paths": [
-        "/chats/{id}/tabs",
-        "/chats/{id}/tabs/{id}",
-        "/teams/{id}/channels/{id}/tabs",
-        "/teams/{id}/channels/{id}/tabs/{id}"
-      ],
-      "requiresAdmin": true,
-      "displayName": "Read tabs in Microsoft Teams."
     },
     "TeamsAppInstallation.ReadWriteForTeam.All (Application)": {
       "scheme": "Application",
