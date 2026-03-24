@@ -3,75 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MS Graph Registry</title>
+    <title>MS Graph Registry | Explorer & History</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@800&display=swap" rel="stylesheet">
-    <style>
+    
+    <link rel="icon" href="https://fav.farm/🔍" />
+
+    <style type="text/css">
         :root {
-            --bg: #0b0f1a; --card: #161b2a; --border: #242c40; --cyan: #00f2ff;
+            --bg: #0b101a;
+            --card: #151b28;
+            --border: #242c3e;
+            --cyan: #00f2ff;
+            --text: #cdd9e5;
         }
-        body { background: var(--bg); color: #cdd9e5; font-family: 'JetBrains Mono', monospace; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'JetBrains Mono', monospace; 
+            background-image: radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
         .syne { font-family: 'Syne', sans-serif; }
         .glass { background: var(--card); border: 1px solid var(--border); }
-        .btn-tab { padding: 8px 20px; font-size: 11px; font-weight: bold; border: 1px solid var(--border); transition: 0.2s; }
-        .btn-tab.active { background: var(--cyan); color: black; border-color: var(--cyan); }
-        .path-tag { font-size: 9px; background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--cyan); }
+        .btn-tab { padding: 8px 24px; font-size: 11px; font-weight: bold; border: 1px solid var(--border); transition: 0.2s; letter-spacing: 0.1em; }
+        .btn-tab.active { background: var(--cyan); color: #000; border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
+        .path-tag { font-size: 9px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.15); color: var(--cyan); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-10 min-h-screen">
 
-    <header class="max-w-6xl mx-auto mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <header class="max-w-7xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
         <div>
-            <h1 class="syne text-4xl uppercase italic text-white leading-none mb-2">GRAPH<span class="text-[var(--cyan)]">REGISTRY</span></h1>
-            <p class="text-[10px] opacity-50 font-bold tracking-widest uppercase">Permission Explorer & History Tracker</p>
+            <h1 class="syne text-5xl uppercase italic text-white leading-none mb-3">
+                GRAPH<span class="text-[#00f2ff]">REGISTRY</span>
+            </h1>
+            <div class="flex items-center gap-3">
+                <span class="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <p class="text-[10px] opacity-50 font-bold tracking-[0.4em] uppercase">Live Metadata Observer</p>
+            </div>
         </div>
         
-        <div class="flex flex-col items-end gap-3 w-full md:w-auto">
-            <div class="flex rounded-md overflow-hidden">
-                <button id="tab-history" onclick="setView('history')" class="btn-tab active">HISTORY</button>
-                <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab">EXPLORER</button>
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+            <div class="flex bg-black/20 rounded-lg p-1 border border-[var(--border)] overflow-hidden w-full sm:w-auto">
+                <button id="tab-history" onclick="setView('history')" class="btn-tab active rounded-l-md flex-1 sm:flex-none">HISTORY</button>
+                <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab rounded-r-md flex-1 sm:flex-none">EXPLORER</button>
             </div>
-            <input id="search" type="text" placeholder="Filter permissions..." class="w-full md:w-64 bg-[var(--card)] border border-[var(--border)] p-2 rounded text-xs outline-none focus:border-[var(--cyan)]">
+            <div class="relative w-full sm:w-80">
+                <input id="search" type="text" placeholder="Filter scopes or descriptions..." 
+                       class="w-full bg-[var(--card)] border border-[var(--border)] pl-10 pr-4 py-3 rounded-lg text-xs outline-none focus:border-[var(--cyan)] transition-all">
+                <span class="absolute left-3 top-3.5 opacity-30 text-sm">🔍</span>
+            </div>
         </div>
     </header>
 
-    <main id="content" class="max-w-6xl mx-auto space-y-8">
-        <div class="animate-pulse opacity-20 text-center py-20">Initializing Data Streams...</div>
+    <main id="content" class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center justify-center py-32 opacity-20">
+            <div class="w-10 h-10 border-4 border-t-[var(--cyan)] border-[var(--border)] rounded-full animate-spin mb-4"></div>
+            <p class="text-xs font-bold tracking-widest uppercase">Fetching Registry Fragments...</p>
+        </div>
     </main>
 
-    <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4" onclick="closeModal()">
-        <div class="glass max-w-2xl w-full rounded-xl overflow-hidden" onclick="event.stopPropagation()">
-            <div class="p-6 border-b border-[var(--border)] flex justify-between items-start">
-                <h2 id="m-name" class="syne text-xl text-white break-all"></h2>
-                <button onclick="closeModal()" class="text-2xl">&times;</button>
+    <div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden items-center justify-center z-50 p-4 overflow-y-auto" onclick="closeModal()">
+        <div class="glass max-w-3xl w-full rounded-2xl shadow-2xl overflow-hidden mt-20 mb-20" onclick="event.stopPropagation()">
+            <div class="p-8 border-b border-[var(--border)] flex justify-between items-start bg-white/5">
+                <div>
+                    <div id="m-type" class="text-[9px] font-bold text-[var(--cyan)] tracking-widest uppercase mb-1"></div>
+                    <h2 id="m-name" class="syne text-2xl text-white break-all leading-tight"></h2>
+                </div>
+                <button onclick="closeModal()" class="text-3xl leading-none opacity-50 hover:opacity-100 transition-opacity">&times;</button>
             </div>
-            <div id="m-body" class="p-6 space-y-4 max-h-[70vh] overflow-y-auto"></div>
+            <div id="m-body" class="p-8 space-y-8 max-h-[60vh] overflow-y-auto"></div>
+            <div class="p-4 bg-black/40 text-[9px] opacity-30 text-center border-t border-[var(--border)] uppercase tracking-widest">
+                Microsoft Graph Metadata Snapshot
+            </div>
         </div>
     </div>
 
     <script>
-        let history = [];
-        let library = [];
+        let historyData = [];
+        let libraryData = [];
         let view = 'history';
 
         async function init() {
+            const content = document.getElementById('content');
             try {
-                const [hData, lData] = await Promise.all([
-                    fetch('data/changelog.json').then(r => r.json()),
-                    fetch('data/current-state.json').then(r => r.json())
+                // IMPORTANT: Relative paths for GitHub Pages subfolder support
+                const [hRes, lRes] = await Promise.all([
+                    fetch('data/changelog.json'),
+                    fetch('data/current-state.json')
                 ]);
-                history = hData;
-                library = lData;
+                
+                if (!hRes.ok || !lRes.ok) throw new Error("Data sync pending...");
+
+                historyData = await hRes.json();
+                libraryData = await lRes.json();
                 render();
             } catch (e) {
-                document.getElementById('content').innerHTML = `<div class="text-red-400">Error loading data. Ensure 'data/current-state.json' exists.</div>`;
+                content.innerHTML = `
+                    <div class="glass p-12 rounded-2xl text-center border-red-900/50 max-w-md mx-auto">
+                        <div class="text-red-500 text-3xl mb-4">⚠️</div>
+                        <div class="text-white font-bold mb-2 uppercase tracking-widest text-sm">Registry Offline</div>
+                        <p class="text-[10px] opacity-50 leading-relaxed">
+                            The browser could not find <b>data/current-state.json</b>.<br> 
+                            Ensure the PowerShell script has run and pushed the <b>/data</b> folder to GitHub.
+                        </p>
+                    </div>`;
             }
         }
 
         function setView(v) {
             view = v;
-            document.getElementById('tab-history').className = `btn-tab ${v === 'history' ? 'active' : ''}`;
-            document.getElementById('tab-explorer').className = `btn-tab ${v === 'explorer' ? 'active' : ''}`;
+            document.getElementById('tab-history').classList.toggle('active', v === 'history');
+            document.getElementById('tab-explorer').classList.toggle('active', v === 'explorer');
             render();
         }
 
@@ -81,47 +135,83 @@
             container.innerHTML = '';
 
             if (view === 'history') {
-                const filtered = history.filter(i => i.name.toLowerCase().includes(query));
+                const filtered = historyData.filter(i => i.name.toLowerCase().includes(query));
                 const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
-                
-                Object.keys(groups).sort().reverse().forEach(date => {
-                    let html = `<div class="space-y-4"><div class="flex items-center gap-4"><span class="text-[10px] font-bold opacity-30">${date}</span><div class="h-px flex-1 bg-[var(--border)]"></div></div>`;
+                const sortedDates = Object.keys(groups).sort().reverse();
+
+                if (sortedDates.length === 0) {
+                    container.innerHTML = `<div class="text-center py-20 opacity-20 italic">No recent shifts detected in the timeline.</div>`;
+                    return;
+                }
+
+                sortedDates.forEach(date => {
+                    let html = `<div class="mb-12"><div class="flex items-center gap-6 mb-6">
+                        <span class="text-[11px] font-bold text-[var(--cyan)] whitespace-nowrap">${date}</span>
+                        <div class="h-px w-full bg-gradient-to-r from-[var(--border)] to-transparent"></div>
+                    </div><div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+                    
                     groups[date].forEach(item => {
-                        html += `<div onclick="showDetail('${item.name}')" class="glass p-4 rounded-lg cursor-pointer hover:border-[var(--cyan)] transition-colors">
-                            <div class="text-[9px] text-[var(--cyan)] font-bold mb-1">NEW PERMISSION</div>
-                            <div class="text-white font-bold">${item.name}</div>
+                        html += `
+                        <div onclick="showDetail('${item.name}', false)" class="glass p-5 rounded-xl cursor-pointer hover:border-[var(--cyan)] group transition-all">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="text-[9px] font-bold opacity-40 uppercase tracking-tighter">Event: ${item.type}</div>
+                                <div class="text-[14px] group-hover:translate-x-1 transition-transform">→</div>
+                            </div>
+                            <div class="text-white font-bold text-sm mb-1">${item.name}</div>
+                            <div class="text-[10px] opacity-40 line-clamp-1">${item.description || 'System entry created.'}</div>
                         </div>`;
                     });
-                    container.innerHTML += html + '</div>';
+                    container.innerHTML += html + '</div></div>';
                 });
             } else {
-                const filtered = library.filter(i => i.name.toLowerCase().includes(query) || (i.description && i.description.toLowerCase().includes(query)));
-                let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+                const filtered = libraryData.filter(i => 
+                    i.name.toLowerCase().includes(query) || 
+                    (i.description && i.description.toLowerCase().includes(query))
+                );
+
+                let html = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">`;
                 filtered.sort((a,b) => a.name.localeCompare(b.name)).forEach(item => {
-                    html += `<div onclick="showDetail('${item.name}', true)" class="glass p-4 rounded-lg cursor-pointer hover:border-[var(--cyan)] transition-all">
-                        <div class="text-white font-bold text-sm truncate mb-1">${item.name}</div>
-                        <div class="text-[10px] opacity-50 line-clamp-2 leading-relaxed">${item.description || 'No description provided.'}</div>
+                    html += `
+                    <div onclick="showDetail('${item.name}', true)" class="glass p-5 rounded-xl cursor-pointer hover:border-[var(--cyan)] hover:-translate-y-1 transition-all">
+                        <div class="text-white font-bold text-xs truncate mb-2">${item.name}</div>
+                        <div class="text-[10px] opacity-50 line-clamp-2 leading-relaxed min-h-[30px]">${item.description || 'No documentation available.'}</div>
                     </div>`;
                 });
                 container.innerHTML = html + '</div>';
             }
         }
 
-        function showDetail(name, fromLib = false) {
-            const list = fromLib || view === 'explorer' ? library : history;
+        function showDetail(name, fromLib) {
+            const list = fromLib ? libraryData : historyData;
             const item = list.find(x => x.name === name);
             if (!item) return;
 
+            document.getElementById('m-type').innerText = item.type || 'Object';
             document.getElementById('m-name').innerText = item.name;
             document.getElementById('m-body').innerHTML = `
-                <div><div class="text-[10px] font-bold opacity-40 mb-2 uppercase">Description</div><p class="text-sm leading-relaxed">${item.description || 'N/A'}</p></div>
-                <div><div class="text-[10px] font-bold opacity-40 mb-2 uppercase">Impacted API Paths (${item.paths?.length || 0})</div>
-                <div class="flex flex-wrap gap-1">${(item.paths || []).map(p => `<span class="path-tag px-2 py-1 rounded">${p}</span>`).join('')}</div></div>
+                <div class="space-y-2">
+                    <label class="text-[9px] font-bold opacity-30 uppercase tracking-[0.2em]">Documentation</label>
+                    <p class="text-sm leading-relaxed text-gray-300">${item.description || 'No detailed description found in Microsoft metadata.'}</p>
+                </div>
+                ${item.paths && item.paths.length > 0 ? `
+                <div class="space-y-4">
+                    <label class="text-[9px] font-bold opacity-30 uppercase tracking-[0.2em]">Associated Resource Paths (${item.paths.length})</label>
+                    <div class="grid gap-2">
+                        ${item.paths.map(p => `<div class="path-tag px-3 py-2 rounded-md font-bold truncate">${p}</div>`).join('')}
+                    </div>
+                </div>` : ''}
             `;
-            document.getElementById('modal').style.display = 'flex';
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        function closeModal() { 
+            document.getElementById('modal').classList.add('hidden'); 
+            document.getElementById('modal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
         document.getElementById('search').addEventListener('input', render);
         init();
     </script>
