@@ -126,15 +126,24 @@
 <body class="p-6 md:p-12 min-h-screen">
 
   <header class="max-w-7xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
-
     <div>
       <h1 class="syne text-6xl uppercase italic text-white leading-none mb-4 tracking-tighter">
         GRAPH<span class="text-[#58a6ff]">REGISTRY</span>
       </h1>
-      <div class="flex items-center gap-3">
-        <span
-          class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
-        <p class="text-[11px] font-black tracking-[0.5em] uppercase opacity-40">Live Permission Intel</p>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <span
+            class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+          <p class="text-[11px] font-black tracking-[0.5em] uppercase opacity-40">Live Permission Intel</p>
+        </div>
+        <a href="data/rss.xml" target="_blank"
+          class="flex items-center gap-2 px-3 py-1 rounded-lg border border-orange-500/30 bg-orange-500/10 text-orange-500 hover:bg-orange-500 hover:text-white transition-all text-[10px] font-bold uppercase tracking-widest">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-8.5a1 1 0 0 1 1 1c0 5.523 4.477 10 10 10a1 1 0 1 1 0-2 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0-4a1 1 0 0 1 1 1c0 9.389 7.611 17 17 17a1 1 0 1 1 0-2c7.18 0 13-5.82 13-13a1 1 0 0 1-1-1z" />
+          </svg>
+          RSS Feed
+        </a>
       </div>
     </div>
 
@@ -151,14 +160,6 @@
         <span class="absolute left-4 top-4 opacity-20 text-lg">🔍</span>
       </div>
     </div>
-    <a href="data/rss.xml" target="_blank"
-      class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-orange-500/30 bg-orange-500/10 text-orange-500 hover:bg-orange-500 hover:text-white transition-all text-[10px] font-bold">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-        <path
-          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-8.5a1 1 0 0 1 1 1c0 5.523 4.477 10 10 10a1 1 0 1 1 0-2 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0-4a1 1 0 0 1 1 1c0 9.389 7.611 17 17 17a1 1 0 1 1 0-2c7.18 0 13-5.82 13-13a1 1 0 0 1-1-1z" />
-      </svg>
-      RSS FEED
-    </a>
   </header>
 
   <main id="content" class="max-w-7xl mx-auto">
@@ -177,7 +178,7 @@
       <div class="p-8 border-b border-[var(--border)] flex justify-between items-center bg-[#161b22]">
         <div>
           <div id="m-type"
-            class="text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded">
+            class="text-[11px] font-black uppercase tracking-[0.3em] mb-2 px-2 py-0.5 border inline-block rounded">
           </div>
           <h2 id="m-name" class="mono text-2xl md:text-3xl text-white break-all font-bold tracking-tight"></h2>
         </div>
@@ -197,7 +198,7 @@
 
   <script>
     let historyData = [];
-    let libraryData = [];
+    let libraryData = []; // Now contains objects with .scheme (Application/DelegatedWork)
     let pathIndex = [];
     let view = 'history';
 
@@ -212,18 +213,20 @@
 
         const pathsMap = {};
         libraryData.forEach(p => {
+          const uniqueLabel = `${p.name} (${p.scheme})`;
           (p.paths || []).forEach(path => {
             if (!pathsMap[path]) pathsMap[path] = [];
-            pathsMap[path].push(p.name);
+            pathsMap[path].push(uniqueLabel);
           });
         });
         pathIndex = Object.keys(pathsMap).sort().map(url => ({
           url: url,
-          permissions: pathsMap[url]
+          permissions: pathsMap[url] // Array of "Name (Scheme)"
         }));
 
         render();
       } catch (e) {
+        console.error(e);
         document.getElementById('content').innerHTML = `<div class="glass p-12 text-center rounded-2xl max-w-md mx-auto border-red-900/30">
                     <div class="text-red-500 font-bold mb-2">SYSTEM OFFLINE</div>
                     <div class="text-xs opacity-50">Could not resolve data streams. Check GitHub Pages deployment.</div>
@@ -246,27 +249,37 @@
       container.innerHTML = '';
 
       if (view === 'history') {
-        const filtered = historyData.filter(i => i.name.toLowerCase().includes(query));
+        const filtered = historyData.filter(i => i.name.toLowerCase().includes(query) || i.scheme.toLowerCase().includes(query));
         const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
 
         Object.keys(groups).sort().reverse().forEach(date => {
           let html = `<div class="mb-14"><h3 class="mono text-sm text-[var(--cyan)] mb-6 flex items-center gap-6 font-bold uppercase tracking-widest">${date} <span class="h-px flex-1 bg-[var(--border)]"></span></h3><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
           groups[date].forEach(item => {
+            const isApp = item.scheme === 'Application';
+            const badgeColor = isApp ? 'text-purple-400 border-purple-400/20 bg-purple-400/5' : 'text-blue-400 border-blue-400/20 bg-blue-400/5';
             html += `
-                        <div onclick="showPermissionDetail('${item.name}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+                        <div onclick="showPermissionDetail('${item.name}', '${item.scheme}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-[9px] font-bold px-2 py-0.5 border rounded uppercase tracking-tighter ${badgeColor}">${item.scheme}</span>
+                            </div>
                             <div class="text-white font-bold text-base mb-2 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
-                            <div class="text-sm opacity-40 line-clamp-2 leading-relaxed">${item.description || 'Entry updated in registry.'}</div>
+                            <div class="text-sm opacity-40 line-clamp-2 leading-relaxed">${item.description || 'Entry updated.'}</div>
                         </div>`;
           });
           container.innerHTML += html + '</div></div>';
         });
       }
       else if (view === 'explorer') {
-        const filtered = libraryData.filter(i => i.name.toLowerCase().includes(query) || (i.description && i.description.toLowerCase().includes(query)));
+        const filtered = libraryData.filter(i => i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query));
         let html = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">`;
         filtered.forEach(item => {
+          const isApp = item.scheme === 'Application';
+          const badgeColor = isApp ? 'text-purple-400 border-purple-400/20 bg-purple-400/5' : 'text-blue-400 border-blue-400/20 bg-blue-400/5';
           html += `
-                    <div onclick="showPermissionDetail('${item.name}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+                    <div onclick="showPermissionDetail('${item.name}', '${item.scheme}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-[9px] font-bold px-2 py-0.5 border rounded uppercase tracking-tighter ${badgeColor}">${item.scheme}</span>
+                        </div>
                         <div class="text-white font-bold text-[15px] mb-3 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
                         <div class="text-[13px] opacity-40 line-clamp-3 leading-relaxed">${item.description || 'No detailed documentation.'}</div>
                     </div>`;
@@ -287,18 +300,27 @@
       }
     }
 
-    function showPermissionDetail(name) {
-      const item = libraryData.find(x => x.name === name);
+    function showPermissionDetail(name, scheme) {
+      const item = libraryData.find(x => x.name === name && x.scheme === scheme);
       if (!item) return;
-      document.getElementById('m-type').innerText = 'PERMISSION SCOPE';
+
+      const isApp = item.scheme === 'Application';
+      const typeEl = document.getElementById('m-type');
+      typeEl.innerText = `${item.scheme} Permission`;
+      typeEl.className = isApp
+        ? "text-[11px] font-black text-purple-400 uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-purple-400/10 border border-purple-400/20 inline-block rounded"
+        : "text-[11px] font-black text-blue-400 uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-blue-400/10 border border-blue-400/20 inline-block rounded";
+
       document.getElementById('m-name').innerText = item.name;
       document.getElementById('m-body').innerHTML = `
                 <section class="max-w-4xl">
                     <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-4">Documentation</h4>
-                    <p class="description-text leading-loose">${item.description || 'Microsoft has not provided a detailed description for this scope.'}</p>
+                    <p class="description-text leading-loose">${item.description || 'Microsoft has not provided a detailed description for this specific scheme.'}</p>
                 </section>
                 <section>
-                    <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Resource Mapping (${item.paths ? item.paths.length : 0})</h4>
+                    <div class="flex items-center gap-4 mb-6">
+                        <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em]">Resource Mapping (${item.paths ? item.paths.length : 0})</h4>
+                    </div>
                     <div class="grid grid-cols-1 gap-2">
                         ${(item.paths || []).map(p => `
                             <div class="path-tag p-4 px-6 rounded-xl flex justify-between items-center group cursor-default">
@@ -314,17 +336,30 @@
       const url = atob(encodedUrl);
       const item = pathIndex.find(x => x.url === url);
       if (!item) return;
-      document.getElementById('m-type').innerText = 'API ENDPOINT';
+
+      const typeEl = document.getElementById('m-type');
+      typeEl.innerText = 'API ENDPOINT';
+      typeEl.className = "text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded";
+
       document.getElementById('m-name').innerText = url;
       document.getElementById('m-body').innerHTML = `
                 <section class="max-w-4xl">
                     <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        ${item.permissions.map(p => {
-        const pData = libraryData.find(ld => ld.name === p);
+                        ${item.permissions.map(uniqueKey => {
+        // uniqueKey is "Name (Scheme)"
+        const [pName, pSchemeRaw] = uniqueKey.split(' (');
+        const pScheme = pSchemeRaw.replace(')', '');
+        const pData = libraryData.find(ld => ld.name === pName && ld.scheme === pScheme);
+        const isApp = pScheme === 'Application';
+        const borderColor = isApp ? 'hover:border-purple-500' : 'hover:border-blue-500';
+
         return `
-                            <button onclick="showPermissionDetail('${p}')" class="glass p-6 rounded-2xl text-left hover:border-[var(--cyan)] group transition-all">
-                                <div class="mono text-sm font-bold text-white mb-2 group-hover:text-[var(--cyan)]">${p}</div>
+                            <button onclick="showPermissionDetail('${pName}', '${pScheme}')" class="glass p-6 rounded-2xl text-left ${borderColor} group transition-all">
+                                <div class="flex justify-between items-start mb-2">
+                                     <div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${pName}</div>
+                                     <span class="text-[8px] border px-1 rounded opacity-50">${pScheme.toUpperCase()}</span>
+                                </div>
                                 <div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Click to view details.'}</div>
                             </button>`;
       }).join('')}

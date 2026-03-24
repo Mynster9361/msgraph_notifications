@@ -88,34 +88,39 @@ $allCurrentPaths = [System.Collections.Generic.HashSet[string]]::new()
 
 foreach ($permName in $mappings.Keys) {
     $entry = $mappings[$permName]
-    $paths = [System.Collections.Generic.List[string]]::new()
     
-    if ($entry -is [hashtable] -and $entry.ContainsKey('pathSets')) {
-        foreach ($pathSet in $entry['pathSets']) {
-            if ($pathSet.ContainsKey('paths')) {
-                foreach ($path in $pathSet['paths'].Keys) {
-                    $paths.Add($path) | Out-Null
-                    $allCurrentPaths.Add($path) | Out-Null
+    # Check if schemes exist (DelegatedWork, Application, etc.)
+    if ($entry.ContainsKey('schemes')) {
+        foreach ($schemeName in $entry['schemes'].Keys) {
+            $schemeData = $entry['schemes'][$schemeName]
+            $uniqueId = "$permName ($schemeName)" # Unique key for tracking
+            
+            # Filter paths relevant to THIS scheme
+            $paths = [System.Collections.Generic.List[string]]::new()
+            if ($entry.ContainsKey('pathSets')) {
+                foreach ($pathSet in $entry['pathSets']) {
+                    if ($pathSet['schemeKeys'] -contains $schemeName) {
+                        foreach ($path in $pathSet['paths'].Keys) {
+                            $paths.Add($path) | Out-Null
+                            $allCurrentPaths.Add($path) | Out-Null
+                        }
+                    }
                 }
             }
+
+            $meta = @{
+                name         = $permName
+                scheme       = $schemeName # e.g. Application or DelegatedWork
+                displayName  = $schemeData['adminDisplayName'] ?? $schemeData['userDisplayName'] ?? ''
+                description  = $schemeData['adminDescription'] ?? $schemeData['userDescription'] ?? ''
+                paths        = @($paths | Sort-Object -Unique)
+                requiresAdmin = $schemeData['requiresAdminConsent'] ?? $true
+            }
+
+            $currentPermissions[$uniqueId] = $meta
+            $explorerLibrary.Add($meta)
         }
     }
-
-    $desc = $descLookup[$permName] ?? @{ displayName = ''; description = '' }
-    
-    # Store for change detection
-    $currentPermissions[$permName] = @{
-        paths = $paths; displayName = $desc['displayName']; description = $desc['description']
-    }
-
-    # Store for Explorer View
-    $explorerLibrary.Add(@{
-        name = $permName
-        type = "Permission"
-        displayName = $desc['displayName']
-        description = $desc['description']
-        paths = @($paths | Sort-Object)
-    })
 }
 Write-StepEnd
 
@@ -128,17 +133,18 @@ $previousPermissions = $lastSeen['permissions'] ?? @{}
 $today = Get-Date -Format 'yyyy-MM-dd'
 $newEntries = @()
 
-foreach ($permName in $currentPermissions.Keys) {
-    if (-not $previousPermissions.ContainsKey($permName)) {
-        $meta = $currentPermissions[$permName]
+foreach ($id in $currentPermissions.Keys) {
+    if (-not $previousPermissions.ContainsKey($id)) {
+        $item = $currentPermissions[$id]
         $newEntries += @{
-            date = $today; type = 'Permission'; name = $permName
-            displayName = $meta['displayName']; description = $meta['description']
-            paths = @($meta['paths'])
+            date        = $today
+            name        = $item['name']
+            scheme      = $item['scheme']
+            description = $item['description']
+            type        = "New $($item['scheme']) Scope"
         }
     }
 }
-Write-StepEnd
 
 # ─────────────────────────────────────────────
 # STEP 5 — SAVE ALL FILES
@@ -170,16 +176,17 @@ Write-StepEnd
 # ─────────────────────────────────────────────
 Write-Step 'Generating RSS Feed'
 $RssPath = Join-Path $DataDir 'rss.xml'
-$BaseUrl = "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME" # Change these!
+$BaseUrl = "https://Mynster9361.github.io/msgraph_notifications" # Change these!
 
-$rssItems = foreach ($entry in $changelog) {
+$rssItems = foreach ($entry in $newEntries) { # Use $newEntries for the freshest delta
+    $title = "[$($entry.scheme)] New Permission: $($entry.name)"
     @"
         <item>
-            <title>New Permission: $($entry.name)</title>
+            <title>$title</title>
             <link>$BaseUrl</link>
-            <description>$($entry.description) (Detected on $($entry.date))</description>
-            <pubDate>$([DateTime]::Parse($entry.date).ToString('R'))</pubDate>
-            <guid isPermaLink="false">$($entry.name)-$($entry.date)</guid>
+            <description>$($entry.description)</description>
+            <pubDate>$([DateTime]::UtcNow.ToString('R'))</pubDate>
+            <guid isPermaLink="false">$($entry.name)-$($entry.scheme)-$($entry.date)</guid>
         </item>
 "@
 }
