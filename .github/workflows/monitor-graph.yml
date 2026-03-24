@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -97,7 +97,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Pull latest so we get any commits made by scan-and-update
           ref: ${{ github.ref_name }}
@@ -111,7 +111,7 @@ jobs:
           test -f data/last-seen.json && echo "  ✓ data/last-seen.json" || echo "  ℹ data/last-seen.json not yet created"
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload the entire repo root (index.html + data/ folder)
           path: '.'
