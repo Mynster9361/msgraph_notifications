@@ -1,0 +1,127 @@
+name: Monitor MS Graph Changes
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC — after Microsoft's typical overnight deployments
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    # Allow manual runs from the Actions tab
+    inputs:
+      force_commit:
+        description: 'Force a commit even if no changes detected'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write   # Required to push data/ and index.html back to the repo
+  pages: write      # Required if using GitHub Pages via Actions
+  id-token: write   # Required for OIDC-based Pages deployment (if enabled)
+
+jobs:
+  # ─────────────────────────────────────────────────────────
+  # JOB 1: Fetch data, detect changes, update JSON files
+  # ─────────────────────────────────────────────────────────
+  scan-and-update:
+    name: Scan Graph Permissions
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.tracker.outputs.has_changes }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Graph Tracker Script
+        id: tracker
+        shell: pwsh
+        run: |
+          ./Update-GraphTracker.ps1
+
+      - name: Commit and push data files
+        # Always commit on manual dispatch with force_commit, or when changes detected
+        if: |
+          steps.tracker.outputs.has_changes == 'true' ||
+          github.event.inputs.force_commit == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/changelog.json data/last-seen.json
+
+          # Only commit if there are staged changes
+          if git diff --cached --quiet; then
+            echo "No file changes to commit."
+          else
+            CHANGE_COUNT=$(jq 'if type == "array" then length else 0 end' data/changelog.json 2>/dev/null || echo "?")
+            git commit -m "chore(tracker): auto-update Graph data [${CHANGE_COUNT} total entries]
+
+          Triggered by: ${{ github.event_name }}
+          Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+            git push origin HEAD:${{ github.ref_name }}
+            echo "✓ Pushed updated data files."
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### MS Graph Tracker Run" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Run date | $(date -u '+%Y-%m-%d %H:%M UTC') |" >> $GITHUB_STEP_SUMMARY
+          echo "| Changes detected | ${{ steps.tracker.outputs.has_changes }} |" >> $GITHUB_STEP_SUMMARY
+          if [ -f data/changelog.json ]; then
+            TOTAL=$(jq 'length' data/changelog.json 2>/dev/null || echo "?")
+            echo "| Total changelog entries | $TOTAL |" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f data/last-seen.json ]; then
+            PERMS=$(jq '.permissions | length' data/last-seen.json 2>/dev/null || echo "?")
+            PATHS=$(jq '.paths | length' data/last-seen.json 2>/dev/null || echo "?")
+            echo "| Known permissions | $PERMS |" >> $GITHUB_STEP_SUMMARY
+            echo "| Known paths | $PATHS |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # ─────────────────────────────────────────────────────────
+  # JOB 2: Deploy GitHub Pages (runs after every successful scan)
+  # ─────────────────────────────────────────────────────────
+  deploy-pages:
+    name: Deploy GitHub Pages
+    needs: scan-and-update
+    runs-on: ubuntu-latest
+    # Deploy on every run so the dashboard always reflects latest state
+    if: always() && needs.scan-and-update.result != 'cancelled'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Pull latest so we get any commits made by scan-and-update
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+
+      - name: Verify required files exist
+        run: |
+          echo "Checking required files..."
+          test -f index.html          && echo "  ✓ index.html"          || echo "  ✗ index.html MISSING"
+          test -f data/changelog.json && echo "  ✓ data/changelog.json" || (echo "  ℹ Seeding empty changelog.json" && echo "[]" > data/changelog.json)
+          test -f data/last-seen.json && echo "  ✓ data/last-seen.json" || echo "  ℹ data/last-seen.json not yet created"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the entire repo root (index.html + data/ folder)
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Print deployment URL
+        run: |
+          echo "### Dashboard Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 **URL:** ${{ steps.deploy.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY

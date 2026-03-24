@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS Graph Change Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-base:      #080d14;
+      --bg-surface:   #0d1520;
+      --bg-card:      #111b2a;
+      --bg-card-alt:  #0f1923;
+      --border:       #1e2f44;
+      --border-glow:  #1a3a5c;
+      --cyan:         #00e5ff;
+      --cyan-dim:     #00b8cc;
+      --cyan-muted:   #0d4a56;
+      --amber:        #ffb300;
+      --amber-dim:    #cc8f00;
+      --green:        #00e676;
+      --green-dim:    #00b05a;
+      --rose:         #ff4569;
+      --text-primary: #cdd9e5;
+      --text-secondary:#7a96b0;
+      --text-muted:   #3d5570;
+      --mono:         'JetBrains Mono', monospace;
+      --display:      'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Scanline overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.04) 2px,
+        rgba(0,0,0,0.04) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Grid noise background ── */
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ── Glow effects ── */
+    .glow-cyan   { box-shadow: 0 0 0 1px rgba(0,229,255,0.15), 0 0 20px rgba(0,229,255,0.06); }
+    .glow-amber  { box-shadow: 0 0 0 1px rgba(255,179,0,0.15),  0 0 20px rgba(255,179,0,0.06); }
+    .glow-green  { box-shadow: 0 0 0 1px rgba(0,230,118,0.15),  0 0 20px rgba(0,230,118,0.06); }
+    .text-glow-cyan  { text-shadow: 0 0 18px rgba(0,229,255,0.5); }
+    .text-glow-amber { text-shadow: 0 0 18px rgba(255,179,0,0.5); }
+
+    /* ── Header ── */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,13,20,0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-pulse {
+      width: 8px; height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(0,229,255,0.6);
+      animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0   rgba(0,229,255,0.6); }
+      70%  { box-shadow: 0 0 0 8px rgba(0,229,255,0);   }
+      100% { box-shadow: 0 0 0 0   rgba(0,229,255,0);   }
+    }
+
+    /* ── Stats bar ── */
+    .stat-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stat-chip .val {
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-chip .lbl {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .filter-bar input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 10px 14px;
+      flex: 1;
+      min-width: 0;
+    }
+    .filter-bar input::placeholder { color: var(--text-muted); }
+    .filter-bar .sep {
+      width: 1px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .filter-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.03); }
+    .filter-btn.active-perm  { color: var(--cyan);  background: rgba(0,229,255,0.06); }
+    .filter-btn.active-ep    { color: var(--amber); background: rgba(255,179,0,0.06); }
+    .filter-btn.active-all   { color: var(--green); background: rgba(0,230,118,0.06); }
+
+    /* ── Change cards ── */
+    .change-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      animation: slideIn 0.3s ease both;
+    }
+    .change-card:hover {
+      border-color: var(--border-glow);
+      transform: translateX(2px);
+    }
+    .change-card.type-permission { border-left: 3px solid var(--cyan); }
+    .change-card.type-endpoint   { border-left: 3px solid var(--amber); }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0);   }
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px 10px;
+    }
+    .card-body   { padding: 0 16px 14px; }
+
+    .type-badge {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 3px 8px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .badge-permission {
+      background: var(--cyan-muted);
+      color: var(--cyan);
+      border: 1px solid rgba(0,229,255,0.2);
+    }
+    .badge-endpoint {
+      background: rgba(255,179,0,0.1);
+      color: var(--amber);
+      border: 1px solid rgba(255,179,0,0.2);
+    }
+
+    .card-name {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      word-break: break-all;
+      line-height: 1.4;
+    }
+    .card-name.perm-name  { color: var(--cyan); }
+    .card-name.ep-name    { color: var(--amber-dim); }
+
+    .card-display-name {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 6px;
+    }
+    .card-desc:empty, .card-desc.hidden { display: none; }
+
+    .card-paths {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .path-tag {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 10px;
+      padding: 2px 7px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+    .path-tag:hover { border-color: var(--border-glow); color: var(--text-secondary); }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      background: var(--bg-card-alt);
+      border-top: 1px solid var(--border);
+    }
+    .card-date {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .card-perms-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .perm-ref {
+      font-size: 10px;
+      color: var(--cyan-dim);
+      background: rgba(0,229,255,0.05);
+      border: 1px solid rgba(0,229,255,0.1);
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+
+    /* ── Empty / loading ── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state .icon {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 12px;
+      opacity: 0.4;
+    }
+
+    .loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 60px;
+      color: var(--text-muted);
+    }
+    .loader-dot {
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: blink 1.2s infinite;
+    }
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0.15; transform: scale(0.8); }
+      40%            { opacity: 1;    transform: scale(1);   }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--border-glow); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .stat-chip .val { font-size: 16px; }
+      .card-header { flex-direction: column; gap: 6px; }
+      .type-badge { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body class="bg-grid">
+
+  <!-- ══════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div style="max-width:1100px; margin:0 auto; padding:0 20px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; height:52px; gap:16px;">
+
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="logo-pulse"></div>
+          <span style="font-family:var(--display); font-size:15px; font-weight:700; color:var(--text-primary); letter-spacing:0.02em;">
+            MS Graph <span style="color:var(--cyan);" class="text-glow-cyan">Tracker</span>
+          </span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <span id="hdr-last-updated" style="font-size:10px; color:var(--text-muted); letter-spacing:0.05em;">
+            loading…
+          </span>
+          <a
+            href="data/changelog.json"
+            target="_blank"
+            style="font-size:10px; color:var(--cyan-dim); border:1px solid var(--border); border-radius:4px; padding:3px 10px; text-decoration:none; letter-spacing:0.05em;"
+          >↓ JSON</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       MAIN
+  ═══════════════════════════════════════════════ -->
+  <main style="max-width:1100px; margin:0 auto; padding:28px 20px 60px;">
+
+    <!-- Stats row -->
+    <div id="stats-row" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;">
+      <div class="stat-chip glow-green">
+        <div>
+          <div class="val" id="stat-total" style="color:var(--green);">—</div>
+          <div class="lbl">Total Changes</div>
+        </div>
+      </div>
+      <div class="stat-chip glow-cyan">
+        <div>
+          <div class="val" id="stat-perms" style="color:var(--cyan);">—</div>
+          <div class="lbl">New Permissions</div>
+        </div>
+      </div>
+      <div class="stat-chip glow-amber">
+        <div>
+          <div class="val" id="stat-eps" style="color:var(--amber);">—</div>
+          <div class="lbl">New Endpoints</div>
+        </div>
+      </div>
+      <div class="stat-chip" style="margin-left:auto;">
+        <div>
+          <div class="val" id="stat-days" style="color:var(--text-secondary); font-size:16px;">—</div>
+          <div class="lbl">Days Tracked</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div style="margin-bottom:20px;">
+      <div class="filter-bar" style="margin-bottom:10px;">
+        <span style="padding:0 12px; color:var(--text-muted); display:flex; align-items:center; font-size:13px;">⌕</span>
+        <div class="sep"></div>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search permissions, paths, descriptions…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="filter-btn active-all"       id="btn-all"  onclick="setFilter('all')">◉ All</button>
+        <button class="filter-btn"                   id="btn-perm" onclick="setFilter('Permission')">◎ Permissions</button>
+        <button class="filter-btn"                   id="btn-ep"   onclick="setFilter('Endpoint')">◎ Endpoints</button>
+        <span style="flex:1;"></span>
+        <span id="result-count" style="font-size:10px; color:var(--text-muted); align-self:center; letter-spacing:0.05em;"></span>
+      </div>
+    </div>
+
+    <!-- Change feed -->
+    <div id="feed">
+      <div class="loader">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <span style="margin-left:8px; font-size:11px; letter-spacing:0.08em;">FETCHING CHANGELOG</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer style="border-top:1px solid var(--border); padding:16px 20px; text-align:center;">
+    <p style="font-size:10px; color:var(--text-muted); letter-spacing:0.06em;">
+      AUTO-UPDATED DAILY VIA GITHUB ACTIONS ·
+      DATA FROM
+      <a href="https://github.com/microsoftgraph/microsoft-graph-devx-content"
+         target="_blank"
+         style="color:var(--cyan-dim); text-decoration:none;">MICROSOFTGRAPH/DEVX-CONTENT</a>
+    </p>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPT
+  ═══════════════════════════════════════════════ -->
+  <script>
+    // ── State ──
+    let allEntries  = [];
+    let activeFilter = 'all';
+    let searchQuery  = '';
+
+    // ── Fetch changelog ──
+    async function loadChangelog() {
+      try {
+        const res  = await fetch('data/changelog.json?_=' + Date.now());
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        allEntries = Array.isArray(data) ? data : [];
+        renderStats();
+        renderFeed();
+        loadLastSeen();
+      } catch (err) {
+        document.getElementById('feed').innerHTML = `
+          <div class="empty-state">
+            <span class="icon">⚠</span>
+            <div style="color:var(--rose); margin-bottom:6px;">Could not load changelog.json</div>
+            <div style="font-size:11px;">${escHtml(err.message)}</div>
+            <div style="font-size:11px; margin-top:8px; color:var(--text-muted);">
+              Make sure the GitHub Action has run at least once.
+            </div>
+          </div>`;
+      }
+    }
+
+    // Load last-seen for the header timestamp
+    async function loadLastSeen() {
+      try {
+        const res  = await fetch('data/last-seen.json?_=' + Date.now());
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.lastUpdated) {
+          const d = new Date(data.lastUpdated);
+          document.getElementById('hdr-last-updated').textContent =
+            'Last scan: ' + d.toUTCString().replace('GMT','UTC');
+        }
+      } catch (_) {}
+    }
+
+    // ── Stats ──
+    function renderStats() {
+      const perms = allEntries.filter(e => e.type === 'Permission').length;
+      const eps   = allEntries.filter(e => e.type === 'Endpoint').length;
+
+      document.getElementById('stat-total').textContent = allEntries.length;
+      document.getElementById('stat-perms').textContent = perms;
+      document.getElementById('stat-eps').textContent   = eps;
+
+      // Days tracked: range from earliest to latest date
+      if (allEntries.length > 0) {
+        const dates = allEntries.map(e => new Date(e.date)).filter(d => !isNaN(d));
+        if (dates.length > 0) {
+          const min = new Date(Math.min(...dates));
+          const max = new Date(Math.max(...dates));
+          const days = Math.round((max - min) / 86400000) + 1;
+          document.getElementById('stat-days').textContent = days;
+        }
+      }
+    }
+
+    // ── Filter ──
+    function setFilter(f) {
+      activeFilter = f;
+      document.getElementById('btn-all').className  = 'filter-btn' + (f==='all'        ? ' active-all'  : '');
+      document.getElementById('btn-perm').className = 'filter-btn' + (f==='Permission' ? ' active-perm' : '');
+      document.getElementById('btn-ep').className   = 'filter-btn' + (f==='Endpoint'   ? ' active-ep'   : '');
+      renderFeed();
+    }
+
+    // ── Search ──
+    document.getElementById('search-input').addEventListener('input', function () {
+      searchQuery = this.value.toLowerCase().trim();
+      renderFeed();
+    });
+
+    // ── Render feed ──
+    function renderFeed() {
+      const feed = document.getElementById('feed');
+
+      const filtered = allEntries.filter(entry => {
+        const typeMatch = activeFilter === 'all' || entry.type === activeFilter;
+        if (!typeMatch) return false;
+        if (!searchQuery) return true;
+        const haystack = [
+          entry.name        || '',
+          entry.displayName || '',
+          entry.description || '',
+          entry.date        || '',
+          ...(entry.paths       || []),
+          ...(entry.permissions || []),
+        ].join(' ').toLowerCase();
+        return haystack.includes(searchQuery);
+      });
+
+      document.getElementById('result-count').textContent =
+        filtered.length === allEntries.length
+          ? `${allEntries.length} entries`
+          : `${filtered.length} / ${allEntries.length}`;
+
+      if (filtered.length === 0) {
+        feed.innerHTML = `
+          <div class="empty-state">
+            <span class="icon">○</span>
+            <div>${allEntries.length === 0 ? 'No changes recorded yet.' : 'No results match your filter.'}</div>
+            ${allEntries.length === 0
+              ? '<div style="font-size:11px; margin-top:6px;">The tracker will populate this feed once the GitHub Action runs.</div>'
+              : ''}
+          </div>`;
+        return;
+      }
+
+      // Group by date
+      const groups = {};
+      for (const entry of filtered) {
+        const key = entry.date || 'Unknown date';
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(entry);
+      }
+
+      const sortedDates = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+
+      let html = '';
+      for (const date of sortedDates) {
+        html += `
+          <div style="margin-bottom:24px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+              <span style="font-size:10px; font-weight:600; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">${escHtml(date)}</span>
+              <span style="font-size:10px; background:var(--bg-card); border:1px solid var(--border); border-radius:3px; padding:1px 7px; color:var(--text-muted);">${groups[date].length}</span>
+              <div style="flex:1; height:1px; background:var(--border);"></div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              ${groups[date].map(renderCard).join('')}
+            </div>
+          </div>`;
+      }
+
+      feed.innerHTML = html;
+    }
+
+    // ── Render single card ──
+    function renderCard(entry) {
+      const isPerm = entry.type === 'Permission';
+      const typeClass  = isPerm ? 'type-permission' : 'type-endpoint';
+      const badgeClass = isPerm ? 'badge-permission' : 'badge-endpoint';
+      const nameClass  = isPerm ? 'perm-name'        : 'ep-name';
+      const typeLabel  = isPerm ? 'Permission'        : 'Endpoint';
+
+      const desc = (entry.description || '').trim();
+      const disp = (entry.displayName || '').trim();
+
+      // Paths (for permission cards)
+      let pathsHtml = '';
+      if (isPerm && entry.paths && entry.paths.length > 0) {
+        const shown = entry.paths.slice(0, 6);
+        const more  = entry.paths.length - shown.length;
+        pathsHtml = `
+          <div class="card-paths">
+            ${shown.map(p => `<span class="path-tag">${escHtml(p)}</span>`).join('')}
+            ${more > 0 ? `<span class="path-tag" style="color:var(--text-muted);">+${more} more</span>` : ''}
+          </div>`;
+      }
+
+      // Related permissions (for endpoint cards)
+      let permsHtml = '';
+      if (!isPerm && entry.permissions && entry.permissions.length > 0) {
+        permsHtml = entry.permissions.slice(0, 4).map(p =>
+          `<span class="perm-ref">${escHtml(p)}</span>`
+        ).join('');
+      }
+
+      return `
+        <div class="change-card ${typeClass}">
+          <div class="card-header">
+            <div style="min-width:0; flex:1;">
+              <div class="card-name ${nameClass}">${escHtml(entry.name || '—')}</div>
+              ${disp ? `<div class="card-display-name">${escHtml(disp)}</div>` : ''}
+            </div>
+            <span class="type-badge ${badgeClass}">${typeLabel}</span>
+          </div>
+
+          ${(desc || pathsHtml) ? `
+          <div class="card-body">
+            ${desc ? `<div class="card-desc">${escHtml(desc)}</div>` : ''}
+            ${pathsHtml}
+          </div>` : ''}
+
+          ${(entry.date || permsHtml) ? `
+          <div class="card-footer">
+            <span class="card-date">DETECTED ${escHtml(entry.date || '')}</span>
+            ${permsHtml ? `<div class="card-perms-list">${permsHtml}</div>` : ''}
+          </div>` : ''}
+        </div>`;
+    }
+
+    // ── HTML escape ──
+    function escHtml(s) {
+      return String(s)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;');
+    }
+
+    // ── Boot ──
+    loadChangelog();
+  </script>
+</body>
+</html>
