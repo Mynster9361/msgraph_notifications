@@ -93,7 +93,6 @@
         opacity: 0;
         transform: scale(0.98);
       }
-
       to {
         opacity: 1;
         transform: scale(1);
@@ -132,40 +131,43 @@
       </h1>
       <div class="flex items-center gap-4">
         <div class="flex items-center gap-2">
-          <span
-            class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+          <span class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
           <p class="text-[11px] font-black tracking-[0.5em] uppercase opacity-40">Live Permission Intel</p>
         </div>
         <a href="data/rss.xml" target="_blank"
           class="flex items-center gap-2 px-3 py-1 rounded-lg border border-orange-500/30 bg-orange-500/10 text-orange-500 hover:bg-orange-500 hover:text-white transition-all text-[10px] font-bold uppercase tracking-widest">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-            <path
-              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-8.5a1 1 0 0 1 1 1c0 5.523 4.477 10 10 10a1 1 0 1 1 0-2 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0-4a1 1 0 0 1 1 1c0 9.389 7.611 17 17 17a1 1 0 1 1 0-2c7.18 0 13-5.82 13-13a1 1 0 0 1-1-1z" />
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-8.5a1 1 0 0 1 1 1c0 5.523 4.477 10 10 10a1 1 0 1 1 0-2 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0-4a1 1 0 0 1 1 1c0 9.389 7.611 17 17 17a1 1 0 1 1 0-2c7.18 0 13-5.82 13-13a1 1 0 0 1-1-1z" />
           </svg>
           RSS Feed
         </a>
       </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto">
-      <div
-        class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] overflow-hidden w-full sm:w-auto shadow-2xl">
+    <div class="flex flex-col lg:flex-row items-center gap-6 w-full lg:w-auto">
+      <div class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] overflow-hidden w-full sm:w-auto shadow-2xl">
         <button id="tab-history" onclick="setView('history')" class="btn-tab active">HISTORY</button>
         <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab">EXPLORER</button>
         <button id="tab-paths" onclick="setView('paths')" class="btn-tab">URL INDEX</button>
       </div>
-      <div class="relative w-full sm:w-96">
-        <input id="search" type="text" placeholder="Search permissions or endpoints..."
-          class="w-full bg-[#0d1117] border border-[var(--border)] pl-12 pr-4 py-3.5 rounded-xl text-sm outline-none focus:border-[var(--cyan)] focus:ring-1 focus:ring-[var(--cyan)] transition-all placeholder:opacity-20 shadow-inner">
-        <span class="absolute left-4 top-4 opacity-20 text-lg">🔍</span>
+
+      <div id="scheme-filter-container" class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] p-1 gap-1 shadow-2xl">
+        <button onclick="setScheme('All')" id="scheme-all" class="text-[10px] font-bold px-3 py-2 rounded-lg transition-all bg-[#21262d] text-[var(--cyan)]">BOTH</button>
+        <button onclick="setScheme('DelegatedWork')" id="scheme-delegated" class="text-[10px] font-bold px-3 py-2 rounded-lg transition-all text-[#8b949e] hover:text-white">DELEGATED</button>
+        <button onclick="setScheme('Application')" id="scheme-app" class="text-[10px] font-bold px-3 py-2 rounded-lg transition-all text-[#8b949e] hover:text-white">APPLICATION</button>
+      </div>
+
+      <div class="relative w-full sm:w-80">
+        <input id="search" type="text" placeholder="Search..."
+          class="w-full bg-[#0d1117] border border-[var(--border)] pl-10 pr-4 py-3 rounded-xl text-sm outline-none focus:border-[var(--cyan)] transition-all placeholder:opacity-20 shadow-inner">
+        <span class="absolute left-4 top-3.5 opacity-20 text-sm">🔍</span>
       </div>
     </div>
   </header>
 
   <main id="content" class="max-w-7xl mx-auto">
     <div class="flex flex-col items-center justify-center py-40 opacity-30">
-      <div class="w-12 h-12 border-2 border-t-[var(--cyan)] border-[var(--border)] rounded-full animate-spin mb-6">
-      </div>
+      <div class="w-12 h-12 border-2 border-t-[var(--cyan)] border-[var(--border)] rounded-full animate-spin mb-6"></div>
       <p class="mono text-xs tracking-widest uppercase">Initialising Registry Data...</p>
     </div>
   </main>
@@ -177,20 +179,15 @@
       onclick="event.stopPropagation()">
       <div class="p-8 border-b border-[var(--border)] flex justify-between items-center bg-[#161b22]">
         <div>
-          <div id="m-type"
-            class="text-[11px] font-black uppercase tracking-[0.3em] mb-2 px-2 py-0.5 border inline-block rounded">
-          </div>
+          <div id="m-type" class="text-[11px] font-black uppercase tracking-[0.3em] mb-2 px-2 py-0.5 border inline-block rounded"></div>
           <h2 id="m-name" class="mono text-2xl md:text-3xl text-white break-all font-bold tracking-tight"></h2>
         </div>
-        <button onclick="closeModal()"
-          class="text-4xl leading-none opacity-40 hover:opacity-100 hover:text-white transition-all p-2">&times;</button>
+        <button onclick="closeModal()" class="text-4xl leading-none opacity-40 hover:opacity-100 hover:text-white transition-all p-2">&times;</button>
       </div>
 
-      <div id="m-body" class="p-8 md:p-12 space-y-12 max-h-[75vh] overflow-y-auto">
-      </div>
+      <div id="m-body" class="p-8 md:p-12 space-y-12 max-h-[75vh] overflow-y-auto"></div>
 
-      <div
-        class="p-4 bg-black/40 text-[10px] opacity-20 text-center border-t border-[var(--border)] mono uppercase tracking-widest">
+      <div class="p-4 bg-black/40 text-[10px] opacity-20 text-center border-t border-[var(--border)] mono uppercase tracking-widest">
         Source: Microsoft Graph DevX Content Repository
       </div>
     </div>
@@ -198,9 +195,10 @@
 
   <script>
     let historyData = [];
-    let libraryData = []; // Now contains objects with .scheme (Application/DelegatedWork)
+    let libraryData = [];
     let pathIndex = [];
     let view = 'history';
+    let currentScheme = 'All';
 
     async function init() {
       try {
@@ -221,7 +219,7 @@
         });
         pathIndex = Object.keys(pathsMap).sort().map(url => ({
           url: url,
-          permissions: pathsMap[url] // Array of "Name (Scheme)"
+          permissions: pathsMap[url]
         }));
 
         render();
@@ -229,7 +227,7 @@
         console.error(e);
         document.getElementById('content').innerHTML = `<div class="glass p-12 text-center rounded-2xl max-w-md mx-auto border-red-900/30">
                     <div class="text-red-500 font-bold mb-2">SYSTEM OFFLINE</div>
-                    <div class="text-xs opacity-50">Could not resolve data streams. Check GitHub Pages deployment.</div>
+                    <div class="text-xs opacity-50">Could not resolve data streams.</div>
                 </div>`;
       }
     }
@@ -243,13 +241,37 @@
       render();
     }
 
+    function setScheme(s) {
+      currentScheme = s;
+      const btnMap = { 'All': 'scheme-all', 'DelegatedWork': 'scheme-delegated', 'Application': 'scheme-app' };
+      Object.keys(btnMap).forEach(key => {
+        const btn = document.getElementById(btnMap[key]);
+        if (key === s) {
+          btn.classList.add('bg-[#21262d]', 'text-[var(--cyan)]');
+          btn.classList.remove('text-[#8b949e]');
+        } else {
+          btn.classList.remove('bg-[#21262d]', 'text-[var(--cyan)]');
+          btn.classList.add('text-[#8b949e]');
+        }
+      });
+      render();
+    }
+
     function render() {
       const query = document.getElementById('search').value.toLowerCase();
       const container = document.getElementById('content');
       container.innerHTML = '';
 
+      // Only show scheme filter for history and explorer
+      document.getElementById('scheme-filter-container').style.display = (view === 'paths') ? 'none' : 'flex';
+
       if (view === 'history') {
-        const filtered = historyData.filter(i => i.name.toLowerCase().includes(query) || i.scheme.toLowerCase().includes(query));
+        const filtered = historyData.filter(i => {
+          const matchesQuery = i.name.toLowerCase().includes(query) || i.scheme.toLowerCase().includes(query);
+          const matchesScheme = currentScheme === 'All' || i.scheme === currentScheme;
+          return matchesQuery && matchesScheme;
+        });
+
         const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
 
         Object.keys(groups).sort().reverse().forEach(date => {
@@ -270,7 +292,12 @@
         });
       }
       else if (view === 'explorer') {
-        const filtered = libraryData.filter(i => i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query));
+        const filtered = libraryData.filter(i => {
+          const matchesQuery = i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query);
+          const matchesScheme = currentScheme === 'All' || i.scheme === currentScheme;
+          return matchesQuery && matchesScheme;
+        });
+
         let html = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">`;
         filtered.forEach(item => {
           const isApp = item.scheme === 'Application';
@@ -315,7 +342,7 @@
       document.getElementById('m-body').innerHTML = `
                 <section class="max-w-4xl">
                     <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-4">Documentation</h4>
-                    <p class="description-text leading-loose">${item.description || 'Microsoft has not provided a detailed description for this specific scheme.'}</p>
+                    <p class="description-text leading-loose">${item.description || 'No detailed description available.'}</p>
                 </section>
                 <section>
                     <div class="flex items-center gap-4 mb-6">
@@ -347,14 +374,12 @@
                     <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         ${item.permissions.map(uniqueKey => {
-        // uniqueKey is "Name (Scheme)"
-        const [pName, pSchemeRaw] = uniqueKey.split(' (');
-        const pScheme = pSchemeRaw.replace(')', '');
-        const pData = libraryData.find(ld => ld.name === pName && ld.scheme === pScheme);
-        const isApp = pScheme === 'Application';
-        const borderColor = isApp ? 'hover:border-purple-500' : 'hover:border-blue-500';
-
-        return `
+                          const [pName, pSchemeRaw] = uniqueKey.split(' (');
+                          const pScheme = pSchemeRaw.replace(')', '');
+                          const pData = libraryData.find(ld => ld.name === pName && ld.scheme === pScheme);
+                          const isApp = pScheme === 'Application';
+                          const borderColor = isApp ? 'hover:border-purple-500' : 'hover:border-blue-500';
+                          return `
                             <button onclick="showPermissionDetail('${pName}', '${pScheme}')" class="glass p-6 rounded-2xl text-left ${borderColor} group transition-all">
                                 <div class="flex justify-between items-start mb-2">
                                      <div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${pName}</div>
@@ -362,7 +387,7 @@
                                 </div>
                                 <div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Click to view details.'}</div>
                             </button>`;
-      }).join('')}
+                        }).join('')}
                     </div>
                 </section>`;
       openModal();
