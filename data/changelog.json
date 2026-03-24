@@ -1,0 +1,153 @@
+[
+  {
+    "type": "Permission",
+    "name": "User.Read",
+    "displayName": "Read user profile",
+    "description": "Allows the app to read the signed-in user's profile. Includes access to user identity, profile photo, phone number, and email address.",
+    "date": "2025-01-15",
+    "endpoints": [
+      {
+        "path": "GET /me",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get the current user profile"
+      },
+      {
+        "path": "GET /me/photo",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get the profile photo"
+      },
+      {
+        "path": "GET /me/memberOf",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get groups the user is a member of"
+      }
+    ],
+    "paths": ["/me", "/me/photo", "/me/memberOf"]
+  },
+  {
+    "type": "Permission",
+    "name": "Mail.Read",
+    "displayName": "Read user mail",
+    "description": "Allows the app to read email in user mailboxes. Includes access to mail messages, folders, and settings.",
+    "date": "2025-01-15",
+    "endpoints": [
+      {
+        "path": "GET /me/mailFolders",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get mail folders"
+      },
+      {
+        "path": "GET /me/messages",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get messages from the inbox"
+      },
+      {
+        "path": "GET /me/messages/{id}",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get a specific message"
+      }
+    ],
+    "paths": ["/me/mailFolders", "/me/messages", "/me/messages/{id}"]
+  },
+  {
+    "type": "Permission",
+    "name": "Mail.Send",
+    "displayName": "Send mail as user",
+    "description": "Allows the app to send mail on behalf of the signed-in user.",
+    "date": "2025-01-15",
+    "endpoints": [
+      {
+        "path": "POST /me/sendMail",
+        "methods": ["POST"],
+        "accessLevel": "write",
+        "description": "Send a mail message"
+      },
+      {
+        "path": "POST /me/mailFolders/{folderId}/messages",
+        "methods": ["POST"],
+        "accessLevel": "write",
+        "description": "Create a draft message"
+      }
+    ],
+    "paths": ["/me/sendMail", "/me/mailFolders/{folderId}/messages"]
+  },
+  {
+    "type": "Permission",
+    "name": "Calendar.Read",
+    "displayName": "Read user calendar",
+    "description": "Allows the app to read events in user calendars.",
+    "date": "2025-01-20",
+    "endpoints": [
+      {
+        "path": "GET /me/calendarview",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get calendar events in date range"
+      },
+      {
+        "path": "GET /me/events",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get all events"
+      },
+      {
+        "path": "GET /me/calendars",
+        "methods": ["GET"],
+        "accessLevel": "read",
+        "description": "Get user calendars"
+      }
+    ],
+    "paths": ["/me/calendarview", "/me/events", "/me/calendars"]
+  },
+  {
+    "type": "Endpoint",
+    "name": "/me",
+    "displayName": "Get current user",
+    "description": "Get the current authenticated user's profile information.",
+    "date": "2025-01-15",
+    "permissions": ["User.Read"],
+    "methods": ["GET"]
+  },
+  {
+    "type": "Endpoint",
+    "name": "/me/messages",
+    "displayName": "List user messages",
+    "description": "Get mail messages from the user's mailbox.",
+    "date": "2025-01-15",
+    "permissions": ["Mail.Read", "Mail.ReadWrite"],
+    "methods": ["GET"]
+  },
+  {
+    "type": "Endpoint",
+    "name": "/me/sendMail",
+    "displayName": "Send mail",
+    "description": "Send a mail message on behalf of the current user.",
+    "date": "2025-01-15",
+    "permissions": ["Mail.Send"],
+    "methods": ["POST"]
+  },
+  {
+    "type": "Endpoint",
+    "name": "/me/events",
+    "displayName": "List calendar events",
+    "description": "Get calendar events from the user's mailbox.",
+    "date": "2025-01-20",
+    "permissions": ["Calendar.Read", "Calendar.ReadWrite"],
+    "methods": ["GET"]
+  },
+  {
+    "type": "Endpoint",
+    "name": "/me/calendarview",
+    "displayName": "Get calendar view",
+    "description": "Get calendar events within a date range.",
+    "date": "2025-01-20",
+    "permissions": ["Calendar.Read", "Calendar.ReadWrite"],
+    "methods": ["GET"]
+  }
+]
