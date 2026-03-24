@@ -49,7 +49,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data/changelog.json data/last-seen.json data/current-state.json
+          git add data/changelog.json data/last-seen.json data/current-state.json data/rss.xml
 
           # Only commit if there are staged changes
           if git diff --cached --quiet; then

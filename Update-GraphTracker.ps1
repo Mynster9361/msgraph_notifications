@@ -164,3 +164,39 @@ $explorerLibrary | ConvertTo-Json -Depth 10 | Set-Content $CurrentStatePath -Enc
 
 Write-Host "✓ Sync Complete. Library Size: $($explorerLibrary.Count)"
 Write-StepEnd
+
+# ─────────────────────────────────────────────
+# STEP 6 — GENERATE RSS FEED
+# ─────────────────────────────────────────────
+Write-Step 'Generating RSS Feed'
+$RssPath = Join-Path $DataDir 'rss.xml'
+$BaseUrl = "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME" # Change these!
+
+$rssItems = foreach ($entry in $changelog) {
+    @"
+        <item>
+            <title>New Permission: $($entry.name)</title>
+            <link>$BaseUrl</link>
+            <description>$($entry.description) (Detected on $($entry.date))</description>
+            <pubDate>$([DateTime]::Parse($entry.date).ToString('R'))</pubDate>
+            <guid isPermaLink="false">$($entry.name)-$($entry.date)</guid>
+        </item>
+"@
+}
+
+$rssTemplate = @"
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>MS Graph Registry Updates</title>
+        <link>$BaseUrl</link>
+        <description>Real-time notifications for new Microsoft Graph Permissions</description>
+        <lastBuildDate>$([DateTime]::UtcNow.ToString('R'))</lastBuildDate>
+        $( $rssItems -join "`n" )
+    </channel>
+</rss>
+"@
+
+$rssTemplate | Set-Content $RssPath -Encoding UTF8
+Write-Host "✓ RSS Feed generated at $RssPath"
+Write-StepEnd

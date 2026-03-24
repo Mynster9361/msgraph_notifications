@@ -1,219 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MS Graph Registry | Explorer & History</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@800&display=swap" rel="stylesheet">
-    
-    <link rel="icon" href="https://fav.farm/🔍" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MS Graph Registry</title>
 
-    <style type="text/css">
-        :root {
-            --bg: #0b101a;
-            --card: #151b28;
-            --border: #242c3e;
-            --cyan: #00f2ff;
-            --text: #cdd9e5;
-        }
-        body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: 'JetBrains Mono', monospace; 
-            background-image: radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0);
-            background-size: 40px 40px;
-        }
-        .syne { font-family: 'Syne', sans-serif; }
-        .glass { background: var(--card); border: 1px solid var(--border); }
-        .btn-tab { padding: 8px 24px; font-size: 11px; font-weight: bold; border: 1px solid var(--border); transition: 0.2s; letter-spacing: 0.1em; }
-        .btn-tab.active { background: var(--cyan); color: #000; border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
-        .path-tag { font-size: 9px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.15); color: var(--cyan); }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Syne:wght@800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="https://fav.farm/🔍" />
+
+  <style type="text/css">
+    :root {
+      --bg: #06090f;
+      --card: #0d1117;
+      --border: #30363d;
+      --cyan: #58a6ff;
+      --text: #c9d1d9;
+      --text-bright: #f0f6fc;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .syne {
+      font-family: 'Syne', sans-serif;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    /* Tabs */
+    .btn-tab {
+      padding: 12px 24px;
+      font-size: 12px;
+      font-weight: 700;
+      border-right: 1px solid var(--border);
+      transition: 0.2s;
+      letter-spacing: 0.05em;
+      color: #8b949e;
+    }
+
+    .btn-tab:last-child {
+      border-right: none;
+    }
+
+    .btn-tab.active {
+      background: #21262d;
+      color: var(--cyan);
+      box-shadow: inset 0 -2px 0 var(--cyan);
+    }
+
+    /* Grid Cards */
+    .card-hover:hover {
+      border-color: #58a6ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Modal & Content */
+    .path-tag {
+      font-family: 'JetBrains Mono';
+      font-size: 13px;
+      background: #161b22;
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      word-break: break-all;
+    }
+
+    .description-text {
+      font-size: 16px;
+      color: #adbac7;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-animate {
+      animation: fadeIn 0.15s ease-out;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #30363d;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--cyan);
+    }
+  </style>
 </head>
-<body class="p-4 md:p-10 min-h-screen">
 
-    <header class="max-w-7xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
-        <div>
-            <h1 class="syne text-5xl uppercase italic text-white leading-none mb-3">
-                GRAPH<span class="text-[#00f2ff]">REGISTRY</span>
-            </h1>
-            <div class="flex items-center gap-3">
-                <span class="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <p class="text-[10px] opacity-50 font-bold tracking-[0.4em] uppercase">Live Metadata Observer</p>
-            </div>
-        </div>
-        
-        <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-            <div class="flex bg-black/20 rounded-lg p-1 border border-[var(--border)] overflow-hidden w-full sm:w-auto">
-                <button id="tab-history" onclick="setView('history')" class="btn-tab active rounded-l-md flex-1 sm:flex-none">HISTORY</button>
-                <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab rounded-r-md flex-1 sm:flex-none">EXPLORER</button>
-            </div>
-            <div class="relative w-full sm:w-80">
-                <input id="search" type="text" placeholder="Filter scopes or descriptions..." 
-                       class="w-full bg-[var(--card)] border border-[var(--border)] pl-10 pr-4 py-3 rounded-lg text-xs outline-none focus:border-[var(--cyan)] transition-all">
-                <span class="absolute left-3 top-3.5 opacity-30 text-sm">🔍</span>
-            </div>
-        </div>
-    </header>
+<body class="p-6 md:p-12 min-h-screen">
 
-    <main id="content" class="max-w-7xl mx-auto">
-        <div class="flex flex-col items-center justify-center py-32 opacity-20">
-            <div class="w-10 h-10 border-4 border-t-[var(--cyan)] border-[var(--border)] rounded-full animate-spin mb-4"></div>
-            <p class="text-xs font-bold tracking-widest uppercase">Fetching Registry Fragments...</p>
-        </div>
-    </main>
+  <header class="max-w-7xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
 
-    <div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden items-center justify-center z-50 p-4 overflow-y-auto" onclick="closeModal()">
-        <div class="glass max-w-3xl w-full rounded-2xl shadow-2xl overflow-hidden mt-20 mb-20" onclick="event.stopPropagation()">
-            <div class="p-8 border-b border-[var(--border)] flex justify-between items-start bg-white/5">
-                <div>
-                    <div id="m-type" class="text-[9px] font-bold text-[var(--cyan)] tracking-widest uppercase mb-1"></div>
-                    <h2 id="m-name" class="syne text-2xl text-white break-all leading-tight"></h2>
-                </div>
-                <button onclick="closeModal()" class="text-3xl leading-none opacity-50 hover:opacity-100 transition-opacity">&times;</button>
-            </div>
-            <div id="m-body" class="p-8 space-y-8 max-h-[60vh] overflow-y-auto"></div>
-            <div class="p-4 bg-black/40 text-[9px] opacity-30 text-center border-t border-[var(--border)] uppercase tracking-widest">
-                Microsoft Graph Metadata Snapshot
-            </div>
-        </div>
+    <div>
+      <h1 class="syne text-6xl uppercase italic text-white leading-none mb-4 tracking-tighter">
+        GRAPH<span class="text-[#58a6ff]">REGISTRY</span>
+      </h1>
+      <div class="flex items-center gap-3">
+        <span
+          class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+        <p class="text-[11px] font-black tracking-[0.5em] uppercase opacity-40">Live Permission Intel</p>
+      </div>
     </div>
 
-    <script>
-        let historyData = [];
-        let libraryData = [];
-        let view = 'history';
+    <div class="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto">
+      <div
+        class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] overflow-hidden w-full sm:w-auto shadow-2xl">
+        <button id="tab-history" onclick="setView('history')" class="btn-tab active">HISTORY</button>
+        <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab">EXPLORER</button>
+        <button id="tab-paths" onclick="setView('paths')" class="btn-tab">URL INDEX</button>
+      </div>
+      <div class="relative w-full sm:w-96">
+        <input id="search" type="text" placeholder="Search permissions or endpoints..."
+          class="w-full bg-[#0d1117] border border-[var(--border)] pl-12 pr-4 py-3.5 rounded-xl text-sm outline-none focus:border-[var(--cyan)] focus:ring-1 focus:ring-[var(--cyan)] transition-all placeholder:opacity-20 shadow-inner">
+        <span class="absolute left-4 top-4 opacity-20 text-lg">🔍</span>
+      </div>
+    </div>
+    <a href="data/rss.xml" target="_blank"
+      class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-orange-500/30 bg-orange-500/10 text-orange-500 hover:bg-orange-500 hover:text-white transition-all text-[10px] font-bold">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-8.5a1 1 0 0 1 1 1c0 5.523 4.477 10 10 10a1 1 0 1 1 0-2 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0-4a1 1 0 0 1 1 1c0 9.389 7.611 17 17 17a1 1 0 1 1 0-2c7.18 0 13-5.82 13-13a1 1 0 0 1-1-1z" />
+      </svg>
+      RSS FEED
+    </a>
+  </header>
 
-        async function init() {
-            const content = document.getElementById('content');
-            try {
-                // IMPORTANT: Relative paths for GitHub Pages subfolder support
-                const [hRes, lRes] = await Promise.all([
-                    fetch('data/changelog.json'),
-                    fetch('data/current-state.json')
-                ]);
-                
-                if (!hRes.ok || !lRes.ok) throw new Error("Data sync pending...");
+  <main id="content" class="max-w-7xl mx-auto">
+    <div class="flex flex-col items-center justify-center py-40 opacity-30">
+      <div class="w-12 h-12 border-2 border-t-[var(--cyan)] border-[var(--border)] rounded-full animate-spin mb-6">
+      </div>
+      <p class="mono text-xs tracking-widest uppercase">Initialising Registry Data...</p>
+    </div>
+  </main>
 
-                historyData = await hRes.json();
-                libraryData = await lRes.json();
-                render();
-            } catch (e) {
-                content.innerHTML = `
-                    <div class="glass p-12 rounded-2xl text-center border-red-900/50 max-w-md mx-auto">
-                        <div class="text-red-500 text-3xl mb-4">⚠️</div>
-                        <div class="text-white font-bold mb-2 uppercase tracking-widest text-sm">Registry Offline</div>
-                        <p class="text-[10px] opacity-50 leading-relaxed">
-                            The browser could not find <b>data/current-state.json</b>.<br> 
-                            Ensure the PowerShell script has run and pushed the <b>/data</b> folder to GitHub.
-                        </p>
-                    </div>`;
-            }
-        }
+  <div id="modal"
+    class="fixed inset-0 bg-black/95 backdrop-blur-md hidden items-center justify-center z-50 p-4 md:p-8 overflow-y-auto"
+    onclick="closeModal()">
+    <div class="glass max-w-6xl w-full rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden modal-animate"
+      onclick="event.stopPropagation()">
+      <div class="p-8 border-b border-[var(--border)] flex justify-between items-center bg-[#161b22]">
+        <div>
+          <div id="m-type"
+            class="text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded">
+          </div>
+          <h2 id="m-name" class="mono text-2xl md:text-3xl text-white break-all font-bold tracking-tight"></h2>
+        </div>
+        <button onclick="closeModal()"
+          class="text-4xl leading-none opacity-40 hover:opacity-100 hover:text-white transition-all p-2">&times;</button>
+      </div>
 
-        function setView(v) {
-            view = v;
-            document.getElementById('tab-history').classList.toggle('active', v === 'history');
-            document.getElementById('tab-explorer').classList.toggle('active', v === 'explorer');
-            render();
-        }
+      <div id="m-body" class="p-8 md:p-12 space-y-12 max-h-[75vh] overflow-y-auto">
+      </div>
 
-        function render() {
-            const query = document.getElementById('search').value.toLowerCase();
-            const container = document.getElementById('content');
-            container.innerHTML = '';
+      <div
+        class="p-4 bg-black/40 text-[10px] opacity-20 text-center border-t border-[var(--border)] mono uppercase tracking-widest">
+        Source: Microsoft Graph DevX Content Repository
+      </div>
+    </div>
+  </div>
 
-            if (view === 'history') {
-                const filtered = historyData.filter(i => i.name.toLowerCase().includes(query));
-                const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
-                const sortedDates = Object.keys(groups).sort().reverse();
+  <script>
+    let historyData = [];
+    let libraryData = [];
+    let pathIndex = [];
+    let view = 'history';
 
-                if (sortedDates.length === 0) {
-                    container.innerHTML = `<div class="text-center py-20 opacity-20 italic">No recent shifts detected in the timeline.</div>`;
-                    return;
-                }
+    async function init() {
+      try {
+        const [hRes, lRes] = await Promise.all([
+          fetch('data/changelog.json'),
+          fetch('data/current-state.json')
+        ]);
+        historyData = await hRes.json();
+        libraryData = await lRes.json();
 
-                sortedDates.forEach(date => {
-                    let html = `<div class="mb-12"><div class="flex items-center gap-6 mb-6">
-                        <span class="text-[11px] font-bold text-[var(--cyan)] whitespace-nowrap">${date}</span>
-                        <div class="h-px w-full bg-gradient-to-r from-[var(--border)] to-transparent"></div>
-                    </div><div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
-                    
-                    groups[date].forEach(item => {
-                        html += `
-                        <div onclick="showDetail('${item.name}', false)" class="glass p-5 rounded-xl cursor-pointer hover:border-[var(--cyan)] group transition-all">
-                            <div class="flex justify-between items-start mb-2">
-                                <div class="text-[9px] font-bold opacity-40 uppercase tracking-tighter">Event: ${item.type}</div>
-                                <div class="text-[14px] group-hover:translate-x-1 transition-transform">→</div>
-                            </div>
-                            <div class="text-white font-bold text-sm mb-1">${item.name}</div>
-                            <div class="text-[10px] opacity-40 line-clamp-1">${item.description || 'System entry created.'}</div>
+        const pathsMap = {};
+        libraryData.forEach(p => {
+          (p.paths || []).forEach(path => {
+            if (!pathsMap[path]) pathsMap[path] = [];
+            pathsMap[path].push(p.name);
+          });
+        });
+        pathIndex = Object.keys(pathsMap).sort().map(url => ({
+          url: url,
+          permissions: pathsMap[url]
+        }));
+
+        render();
+      } catch (e) {
+        document.getElementById('content').innerHTML = `<div class="glass p-12 text-center rounded-2xl max-w-md mx-auto border-red-900/30">
+                    <div class="text-red-500 font-bold mb-2">SYSTEM OFFLINE</div>
+                    <div class="text-xs opacity-50">Could not resolve data streams. Check GitHub Pages deployment.</div>
+                </div>`;
+      }
+    }
+
+    function setView(v) {
+      view = v;
+      ['history', 'explorer', 'paths'].forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (btn) btn.classList.toggle('active', v === t);
+      });
+      render();
+    }
+
+    function render() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const container = document.getElementById('content');
+      container.innerHTML = '';
+
+      if (view === 'history') {
+        const filtered = historyData.filter(i => i.name.toLowerCase().includes(query));
+        const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
+
+        Object.keys(groups).sort().reverse().forEach(date => {
+          let html = `<div class="mb-14"><h3 class="mono text-sm text-[var(--cyan)] mb-6 flex items-center gap-6 font-bold uppercase tracking-widest">${date} <span class="h-px flex-1 bg-[var(--border)]"></span></h3><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
+          groups[date].forEach(item => {
+            html += `
+                        <div onclick="showPermissionDetail('${item.name}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+                            <div class="text-white font-bold text-base mb-2 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
+                            <div class="text-sm opacity-40 line-clamp-2 leading-relaxed">${item.description || 'Entry updated in registry.'}</div>
                         </div>`;
-                    });
-                    container.innerHTML += html + '</div></div>';
-                });
-            } else {
-                const filtered = libraryData.filter(i => 
-                    i.name.toLowerCase().includes(query) || 
-                    (i.description && i.description.toLowerCase().includes(query))
-                );
-
-                let html = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">`;
-                filtered.sort((a,b) => a.name.localeCompare(b.name)).forEach(item => {
-                    html += `
-                    <div onclick="showDetail('${item.name}', true)" class="glass p-5 rounded-xl cursor-pointer hover:border-[var(--cyan)] hover:-translate-y-1 transition-all">
-                        <div class="text-white font-bold text-xs truncate mb-2">${item.name}</div>
-                        <div class="text-[10px] opacity-50 line-clamp-2 leading-relaxed min-h-[30px]">${item.description || 'No documentation available.'}</div>
+          });
+          container.innerHTML += html + '</div></div>';
+        });
+      }
+      else if (view === 'explorer') {
+        const filtered = libraryData.filter(i => i.name.toLowerCase().includes(query) || (i.description && i.description.toLowerCase().includes(query)));
+        let html = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">`;
+        filtered.forEach(item => {
+          html += `
+                    <div onclick="showPermissionDetail('${item.name}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+                        <div class="text-white font-bold text-[15px] mb-3 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
+                        <div class="text-[13px] opacity-40 line-clamp-3 leading-relaxed">${item.description || 'No detailed documentation.'}</div>
                     </div>`;
-                });
-                container.innerHTML = html + '</div>';
-            }
-        }
+        });
+        container.innerHTML = html + '</div>';
+      }
+      else if (view === 'paths') {
+        const filtered = pathIndex.filter(i => i.url.toLowerCase().includes(query));
+        let html = `<div class="space-y-3">`;
+        filtered.forEach(item => {
+          html += `
+                    <div onclick="showPathDetail('${btoa(item.url)}')" class="glass p-4 px-6 rounded-xl cursor-pointer card-hover flex justify-between items-center group">
+                        <div class="mono text-[13px] text-[var(--cyan)] truncate mr-8">${item.url}</div>
+                        <div class="mono text-[11px] font-bold opacity-20 group-hover:opacity-100 bg-white/5 px-3 py-1 rounded-full transition-all">${item.permissions.length} SCOPES</div>
+                    </div>`;
+        });
+        container.innerHTML = html + '</div>';
+      }
+    }
 
-        function showDetail(name, fromLib) {
-            const list = fromLib ? libraryData : historyData;
-            const item = list.find(x => x.name === name);
-            if (!item) return;
-
-            document.getElementById('m-type').innerText = item.type || 'Object';
-            document.getElementById('m-name').innerText = item.name;
-            document.getElementById('m-body').innerHTML = `
-                <div class="space-y-2">
-                    <label class="text-[9px] font-bold opacity-30 uppercase tracking-[0.2em]">Documentation</label>
-                    <p class="text-sm leading-relaxed text-gray-300">${item.description || 'No detailed description found in Microsoft metadata.'}</p>
-                </div>
-                ${item.paths && item.paths.length > 0 ? `
-                <div class="space-y-4">
-                    <label class="text-[9px] font-bold opacity-30 uppercase tracking-[0.2em]">Associated Resource Paths (${item.paths.length})</label>
-                    <div class="grid gap-2">
-                        ${item.paths.map(p => `<div class="path-tag px-3 py-2 rounded-md font-bold truncate">${p}</div>`).join('')}
+    function showPermissionDetail(name) {
+      const item = libraryData.find(x => x.name === name);
+      if (!item) return;
+      document.getElementById('m-type').innerText = 'PERMISSION SCOPE';
+      document.getElementById('m-name').innerText = item.name;
+      document.getElementById('m-body').innerHTML = `
+                <section class="max-w-4xl">
+                    <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-4">Documentation</h4>
+                    <p class="description-text leading-loose">${item.description || 'Microsoft has not provided a detailed description for this scope.'}</p>
+                </section>
+                <section>
+                    <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Resource Mapping (${item.paths ? item.paths.length : 0})</h4>
+                    <div class="grid grid-cols-1 gap-2">
+                        ${(item.paths || []).map(p => `
+                            <div class="path-tag p-4 px-6 rounded-xl flex justify-between items-center group cursor-default">
+                                <span class="break-all">${p}</span>
+                                <button onclick="showPathDetail('${btoa(p)}')" class="ml-4 opacity-0 group-hover:opacity-100 text-[10px] font-bold uppercase tracking-widest text-white/50 hover:text-[var(--cyan)]">Inspect URL</button>
+                            </div>`).join('')}
                     </div>
-                </div>` : ''}
-            `;
-            document.getElementById('modal').classList.remove('hidden');
-            document.getElementById('modal').classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
+                </section>`;
+      openModal();
+    }
 
-        function closeModal() { 
-            document.getElementById('modal').classList.add('hidden'); 
-            document.getElementById('modal').classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
+    function showPathDetail(encodedUrl) {
+      const url = atob(encodedUrl);
+      const item = pathIndex.find(x => x.url === url);
+      if (!item) return;
+      document.getElementById('m-type').innerText = 'API ENDPOINT';
+      document.getElementById('m-name').innerText = url;
+      document.getElementById('m-body').innerHTML = `
+                <section class="max-w-4xl">
+                    <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${item.permissions.map(p => {
+        const pData = libraryData.find(ld => ld.name === p);
+        return `
+                            <button onclick="showPermissionDetail('${p}')" class="glass p-6 rounded-2xl text-left hover:border-[var(--cyan)] group transition-all">
+                                <div class="mono text-sm font-bold text-white mb-2 group-hover:text-[var(--cyan)]">${p}</div>
+                                <div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Click to view details.'}</div>
+                            </button>`;
+      }).join('')}
+                    </div>
+                </section>`;
+      openModal();
+    }
 
-        document.getElementById('search').addEventListener('input', render);
-        init();
-    </script>
+    function openModal() {
+      const m = document.getElementById('modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      m.scrollTop = 0;
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.getElementById('search').addEventListener('input', render);
+    init();
+  </script>
 </body>
+
 </html>
