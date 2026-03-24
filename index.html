@@ -1059,6 +1059,22 @@
         ).join('');
       }
 
+      // Methods preview (for both permissions and endpoints)
+      let methodsHtml = '';
+      if (isPerm) {
+        // For permissions, infer methods from name
+        let methods = ['GET'];
+        if (entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') || entry.name.toLowerCase().includes('send')) {
+          methods = ['GET', 'POST', 'PATCH', 'DELETE'];
+        } else if (entry.name.toLowerCase().includes('create') || entry.name.toLowerCase().includes('update')) {
+          methods = ['POST', 'PATCH'];
+        }
+        methodsHtml = methods.slice(0, 3).map(m => `<span class="method-badge method-${m.toLowerCase()}" style="font-size: 8px; padding: 1px 4px;">${escHtml(m)}</span>`).join('');
+      } else {
+        // For endpoints, show actual methods
+        methodsHtml = (entry.methods || []).slice(0, 3).map(m => `<span class="method-badge method-${m.toLowerCase()}" style="font-size: 8px; padding: 1px 4px;">${escHtml(m)}</span>`).join('');
+      }
+
       return `
         <div class="change-card ${typeClass} clickable" data-entry-index="${index}" onclick="showDetails(${index})">
           <div class="card-header">
@@ -1075,10 +1091,13 @@
             ${pathsHtml}
           </div>` : ''}
 
-          ${(entry.date || permsHtml) ? `
+          ${(entry.date || permsHtml || methodsHtml) ? `
           <div class="card-footer">
             <span class="card-date">DETECTED ${escHtml(entry.date || '')}</span>
-            ${permsHtml ? `<div class="card-perms-list">${permsHtml}</div>` : ''}
+            <div style="display: flex; gap: 8px; align-items: center;">
+              ${methodsHtml ? `<div style="display: flex; gap: 2px;">${methodsHtml}</div>` : ''}
+              ${permsHtml ? `<div class="card-perms-list">${permsHtml}</div>` : ''}
+            </div>
           </div>` : ''}
         </div>`;
     }
@@ -1100,19 +1119,28 @@
           </div>
 
           <div class="detail-section">
-            <label class="detail-label">Endpoints with Access</label>
+            <label class="detail-label">Paths with Access</label>
             <div class="endpoint-list">
-              ${(entry.endpoints || []).length === 0 ? '<div style="color: var(--text-muted); font-size: 12px;">No endpoints available</div>' : 
-                (entry.endpoints || []).map(ep => `
-                  <div class="endpoint-item">
-                    <div class="endpoint-path">${escHtml(ep.path)}</div>
-                    <div class="endpoint-methods">
-                      ${(ep.methods || []).map(m => `<span class="method-badge method-${m.toLowerCase()}">${escHtml(m)}</span>`).join('')}
+              ${(entry.paths || []).length === 0 ? '<div style="color: var(--text-muted); font-size: 12px;">No paths available</div>' : 
+                (entry.paths || []).map(path => {
+                  // Infer methods based on permission name
+                  let methods = ['GET']; // Default to read
+                  if (entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') || entry.name.toLowerCase().includes('send')) {
+                    methods = ['GET', 'POST', 'PATCH', 'DELETE'];
+                  } else if (entry.name.toLowerCase().includes('create') || entry.name.toLowerCase().includes('update')) {
+                    methods = ['POST', 'PATCH'];
+                  }
+                  
+                  return `
+                    <div class="endpoint-item">
+                      <div class="endpoint-path">${escHtml(path)}</div>
+                      <div class="endpoint-methods">
+                        ${methods.map(m => `<span class="method-badge method-${m.toLowerCase()}">${escHtml(m)}</span>`).join('')}
+                      </div>
+                      <span class="access-level access-${entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') ? 'write' : 'read'}">${entry.name.toLowerCase().includes('readwrite') || entry.name.toLowerCase().includes('write') ? 'WRITE' : 'READ'}</span>
                     </div>
-                    <span class="access-level access-${ep.accessLevel || 'read'}">${escHtml((ep.accessLevel || 'read').toUpperCase())}</span>
-                    <div class="endpoint-desc">${escHtml(ep.description || '')}</div>
-                  </div>
-                `).join('')
+                  `;
+                }).join('')
               }
             </div>
           </div>
@@ -1135,7 +1163,9 @@
           <div class="detail-section">
             <label class="detail-label">HTTP Methods</label>
             <div class="endpoint-methods">
-              ${(entry.methods || []).map(m => `<span class="method-badge method-${m.toLowerCase()}">${escHtml(m)}</span>`).join('')}
+              ${(entry.methods || []).length === 0 ? '<div style="color: var(--text-muted); font-size: 12px;">No methods available</div>' :
+                (entry.methods || []).map(m => `<span class="method-badge method-${m.toLowerCase()}">${escHtml(m)}</span>`).join('')
+              }
             </div>
           </div>
 

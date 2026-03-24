@@ -111,24 +111,35 @@ Write-StepEnd
 # ─────────────────────────────────────────────
 Write-Step 'Extracting current permissions and paths'
 
-# permissionName → @{ paths: []; displayName; description }
+# permissionName → @{ paths: []; methods: []; displayName; description }
 $currentPermissions = @{}
 $allCurrentPaths = [System.Collections.Generic.HashSet[string]]::new()
 
 foreach ($permName in $mappings.Keys) {
     $entry = $mappings[$permName]
     $paths = [System.Collections.Generic.List[string]]::new()
+    $methods = [System.Collections.Generic.HashSet[string]]::new()
 
-    # pathSets is an array of hashtables; each hashtable has a `paths` property.
+    # pathSets is an array of hashtables; each hashtable has a `paths` property and `methods` property.
     # IMPORTANT: `paths` itself is a hashtable where the KEYS are the API path strings
     # (e.g. "/users/{id}/calendars") and the values are metadata (e.g. least-privilege info).
-    # We iterate .Keys to extract the path strings.
+    # We iterate .Keys to extract the path strings and collect methods from each pathSet.
     if ($entry -is [hashtable] -and $entry.ContainsKey('pathSets')) {
         foreach ($pathSet in $entry['pathSets']) {
-            if ($pathSet -is [hashtable] -and $pathSet.ContainsKey('paths')) {
-                foreach ($path in $pathSet['paths'].Keys) {
-                    $paths.Add($path)           | Out-Null
-                    $allCurrentPaths.Add($path)  | Out-Null
+            if ($pathSet -is [hashtable]) {
+                # Extract methods from this pathSet
+                if ($pathSet.ContainsKey('methods')) {
+                    foreach ($method in $pathSet['methods']) {
+                        $methods.Add($method) | Out-Null
+                    }
+                }
+
+                # Extract paths from this pathSet
+                if ($pathSet.ContainsKey('paths')) {
+                    foreach ($path in $pathSet['paths'].Keys) {
+                        $paths.Add($path)           | Out-Null
+                        $allCurrentPaths.Add($path)  | Out-Null
+                    }
                 }
             }
         }
@@ -137,6 +148,7 @@ foreach ($permName in $mappings.Keys) {
     $desc = $descLookup[$permName] ?? @{ displayName = ''; description = '' }
     $currentPermissions[$permName] = @{
         paths       = $paths
+        methods     = @($methods)
         displayName = $desc['displayName']
         description = $desc['description']
     }
@@ -197,6 +209,7 @@ foreach ($permName in $currentPermissions.Keys) {
                 displayName = $meta['displayName']
                 description = $meta['description']
                 paths       = @($meta['paths'])
+                methods     = @($meta['methods'])
             })
     }
 }
@@ -210,10 +223,16 @@ foreach ($entry in $newEntries) {
 # Pre-build a reverse index: path → list of permissions that require it.
 # This avoids an O(permissions) scan for every new path detected.
 $pathToPerms = @{}
+$pathToMethods = @{}
 foreach ($permName in $currentPermissions.Keys) {
     foreach ($p in $currentPermissions[$permName]['paths']) {
         if (-not $pathToPerms.ContainsKey($p)) { $pathToPerms[$p] = [System.Collections.Generic.List[string]]::new() }
         $pathToPerms[$p].Add($permName)
+
+        if (-not $pathToMethods.ContainsKey($p)) { $pathToMethods[$p] = [System.Collections.Generic.HashSet[string]]::new() }
+        foreach ($method in $currentPermissions[$permName]['methods']) {
+            $pathToMethods[$p].Add($method) | Out-Null
+        }
     }
 }
 
@@ -222,6 +241,7 @@ foreach ($path in $allCurrentPaths) {
         Write-Host "  [NEW PATH] $path"
 
         $relatedPerms = $pathToPerms[$path] ?? [System.Collections.Generic.List[string]]::new()
+        $methods = $pathToMethods[$path] ?? [System.Collections.Generic.HashSet[string]]::new()
         $firstPerm = $relatedPerms | Select-Object -First 1
         $desc = if ($firstPerm) { $currentPermissions[$firstPerm]['description'] } else { '' }
         $dispName = if ($firstPerm) { $currentPermissions[$firstPerm]['displayName'] } else { '' }
@@ -233,6 +253,7 @@ foreach ($path in $allCurrentPaths) {
                 displayName = $dispName
                 description = $desc
                 permissions = @($relatedPerms)
+                methods     = @($methods | Sort-Object)
             })
     }
 }
