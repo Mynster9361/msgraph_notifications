@@ -178,13 +178,19 @@ Write-Step 'Generating RSS Feed'
 $RssPath = Join-Path $DataDir 'rss.xml'
 $BaseUrl = "https://Mynster9361.github.io/msgraph_notifications" # Change these!
 
-$rssItems = foreach ($entry in $newEntries) { # Use $newEntries for the freshest delta
-    $title = "[$($entry.scheme)] New Permission: $($entry.name)"
+$rssItems = foreach ($entry in $newEntries) { 
+    # Escape special characters to prevent XML parsing errors (like the & error)
+    $SafeName = [System.Security.SecurityElement]::Escape($entry.name)
+    $SafeScheme = [System.Security.SecurityElement]::Escape($entry.scheme)
+    $SafeDescription = [System.Security.SecurityElement]::Escape($entry.description)
+    
+    $title = "[$SafeScheme] New Permission: $SafeName"
+    
     @"
         <item>
             <title>$title</title>
             <link>$BaseUrl</link>
-            <description>$($entry.description)</description>
+            <description>$SafeDescription</description>
             <pubDate>$([DateTime]::UtcNow.ToString('R'))</pubDate>
             <guid isPermaLink="false">$($entry.name)-$($entry.scheme)-$($entry.date)</guid>
         </item>
