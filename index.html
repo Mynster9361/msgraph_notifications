@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,33 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── Light Mode (default) ── */
     :root {
+      --bg-base:      #f8f9fa;
+      --bg-surface:   #ffffff;
+      --bg-card:      #ffffff;
+      --bg-card-alt:  #f5f7fa;
+      --border:       #e0e6ed;
+      --border-glow:  #c5d3e0;
+      --cyan:         #0066cc;
+      --cyan-dim:     #004499;
+      --cyan-muted:   #e6f2ff;
+      --amber:        #ff8c00;
+      --amber-dim:    #cc6600;
+      --green:        #00c853;
+      --green-dim:    #00a040;
+      --rose:         #d32f2f;
+      --text-primary: #1a1a1a;
+      --text-secondary:#555555;
+      --text-muted:   #999999;
+      --mono:         'JetBrains Mono', monospace;
+      --display:      'Syne', sans-serif;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md:    0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ── Dark Mode ── */
+    html.dark {
       --bg-base:      #080d14;
       --bg-surface:   #0d1520;
       --bg-card:      #111b2a;
@@ -28,8 +54,8 @@
       --text-primary: #cdd9e5;
       --text-secondary:#7a96b0;
       --text-muted:   #3d5570;
-      --mono:         'JetBrains Mono', monospace;
-      --display:      'Syne', sans-serif;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md:    0 4px 12px rgba(0,0,0,0.5);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -41,12 +67,13 @@
       color: var(--text-primary);
       font-family: var(--mono);
       font-size: 13px;
-      line-height: 1.7;
+      line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* ── Scanline overlay ── */
+    /* ── Subtle overlay for depth ── */
     body::before {
       content: '';
       position: fixed;
@@ -55,8 +82,8 @@
         0deg,
         transparent,
         transparent 2px,
-        rgba(0,0,0,0.04) 2px,
-        rgba(0,0,0,0.04) 4px
+        rgba(0,0,0,0.02) 2px,
+        rgba(0,0,0,0.02) 4px
       );
       pointer-events: none;
       z-index: 9999;
@@ -65,26 +92,74 @@
     /* ── Grid noise background ── */
     .bg-grid {
       background-image:
+        linear-gradient(rgba(0,102,204,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,102,204,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    html.dark .bg-grid {
+      background-image:
         linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
       background-size: 32px 32px;
     }
 
-    /* ── Glow effects ── */
-    .glow-cyan   { box-shadow: 0 0 0 1px rgba(0,229,255,0.15), 0 0 20px rgba(0,229,255,0.06); }
-    .glow-amber  { box-shadow: 0 0 0 1px rgba(255,179,0,0.15),  0 0 20px rgba(255,179,0,0.06); }
-    .glow-green  { box-shadow: 0 0 0 1px rgba(0,230,118,0.15),  0 0 20px rgba(0,230,118,0.06); }
-    .text-glow-cyan  { text-shadow: 0 0 18px rgba(0,229,255,0.5); }
-    .text-glow-amber { text-shadow: 0 0 18px rgba(255,179,0,0.5); }
+    /* ── Glow effects (subtle in light, more prominent in dark) ── */
+    .glow-cyan   { box-shadow: 0 0 0 1px rgba(0,102,204,0.1), var(--shadow-sm); }
+    .glow-amber  { box-shadow: 0 0 0 1px rgba(255,140,0,0.1),  var(--shadow-sm); }
+    .glow-green  { box-shadow: 0 0 0 1px rgba(0,200,83,0.1),   var(--shadow-sm); }
+    
+    html.dark .glow-cyan   { box-shadow: 0 0 0 1px rgba(0,229,255,0.15), 0 0 20px rgba(0,229,255,0.06); }
+    html.dark .glow-amber  { box-shadow: 0 0 0 1px rgba(255,179,0,0.15),  0 0 20px rgba(255,179,0,0.06); }
+    html.dark .glow-green  { box-shadow: 0 0 0 1px rgba(0,230,118,0.15),  0 0 20px rgba(0,230,118,0.06); }
+    
+    .text-glow-cyan  { text-shadow: none; }
+    .text-glow-amber { text-shadow: none; }
+    
+    html.dark .text-glow-cyan  { text-shadow: 0 0 18px rgba(0,229,255,0.5); }
+    html.dark .text-glow-amber { text-shadow: 0 0 18px rgba(255,179,0,0.5); }
 
     /* ── Header ── */
     .site-header {
       border-bottom: 1px solid var(--border);
-      background: rgba(8,13,20,0.95);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    html.dark .site-header {
+      background: rgba(8,13,20,0.95);
+    }
+
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+      background: rgba(0,0,0,0.02);
+    }
+
+    html.dark .theme-toggle:hover {
+      background: rgba(255,255,255,0.03);
     }
 
     .logo-pulse {
@@ -131,7 +206,9 @@
       display: flex;
       align-items: stretch;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
+    
     .filter-bar input {
       background: transparent;
       border: none;
@@ -142,7 +219,17 @@
       padding: 10px 14px;
       flex: 1;
       min-width: 0;
+      transition: background-color 0.15s ease;
     }
+    
+    .filter-bar input:focus {
+      background: rgba(0,102,204,0.03);
+    }
+    
+    html.dark .filter-bar input:focus {
+      background: rgba(0,229,255,0.03);
+    }
+    
     .filter-bar input::placeholder { color: var(--text-muted); }
     .filter-bar .sep {
       width: 1px;
@@ -173,13 +260,17 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       overflow: hidden;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: all 0.2s ease;
       animation: slideIn 0.3s ease both;
+      box-shadow: var(--shadow-sm);
     }
+    
     .change-card:hover {
       border-color: var(--border-glow);
       transform: translateX(2px);
+      box-shadow: var(--shadow-md);
     }
+    
     .change-card.type-permission { border-left: 3px solid var(--cyan); }
     .change-card.type-endpoint   { border-left: 3px solid var(--amber); }
 
@@ -208,11 +299,24 @@
       margin-top: 2px;
     }
     .badge-permission {
+      background: rgba(0,102,204,0.1);
+      color: var(--cyan);
+      border: 1px solid rgba(0,102,204,0.2);
+    }
+    
+    html.dark .badge-permission {
       background: var(--cyan-muted);
       color: var(--cyan);
       border: 1px solid rgba(0,229,255,0.2);
     }
+    
     .badge-endpoint {
+      background: rgba(255,140,0,0.1);
+      color: var(--amber);
+      border: 1px solid rgba(255,140,0,0.2);
+    }
+    
+    html.dark .badge-endpoint {
       background: rgba(255,179,0,0.1);
       color: var(--amber);
       border: 1px solid rgba(255,179,0,0.2);
@@ -324,16 +428,27 @@
     }
 
     /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-base); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { 
+      background: var(--border); 
+      border-radius: 3px;
+      transition: background-color 0.2s ease;
+    }
     ::-webkit-scrollbar-thumb:hover { background: var(--border-glow); }
 
     /* ── Responsive ── */
+    @media (max-width: 768px) {
+      body { font-size: 12px; }
+      .stat-chip .val { font-size: 18px; }
+      .theme-toggle { font-size: 11px; padding: 3px 8px; }
+    }
+
     @media (max-width: 640px) {
       .stat-chip .val { font-size: 16px; }
       .card-header { flex-direction: column; gap: 6px; }
       .type-badge { align-self: flex-start; }
+      main { padding: 20px 14px 60px; }
     }
   </style>
 </head>
@@ -344,7 +459,7 @@
   ═══════════════════════════════════════════════ -->
   <header class="site-header">
     <div style="max-width:1100px; margin:0 auto; padding:0 20px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; height:52px; gap:16px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px; flex-wrap:wrap;">
 
         <div style="display:flex; align-items:center; gap:12px;">
           <div class="logo-pulse"></div>
@@ -353,15 +468,21 @@
           </span>
         </div>
 
-        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <span id="hdr-last-updated" style="font-size:10px; color:var(--text-muted); letter-spacing:0.05em;">
             loading…
           </span>
           <a
             href="data/changelog.json"
             target="_blank"
-            style="font-size:10px; color:var(--cyan-dim); border:1px solid var(--border); border-radius:4px; padding:3px 10px; text-decoration:none; letter-spacing:0.05em;"
+            style="font-size:10px; color:var(--cyan-dim); border:1px solid var(--border); border-radius:4px; padding:4px 10px; text-decoration:none; letter-spacing:0.05em; transition:all 0.2s ease;"
+            onmouseover="this.style.background='rgba(0,102,204,0.05)'"
+            onmouseout="this.style.background='transparent'"
           >↓ JSON</a>
+          <button type="button" class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+            <span id="theme-icon">🌙</span>
+            <span id="theme-label">Dark</span>
+          </button>
         </div>
       </div>
     </div>
@@ -451,6 +572,37 @@
        SCRIPT
   ═══════════════════════════════════════════════ -->
   <script>
+    // ── Theme Management ──
+    function initTheme() {
+      const stored = localStorage.getItem('theme-mode');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = stored ? stored === 'dark' : systemDark;
+      applyTheme(isDark);
+    }
+
+    function applyTheme(isDark) {
+      const html = document.documentElement;
+      if (isDark) {
+        html.classList.add('dark');
+        localStorage.setItem('theme-mode', 'dark');
+        document.getElementById('theme-icon').textContent = '☀️';
+        document.getElementById('theme-label').textContent = 'Light';
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('theme-mode', 'light');
+        document.getElementById('theme-icon').textContent = '🌙';
+        document.getElementById('theme-label').textContent = 'Dark';
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isDark);
+    }
+
+    // Initialize theme on page load
+    document.addEventListener('DOMContentLoaded', initTheme);
+    
     // ── State ──
     let allEntries  = [];
     let activeFilter = 'all';
@@ -497,6 +649,8 @@
     function renderStats() {
       const perms = allEntries.filter(e => e.type === 'Permission').length;
       const eps   = allEntries.filter(e => e.type === 'Endpoint').length;
+      
+      console.log('Stats - Total:', allEntries.length, 'Perms:', perms, 'Endpoints:', eps);
 
       document.getElementById('stat-total').textContent = allEntries.length;
       document.getElementById('stat-perms').textContent = perms;
@@ -517,6 +671,7 @@
     // ── Filter ──
     function setFilter(f) {
       activeFilter = f;
+      console.log('Filter set to:', f);
       document.getElementById('btn-all').className  = 'filter-btn' + (f==='all'        ? ' active-all'  : '');
       document.getElementById('btn-perm').className = 'filter-btn' + (f==='Permission' ? ' active-perm' : '');
       document.getElementById('btn-ep').className   = 'filter-btn' + (f==='Endpoint'   ? ' active-ep'   : '');
@@ -658,6 +813,7 @@
     }
 
     // ── Boot ──
+    initTheme();
     loadChangelog();
   </script>
 </body>
