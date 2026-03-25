@@ -172,30 +172,43 @@ Write-Host "✓ Sync Complete. Library Size: $($explorerLibrary.Count)"
 Write-StepEnd
 
 # ─────────────────────────────────────────────
-# STEP 6 — GENERATE RSS FEED
+# STEP 6 — GENERATE RSS FEED (PERSISTENT)
 # ─────────────────────────────────────────────
-Write-Step 'Generating RSS Feed'
+Write-Step 'Updating RSS Feed'
 $RssPath = Join-Path $DataDir 'rss.xml'
-$BaseUrl = "https://Mynster9361.github.io/msgraph_notifications" # Change these!
+$BaseUrl = "https://Mynster9361.github.io/msgraph_notifications"
 
-$rssItems = foreach ($entry in $newEntries) { 
-    # Escape special characters to prevent XML parsing errors (like the & error)
+# 1. Load existing items if the file exists
+$existingItems = @()
+if (Test-Path $RssPath) {
+    [xml]$xmlContent = Get-Content $RssPath
+    # Extract existing <item> blocks as strings
+    $existingItems = $xmlContent.rss.channel.item | ForEach-Object { $_.OuterXml }
+}
+
+# 2. Generate new items
+$newRssItems = foreach ($entry in $newEntries) { 
     $SafeName = [System.Security.SecurityElement]::Escape($entry.name)
     $SafeScheme = [System.Security.SecurityElement]::Escape($entry.scheme)
     $SafeDescription = [System.Security.SecurityElement]::Escape($entry.description)
     
     $title = "[$SafeScheme] New Permission: $SafeName"
+    # We add a URL Fragment #perm-Name-Scheme for deep linking
+    $DeepLink = "$BaseUrl#perm-$($entry.name)-$($entry.scheme)"
     
     @"
         <item>
             <title>$title</title>
-            <link>$BaseUrl</link>
+            <link>$DeepLink</link>
             <description>$SafeDescription</description>
             <pubDate>$([DateTime]::UtcNow.ToString('R'))</pubDate>
             <guid isPermaLink="false">$($entry.name)-$($entry.scheme)-$($entry.date)</guid>
         </item>
 "@
 }
+
+# 3. Combine and limit to latest 50 items (to keep file size sane)
+$combinedItems = ($newRssItems + $existingItems) | Select-Object -First 50
 
 $rssTemplate = @"
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -205,11 +218,11 @@ $rssTemplate = @"
         <link>$BaseUrl</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
         <lastBuildDate>$([DateTime]::UtcNow.ToString('R'))</lastBuildDate>
-        $( $rssItems -join "`n" )
+        $( $combinedItems -join "`n" )
     </channel>
 </rss>
 "@
 
 $rssTemplate | Set-Content $RssPath -Encoding UTF8
-Write-Host "✓ RSS Feed generated at $RssPath"
+Write-Host "✓ RSS Feed updated (Persistent) at $RssPath"
 Write-StepEnd

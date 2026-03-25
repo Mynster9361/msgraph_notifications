@@ -44,7 +44,6 @@
       border: 1px solid var(--border);
     }
 
-    /* Tabs */
     .btn-tab {
       padding: 12px 24px;
       font-size: 12px;
@@ -65,14 +64,12 @@
       box-shadow: inset 0 -2px 0 var(--cyan);
     }
 
-    /* Grid Cards */
     .card-hover:hover {
       border-color: #58a6ff;
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     }
 
-    /* Modal & Content */
     .path-tag {
       font-family: 'JetBrains Mono';
       font-size: 13px;
@@ -87,38 +84,19 @@
       color: #adbac7;
     }
 
-    /* Animation */
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .modal-animate {
       animation: fadeIn 0.15s ease-out;
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--bg);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #30363d;
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--cyan);
-    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
   </style>
 </head>
 
@@ -165,18 +143,10 @@
     </div>
   </header>
 
-  <main id="content" class="max-w-7xl mx-auto">
-    <div class="flex flex-col items-center justify-center py-40 opacity-30">
-      <div class="w-12 h-12 border-2 border-t-[var(--cyan)] border-[var(--border)] rounded-full animate-spin mb-6"></div>
-      <p class="mono text-xs tracking-widest uppercase">Initialising Registry Data...</p>
-    </div>
-  </main>
+  <main id="content" class="max-w-7xl mx-auto"></main>
 
-  <div id="modal"
-    class="fixed inset-0 bg-black/95 backdrop-blur-md hidden items-center justify-center z-50 p-4 md:p-8 overflow-y-auto"
-    onclick="closeModal()">
-    <div class="glass max-w-6xl w-full rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden modal-animate"
-      onclick="event.stopPropagation()">
+  <div id="modal" class="fixed inset-0 bg-black/95 backdrop-blur-md hidden items-center justify-center z-50 p-4 md:p-8 overflow-y-auto" onclick="closeModal()">
+    <div class="glass max-w-6xl w-full rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden modal-animate" onclick="event.stopPropagation()">
       <div class="p-8 border-b border-[var(--border)] flex justify-between items-center bg-[#161b22]">
         <div>
           <div id="m-type" class="text-[11px] font-black uppercase tracking-[0.3em] mb-2 px-2 py-0.5 border inline-block rounded"></div>
@@ -184,9 +154,7 @@
         </div>
         <button onclick="closeModal()" class="text-4xl leading-none opacity-40 hover:opacity-100 hover:text-white transition-all p-2">&times;</button>
       </div>
-
       <div id="m-body" class="p-8 md:p-12 space-y-12 max-h-[75vh] overflow-y-auto"></div>
-
       <div class="p-4 bg-black/40 text-[10px] opacity-20 text-center border-t border-[var(--border)] mono uppercase tracking-widest">
         Source: Microsoft Graph DevX Content Repository
       </div>
@@ -223,20 +191,27 @@
         }));
 
         render();
+        handleDeepLink();
       } catch (e) {
         console.error(e);
-        document.getElementById('content').innerHTML = `<div class="glass p-12 text-center rounded-2xl max-w-md mx-auto border-red-900/30">
-                    <div class="text-red-500 font-bold mb-2">SYSTEM OFFLINE</div>
-                    <div class="text-xs opacity-50">Could not resolve data streams.</div>
-                </div>`;
+        document.getElementById('content').innerHTML = `<div class="glass p-12 text-center rounded-2xl max-w-md mx-auto border-red-900/30"><div class="text-red-500 font-bold mb-2">SYSTEM OFFLINE</div></div>`;
+      }
+    }
+
+    function handleDeepLink() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#perm-')) {
+        const parts = hash.replace('#perm-', '').split('-');
+        const scheme = parts.pop();
+        const name = parts.join('-');
+        setTimeout(() => showPermissionDetail(name, scheme), 300);
       }
     }
 
     function setView(v) {
       view = v;
       ['history', 'explorer', 'paths'].forEach(t => {
-        const btn = document.getElementById(`tab-${t}`);
-        if (btn) btn.classList.toggle('active', v === t);
+        document.getElementById(`tab-${t}`).classList.toggle('active', v === t);
       });
       render();
     }
@@ -261,67 +236,52 @@
       const query = document.getElementById('search').value.toLowerCase();
       const container = document.getElementById('content');
       container.innerHTML = '';
-
-      // Only show scheme filter for history and explorer
       document.getElementById('scheme-filter-container').style.display = (view === 'paths') ? 'none' : 'flex';
 
       if (view === 'history') {
         const filtered = historyData.filter(i => {
-          const matchesQuery = i.name.toLowerCase().includes(query) || i.scheme.toLowerCase().includes(query);
-          const matchesScheme = currentScheme === 'All' || i.scheme === currentScheme;
-          return matchesQuery && matchesScheme;
+          const mQ = i.name.toLowerCase().includes(query) || i.scheme.toLowerCase().includes(query);
+          const mS = currentScheme === 'All' || i.scheme === currentScheme;
+          return mQ && mS;
         });
-
         const groups = filtered.reduce((acc, i) => { (acc[i.date] = acc[i.date] || []).push(i); return acc; }, {});
-
         Object.keys(groups).sort().reverse().forEach(date => {
           let html = `<div class="mb-14"><h3 class="mono text-sm text-[var(--cyan)] mb-6 flex items-center gap-6 font-bold uppercase tracking-widest">${date} <span class="h-px flex-1 bg-[var(--border)]"></span></h3><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
           groups[date].forEach(item => {
             const isApp = item.scheme === 'Application';
             const badgeColor = isApp ? 'text-purple-400 border-purple-400/20 bg-purple-400/5' : 'text-blue-400 border-blue-400/20 bg-blue-400/5';
-            html += `
-                        <div onclick="showPermissionDetail('${item.name}', '${item.scheme}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="text-[9px] font-bold px-2 py-0.5 border rounded uppercase tracking-tighter ${badgeColor}">${item.scheme}</span>
-                            </div>
-                            <div class="text-white font-bold text-base mb-2 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
-                            <div class="text-sm opacity-40 line-clamp-2 leading-relaxed">${item.description || 'Entry updated.'}</div>
-                        </div>`;
+            html += `<div onclick="showPermissionDetail('${item.name}', '${item.scheme}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+              <div class="flex justify-between items-start mb-3"><span class="text-[9px] font-bold px-2 py-0.5 border rounded uppercase tracking-tighter ${badgeColor}">${item.scheme}</span></div>
+              <div class="text-white font-bold text-base mb-2 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
+              <div class="text-sm opacity-40 line-clamp-2 leading-relaxed">${item.description || 'Entry updated.'}</div>
+            </div>`;
           });
           container.innerHTML += html + '</div></div>';
         });
-      }
-      else if (view === 'explorer') {
+      } else if (view === 'explorer') {
         const filtered = libraryData.filter(i => {
-          const matchesQuery = i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query);
-          const matchesScheme = currentScheme === 'All' || i.scheme === currentScheme;
-          return matchesQuery && matchesScheme;
+          const mQ = i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query);
+          const mS = currentScheme === 'All' || i.scheme === currentScheme;
+          return mQ && mS;
         });
-
         let html = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">`;
         filtered.forEach(item => {
-          const isApp = item.scheme === 'Application';
-          const badgeColor = isApp ? 'text-purple-400 border-purple-400/20 bg-purple-400/5' : 'text-blue-400 border-blue-400/20 bg-blue-400/5';
-          html += `
-                    <div onclick="showPermissionDetail('${item.name}', '${item.scheme}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-[9px] font-bold px-2 py-0.5 border rounded uppercase tracking-tighter ${badgeColor}">${item.scheme}</span>
-                        </div>
-                        <div class="text-white font-bold text-[15px] mb-3 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
-                        <div class="text-[13px] opacity-40 line-clamp-3 leading-relaxed">${item.description || 'No detailed documentation.'}</div>
-                    </div>`;
+          const badgeColor = item.scheme === 'Application' ? 'text-purple-400 border-purple-400/20 bg-purple-400/5' : 'text-blue-400 border-blue-400/20 bg-blue-400/5';
+          html += `<div onclick="showPermissionDetail('${item.name}', '${item.scheme}')" class="glass p-6 rounded-xl cursor-pointer card-hover transition-all group">
+            <div class="flex justify-between items-start mb-3"><span class="text-[9px] font-bold px-2 py-0.5 border rounded uppercase tracking-tighter ${badgeColor}">${item.scheme}</span></div>
+            <div class="text-white font-bold text-[15px] mb-3 group-hover:text-[var(--cyan)] transition-colors">${item.name}</div>
+            <div class="text-[13px] opacity-40 line-clamp-3 leading-relaxed">${item.description || 'No documentation.'}</div>
+          </div>`;
         });
         container.innerHTML = html + '</div>';
-      }
-      else if (view === 'paths') {
+      } else if (view === 'paths') {
         const filtered = pathIndex.filter(i => i.url.toLowerCase().includes(query));
         let html = `<div class="space-y-3">`;
         filtered.forEach(item => {
-          html += `
-                    <div onclick="showPathDetail('${btoa(item.url)}')" class="glass p-4 px-6 rounded-xl cursor-pointer card-hover flex justify-between items-center group">
-                        <div class="mono text-[13px] text-[var(--cyan)] truncate mr-8">${item.url}</div>
-                        <div class="mono text-[11px] font-bold opacity-20 group-hover:opacity-100 bg-white/5 px-3 py-1 rounded-full transition-all">${item.permissions.length} SCOPES</div>
-                    </div>`;
+          html += `<div onclick="showPathDetail('${btoa(item.url)}')" class="glass p-4 px-6 rounded-xl cursor-pointer card-hover flex justify-between items-center group">
+            <div class="mono text-[13px] text-[var(--cyan)] truncate mr-8">${item.url}</div>
+            <div class="mono text-[11px] font-bold opacity-20 group-hover:opacity-100 bg-white/5 px-3 py-1 rounded-full transition-all">${item.permissions.length} SCOPES</div>
+          </div>`;
         });
         container.innerHTML = html + '</div>';
       }
@@ -330,32 +290,13 @@
     function showPermissionDetail(name, scheme) {
       const item = libraryData.find(x => x.name === name && x.scheme === scheme);
       if (!item) return;
-
+      window.history.replaceState(null, null, `#perm-${name}-${scheme}`);
       const isApp = item.scheme === 'Application';
       const typeEl = document.getElementById('m-type');
       typeEl.innerText = `${item.scheme} Permission`;
-      typeEl.className = isApp
-        ? "text-[11px] font-black text-purple-400 uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-purple-400/10 border border-purple-400/20 inline-block rounded"
-        : "text-[11px] font-black text-blue-400 uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-blue-400/10 border border-blue-400/20 inline-block rounded";
-
+      typeEl.className = isApp ? "text-[11px] font-black text-purple-400 uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-purple-400/10 border border-purple-400/20 inline-block rounded" : "text-[11px] font-black text-blue-400 uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-blue-400/10 border border-blue-400/20 inline-block rounded";
       document.getElementById('m-name').innerText = item.name;
-      document.getElementById('m-body').innerHTML = `
-                <section class="max-w-4xl">
-                    <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-4">Documentation</h4>
-                    <p class="description-text leading-loose">${item.description || 'No detailed description available.'}</p>
-                </section>
-                <section>
-                    <div class="flex items-center gap-4 mb-6">
-                        <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em]">Resource Mapping (${item.paths ? item.paths.length : 0})</h4>
-                    </div>
-                    <div class="grid grid-cols-1 gap-2">
-                        ${(item.paths || []).map(p => `
-                            <div class="path-tag p-4 px-6 rounded-xl flex justify-between items-center group cursor-default">
-                                <span class="break-all">${p}</span>
-                                <button onclick="showPathDetail('${btoa(p)}')" class="ml-4 opacity-0 group-hover:opacity-100 text-[10px] font-bold uppercase tracking-widest text-white/50 hover:text-[var(--cyan)]">Inspect URL</button>
-                            </div>`).join('')}
-                    </div>
-                </section>`;
+      document.getElementById('m-body').innerHTML = `<section class="max-w-4xl"><h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-4">Documentation</h4><p class="description-text leading-loose">${item.description || 'No description available.'}</p></section><section><h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Resource Mapping (${item.paths ? item.paths.length : 0})</h4><div class="grid grid-cols-1 gap-2">${(item.paths || []).map(p => `<div class="path-tag p-4 px-6 rounded-xl flex justify-between items-center group cursor-default"><span>${p}</span><button onclick="showPathDetail('${btoa(p)}')" class="ml-4 opacity-0 group-hover:opacity-100 text-[10px] font-bold text-white/50 hover:text-[var(--cyan)]">Inspect</button></div>`).join('')}</div></section>`;
       openModal();
     }
 
@@ -363,33 +304,15 @@
       const url = atob(encodedUrl);
       const item = pathIndex.find(x => x.url === url);
       if (!item) return;
-
-      const typeEl = document.getElementById('m-type');
-      typeEl.innerText = 'API ENDPOINT';
-      typeEl.className = "text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded";
-
+      document.getElementById('m-type').innerText = 'API ENDPOINT';
+      document.getElementById('m-type').className = "text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded";
       document.getElementById('m-name').innerText = url;
-      document.getElementById('m-body').innerHTML = `
-                <section class="max-w-4xl">
-                    <h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        ${item.permissions.map(uniqueKey => {
-                          const [pName, pSchemeRaw] = uniqueKey.split(' (');
-                          const pScheme = pSchemeRaw.replace(')', '');
-                          const pData = libraryData.find(ld => ld.name === pName && ld.scheme === pScheme);
-                          const isApp = pScheme === 'Application';
-                          const borderColor = isApp ? 'hover:border-purple-500' : 'hover:border-blue-500';
-                          return `
-                            <button onclick="showPermissionDetail('${pName}', '${pScheme}')" class="glass p-6 rounded-2xl text-left ${borderColor} group transition-all">
-                                <div class="flex justify-between items-start mb-2">
-                                     <div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${pName}</div>
-                                     <span class="text-[8px] border px-1 rounded opacity-50">${pScheme.toUpperCase()}</span>
-                                </div>
-                                <div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Click to view details.'}</div>
-                            </button>`;
-                        }).join('')}
-                    </div>
-                </section>`;
+      document.getElementById('m-body').innerHTML = `<section class="max-w-4xl"><h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${item.permissions.map(uk => {
+        const [pName, pSchemeRaw] = uk.split(' (');
+        const pScheme = pSchemeRaw.replace(')', '');
+        const pData = libraryData.find(ld => ld.name === pName && ld.scheme === pScheme);
+        return `<button onclick="showPermissionDetail('${pName}', '${pScheme}')" class="glass p-6 rounded-2xl text-left hover:border-[var(--cyan)] group transition-all"><div class="flex justify-between items-start mb-2"><div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${pName}</div><span class="text-[8px] border px-1 rounded opacity-50">${pScheme.toUpperCase()}</span></div><div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Details...'}</div></button>`;
+      }).join('')}</div></section>`;
       openModal();
     }
 
@@ -400,9 +323,11 @@
       document.body.style.overflow = 'hidden';
       m.scrollTop = 0;
     }
+
     function closeModal() {
       document.getElementById('modal').classList.add('hidden');
       document.body.style.overflow = 'auto';
+      window.history.replaceState(null, null, ' ');
     }
 
     document.getElementById('search').addEventListener('input', render);
