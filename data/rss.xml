@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>MS Graph Registry Updates</title>
+        <link>https://Mynster9361.github.io/msgraph_notifications</link>
+        <description>Real-time notifications for new Microsoft Graph Permissions</description>
+        <lastBuildDate>Wed, 25 Mar 2026 18:14:55 GMT</lastBuildDate>
+                <item>
+            <title>[DelegatedWork] New Permission: ProtectionScopes.Compute.User</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ProtectionScopes.Compute.User-DelegatedWork</link>
+            <description>Allows the app to identify Purview data protection, compliance and governance policy scopes defined for an individual user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">ProtectionScopes.Compute.User-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: PrivilegedAssignmentSchedule.Remove.AzureADGroup</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-PrivilegedAssignmentSchedule.Remove.AzureADGroup-Application</link>
+            <description>Delete time-based assignment schedules for access to Azure AD groups, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">PrivilegedAssignmentSchedule.Remove.AzureADGroup-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: People.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-People.Read.All-DelegatedWork</link>
+            <description>Allows the app to read a scored list of relevant people of the signed-in user or other users in the signed-in user&apos;s organization. The list can include local contacts, contacts from social networking, your organization&apos;s directory, and people from recent communications (such as email and Skype).</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">People.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: IndustryData-DataConnector.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-IndustryData-DataConnector.Read.All-DelegatedWork</link>
+            <description>Allows the app to read data connectors on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">IndustryData-DataConnector.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: SecurityIncident.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIncident.Read.All-Application</link>
+            <description>Allows the app to read all security incidents, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">SecurityIncident.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: ThreatIntelligence.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatIntelligence.Read.All-Application</link>
+            <description>Allows the app to read threat intellgence information, such as indicators, observations, and and articles, without a signed in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">ThreatIntelligence.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: DeviceManagementRBAC.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-DeviceManagementRBAC.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write the properties relating to the Microsoft Intune Role-Based Access Control (RBAC) settings, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">DeviceManagementRBAC.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: SecurityEvents.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityEvents.ReadWrite.All-Application</link>
+            <description>Allows the app to read your organization&apos;s security events without a signed-in user. Also allows the app to update editable properties in security events.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">SecurityEvents.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: Calendars.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.Read-Application</link>
+            <description>Allows the app to read events of all calendars without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">Calendars.Read-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: GroupSettings.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-GroupSettings.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to create, read, update, and delete on the list of tenant-level or group-specific group settings objects that you have access to in the organization, on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">GroupSettings.ReadWrite.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: TeamworkDevice.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkDevice.Read.All-Application</link>
+            <description>Allow the app to read the management data for Teams devices, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">TeamworkDevice.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: LifecycleWorkflows-Reports.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecycleWorkflows-Reports.Read.All-Application</link>
+            <description>Allows the app to read all Lifecycle workflows reports without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">LifecycleWorkflows-Reports.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: Bookings.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Bookings.Read.All-Application</link>
+            <description>Allows an app to read Bookings appointments, businesses, customers, services, and staff without a signed-in user.  </description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">Bookings.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: BitlockerKey.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-BitlockerKey.Read.All-DelegatedWork</link>
+            <description>Allows the app to read BitLocker keys on behalf of the signed-in user, for their owned devices. Allows read of the recovery key.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">BitlockerKey.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: SecurityIdentitiesActions.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIdentitiesActions.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read and write identity security available actions on behalf of the signed-in identity.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">SecurityIdentitiesActions.ReadWrite.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: AuthenticationContext.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AuthenticationContext.Read.All-Application</link>
+            <description>Allows the app to read the authentication context information in your organization, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">AuthenticationContext.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: UserAuthMethod-WindowsHello.ReadWrite</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-WindowsHello.ReadWrite-DelegatedWork</link>
+            <description>Allows the app to read and write the signed-in user&apos;s Windows Hello authentication methods. This does not allow the app to see secret information like passwords, or to sign-in or otherwise use the authentication methods.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">UserAuthMethod-WindowsHello.ReadWrite-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: BusinessScenarioConfig.ReadWrite.OwnedBy</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-BusinessScenarioConfig.ReadWrite.OwnedBy-Application</link>
+            <description>Allows the app to create new business scenarios and fully manage the configurations of scenarios it owns, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">BusinessScenarioConfig.ReadWrite.OwnedBy-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: AuditLogsQuery-Entra.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AuditLogsQuery-Entra.Read.All-DelegatedWork</link>
+            <description>Allows the app to read and query audit logs from Entra service, on behalf of a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">AuditLogsQuery-Entra.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: AgentIdentity.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentity.Read.All-Application</link>
+            <description>Allows the app to read all agent identities without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">AgentIdentity.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: CustomSecAttributeDefinition.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CustomSecAttributeDefinition.Read.All-DelegatedWork</link>
+            <description>Allows the app to read custom security attribute definitions for the tenant on behalf of a signed in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">CustomSecAttributeDefinition.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: AgentInstance.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentInstance.Read.All-Application</link>
+            <description>Allows the app to read all agent instances and their related collections in your organization&apos;s Agent Registry without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">AgentInstance.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: eDiscovery.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-eDiscovery.ReadWrite.All-Application</link>
+            <description>Allows the app to read eDiscovery objects such as cases, custodians, review sets and other related objects without the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">eDiscovery.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: OrgSettings-Todo.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-OrgSettings-Todo.Read.All-Application</link>
+            <description>Allows the app to read organization-wide Microsoft To Do settings, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">OrgSettings-Todo.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: ExternalConnection.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ExternalConnection.Read.All-DelegatedWork</link>
+            <description>Allows the app to read all external connections on behalf of a signed-in user. The signed-in user must be an administrator.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">ExternalConnection.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: eDiscovery.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-eDiscovery.Read.All-Application</link>
+            <description>Allows the app to read eDiscovery objects such as cases, custodians, review sets and other related objects without the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">eDiscovery.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: UserAuthMethod-Passkey.ReadWrite</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-Passkey.ReadWrite-DelegatedWork</link>
+            <description>Allows the app to read and write the signed-in user&apos;s passkey authentication methods. This does not allow the app to see secret information like passwords, or to sign-in or otherwise use the authentication methods.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">UserAuthMethod-Passkey.ReadWrite-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: LearningAssignedCourse.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LearningAssignedCourse.ReadWrite.All-Application</link>
+            <description>Allows the app to create, update, read and delete all assignments in the organization&apos;s directory, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">LearningAssignedCourse.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: CustomTags.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CustomTags.Read.All-DelegatedWork</link>
+            <description>Read custom tags data on behalf of the signed-in user</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">CustomTags.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedPersonal] New Permission: Mail.ReadWrite</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Mail.ReadWrite-DelegatedPersonal</link>
+            <description>Allows the app to create, read, update, and delete email in user mailboxes. Does not include permission to send mail. </description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">Mail.ReadWrite-DelegatedPersonal-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: TeamsTab.ReadWrite.Chat</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamsTab.ReadWrite.Chat-Application</link>
+            <description></description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">TeamsTab.ReadWrite.Chat-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: RoleManagement.ReadWrite.Directory</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-RoleManagement.ReadWrite.Directory-Application</link>
+            <description>Allows the app to read and manage the role-based access control (RBAC) settings for your company&apos;s directory, without a signed-in user. This includes instantiating directory roles and managing directory role membership, and reading directory role templates, directory roles and memberships.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">RoleManagement.ReadWrite.Directory-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: PrivilegedEligibilitySchedule.Remove.AzureADGroup</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-PrivilegedEligibilitySchedule.Remove.AzureADGroup-DelegatedWork</link>
+            <description>Allows the app to delete time-based eligibility schedules for access to Azure AD groups, on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">PrivilegedEligibilitySchedule.Remove.AzureADGroup-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedPersonal] New Permission: Calendars.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.Read-DelegatedPersonal</link>
+            <description>Allows the app to read events in user calendars . </description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">Calendars.Read-DelegatedPersonal-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: EngagementRole.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-EngagementRole.Read.All-DelegatedWork</link>
+            <description>Allows the app to list all Viva Engage roles and role memberships on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">EngagementRole.Read.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: ProgramControl.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ProgramControl.ReadWrite.All-Application</link>
+            <description>Allows the app to read, update, delete and perform actions on programs and program controls in the organization, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">ProgramControl.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: UserAuthMethod-TAP.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-TAP.Read-DelegatedWork</link>
+            <description>Allows the app to read the signed-in user&apos;s Temporary Access Pass authentication methods. This does not allow the app to see secret information like passwords, or to sign-in or otherwise use the authentication methods.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">UserAuthMethod-TAP.Read-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: ResourceSpecificPermissionGrant.ReadForTeam.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourceSpecificPermissionGrant.ReadForTeam.All-Application</link>
+            <description>Allows the app to read the resource specific permissions granted on the team without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">ResourceSpecificPermissionGrant.ReadForTeam.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: Policy.ReadWrite.SecurityDefaults</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.ReadWrite.SecurityDefaults-DelegatedWork</link>
+            <description>Allows the app to read and write your organization&apos;s security defaults policy without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">Policy.ReadWrite.SecurityDefaults-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: OrgSettings-DynamicsVoice.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-OrgSettings-DynamicsVoice.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write organization-wide Dynamics customer voice settings, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">OrgSettings-DynamicsVoice.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: BitlockerKey.ReadBasic.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-BitlockerKey.ReadBasic.All-Application</link>
+            <description>Allows an app to read basic BitLocker key properties for all devices, without a signed-in user. Does not allow read of the recovery key.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">BitlockerKey.ReadBasic.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedPersonal] New Permission: Notes.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Notes.Read-DelegatedPersonal</link>
+            <description>Allows the app to read OneNote notebooks on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">Notes.Read-DelegatedPersonal-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: OrgSettings-Microsoft365Install.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-OrgSettings-Microsoft365Install.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read and write organization-wide Microsoft 365 apps installation settings on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">OrgSettings-Microsoft365Install.ReadWrite.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: BusinessScenarioConfig.Read.OwnedBy</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-BusinessScenarioConfig.Read.OwnedBy-Application</link>
+            <description>Allows the app to read the configurations of business scenarios it owns, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">BusinessScenarioConfig.Read.OwnedBy-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: IndustryData-OutboundFlow.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-IndustryData-OutboundFlow.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read and write outbound data flowsets and flows on behalf of the signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">IndustryData-OutboundFlow.ReadWrite.All-DelegatedWork-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: CustomSecAttributeDefinition.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CustomSecAttributeDefinition.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write custom security attribute definitions for the tenant without a signed in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">CustomSecAttributeDefinition.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: IndustryData-ReferenceDefinition.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-IndustryData-ReferenceDefinition.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write reference definitions without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">IndustryData-ReferenceDefinition.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: HealthMonitoringAlert.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-HealthMonitoringAlert.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write all scenario monitoring alerts, without a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">HealthMonitoringAlert.ReadWrite.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: UserAuthMethod-WindowsHello.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-WindowsHello.Read.All-Application</link>
+            <description>Allows the app to read Windows Hello authentication methods of all users in your organization, without a signed-in user. This does not allow the app to see secret information like passwords, or to sign-in or otherwise use the authentication methods.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">UserAuthMethod-WindowsHello.Read.All-Application-2026-03-25</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: User.RevokeSessions.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-User.RevokeSessions.All-DelegatedWork</link>
+            <description>Allow the app to revoke all sign in sessions for a user, on behalf of a signed-in user.</description>
+            <pubDate>Wed, 25 Mar 2026 18:14:55 GMT</pubDate>
+            <guid isPermaLink="false">User.RevokeSessions.All-DelegatedWork-2026-03-25</guid>
+        </item>
+    </channel>
+</rss>
