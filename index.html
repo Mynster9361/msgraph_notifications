@@ -31,18 +31,9 @@
       line-height: 1.6;
     }
 
-    .mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .syne {
-      font-family: 'Syne', sans-serif;
-    }
-
-    .glass {
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .syne { font-family: 'Syne', sans-serif; }
+    .glass { background: var(--card); border: 1px solid var(--border); }
 
     .btn-tab {
       padding: 12px 24px;
@@ -54,15 +45,8 @@
       color: #8b949e;
     }
 
-    .btn-tab:last-child {
-      border-right: none;
-    }
-
-    .btn-tab.active {
-      background: #21262d;
-      color: var(--cyan);
-      box-shadow: inset 0 -2px 0 var(--cyan);
-    }
+    .btn-tab:last-child { border-right: none; }
+    .btn-tab.active { background: #21262d; color: var(--cyan); box-shadow: inset 0 -2px 0 var(--cyan); }
 
     .card-hover:hover {
       border-color: #58a6ff;
@@ -79,19 +63,10 @@
       word-break: break-all;
     }
 
-    .description-text {
-      font-size: 16px;
-      color: #adbac7;
-    }
+    .description-text { font-size: 16px; color: #adbac7; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal-animate {
-      animation: fadeIn 0.15s ease-out;
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+    .modal-animate { animation: fadeIn 0.15s ease-out; }
 
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
@@ -182,9 +157,10 @@
           const uniqueLabel = `${p.name} (${p.scheme})`;
           (p.paths || []).forEach(path => {
             if (!pathsMap[path]) pathsMap[path] = [];
-            pathsMap[path].push(uniqueLabel);
+            pathsMap[path].push({ label: uniqueLabel, scheme: p.scheme, name: p.name });
           });
         });
+
         pathIndex = Object.keys(pathsMap).sort().map(url => ({
           url: url,
           permissions: pathsMap[url]
@@ -236,7 +212,9 @@
       const query = document.getElementById('search').value.toLowerCase();
       const container = document.getElementById('content');
       container.innerHTML = '';
-      document.getElementById('scheme-filter-container').style.display = (view === 'paths') ? 'none' : 'flex';
+      
+      // Keep filter visible for all views now
+      document.getElementById('scheme-filter-container').style.display = 'flex';
 
       if (view === 'history') {
         const filtered = historyData.filter(i => {
@@ -258,9 +236,10 @@
           });
           container.innerHTML += html + '</div></div>';
         });
-      } else if (view === 'explorer') {
+      } 
+      else if (view === 'explorer') {
         const filtered = libraryData.filter(i => {
-          const mQ = i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query);
+          const mQ = i.name.toLowerCase().includes(query) || (i.description && i.description.toLowerCase().includes(query));
           const mS = currentScheme === 'All' || i.scheme === currentScheme;
           return mQ && mS;
         });
@@ -274,13 +253,23 @@
           </div>`;
         });
         container.innerHTML = html + '</div>';
-      } else if (view === 'paths') {
-        const filtered = pathIndex.filter(i => i.url.toLowerCase().includes(query));
+      } 
+      else if (view === 'paths') {
+        const filtered = pathIndex.filter(i => {
+          const mQ = i.url.toLowerCase().includes(query);
+          // Check if any permission in this URL matches the current scheme filter
+          const hasMatchingScheme = currentScheme === 'All' || i.permissions.some(p => p.scheme === currentScheme);
+          return mQ && hasMatchingScheme;
+        });
+
         let html = `<div class="space-y-3">`;
         filtered.forEach(item => {
+          // Count only permissions that match the current filter for the badge
+          const count = currentScheme === 'All' ? item.permissions.length : item.permissions.filter(p => p.scheme === currentScheme).length;
+          
           html += `<div onclick="showPathDetail('${btoa(item.url)}')" class="glass p-4 px-6 rounded-xl cursor-pointer card-hover flex justify-between items-center group">
             <div class="mono text-[13px] text-[var(--cyan)] truncate mr-8">${item.url}</div>
-            <div class="mono text-[11px] font-bold opacity-20 group-hover:opacity-100 bg-white/5 px-3 py-1 rounded-full transition-all">${item.permissions.length} SCOPES</div>
+            <div class="mono text-[11px] font-bold opacity-20 group-hover:opacity-100 bg-white/5 px-3 py-1 rounded-full transition-all">${count} SCOPES</div>
           </div>`;
         });
         container.innerHTML = html + '</div>';
@@ -307,11 +296,13 @@
       document.getElementById('m-type').innerText = 'API ENDPOINT';
       document.getElementById('m-type').className = "text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded";
       document.getElementById('m-name').innerText = url;
-      document.getElementById('m-body').innerHTML = `<section class="max-w-4xl"><h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${item.permissions.map(uk => {
-        const [pName, pSchemeRaw] = uk.split(' (');
-        const pScheme = pSchemeRaw.replace(')', '');
-        const pData = libraryData.find(ld => ld.name === pName && ld.scheme === pScheme);
-        return `<button onclick="showPermissionDetail('${pName}', '${pScheme}')" class="glass p-6 rounded-2xl text-left hover:border-[var(--cyan)] group transition-all"><div class="flex justify-between items-start mb-2"><div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${pName}</div><span class="text-[8px] border px-1 rounded opacity-50">${pScheme.toUpperCase()}</span></div><div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Details...'}</div></button>`;
+      
+      // In the modal, we filter the authorized scopes list based on currentScheme too
+      const filteredPerms = currentScheme === 'All' ? item.permissions : item.permissions.filter(p => p.scheme === currentScheme);
+
+      document.getElementById('m-body').innerHTML = `<section class="max-w-4xl"><h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${filteredPerms.map(p => {
+        const pData = libraryData.find(ld => ld.name === p.name && ld.scheme === p.scheme);
+        return `<button onclick="showPermissionDetail('${p.name}', '${p.scheme}')" class="glass p-6 rounded-2xl text-left hover:border-[var(--cyan)] group transition-all"><div class="flex justify-between items-start mb-2"><div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${p.name}</div><span class="text-[8px] border px-1 rounded opacity-50">${p.scheme.toUpperCase()}</span></div><div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Details...'}</div></button>`;
       }).join('')}</div></section>`;
       openModal();
     }
