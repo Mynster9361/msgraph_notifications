@@ -77,10 +77,10 @@
 
 <body class="p-6 md:p-12 min-h-screen">
 
-  <header class="max-w-7xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+  <header class="max-w-7xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start gap-10">
     <div>
       <h1 class="syne text-6xl uppercase italic text-white leading-none mb-4 tracking-tighter">
-        GRAPH<span class="text-[#58a6ff]">NOTIFICATIONS</span>
+        GRAPH<br><span class="text-[#58a6ff]">NOTIFICATIONS</span>
       </h1>
       <div class="flex items-center gap-4">
         <div class="flex items-center gap-2">
@@ -97,23 +97,25 @@
       </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row items-center gap-6 w-full lg:w-auto">
+    <div class="flex flex-col items-end gap-4 w-full lg:w-auto">
       <div class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] overflow-hidden w-full sm:w-auto shadow-2xl">
         <button id="tab-history" onclick="setView('history')" class="btn-tab active">HISTORY</button>
         <button id="tab-explorer" onclick="setView('explorer')" class="btn-tab">EXPLORER</button>
         <button id="tab-paths" onclick="setView('paths')" class="btn-tab">URL INDEX</button>
       </div>
 
-      <div id="scheme-filter-container" class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] p-1 gap-1 shadow-2xl">
-        <button onclick="setScheme('All')" id="scheme-all" class="text-[10px] font-bold px-3 py-2 rounded-lg transition-all bg-[#21262d] text-[var(--cyan)]">BOTH</button>
-        <button onclick="setScheme('DelegatedWork')" id="scheme-delegated" class="text-[10px] font-bold px-3 py-2 rounded-lg transition-all text-[#8b949e] hover:text-white">DELEGATED</button>
-        <button onclick="setScheme('Application')" id="scheme-app" class="text-[10px] font-bold px-3 py-2 rounded-lg transition-all text-[#8b949e] hover:text-white">APPLICATION</button>
-      </div>
+      <div class="flex flex-col gap-4 w-full sm:w-80">
+        <div id="scheme-filter-container" class="flex bg-[#0d1117] rounded-xl border border-[var(--border)] p-1 gap-1 shadow-2xl w-full">
+          <button onclick="setScheme('All')" id="scheme-all" class="flex-1 text-[10px] font-bold px-3 py-2 rounded-lg transition-all bg-[#21262d] text-[var(--cyan)]">BOTH</button>
+          <button onclick="setScheme('DelegatedWork')" id="scheme-delegated" class="flex-1 text-[10px] font-bold px-3 py-2 rounded-lg transition-all text-[#8b949e] hover:text-white">DELEGATED</button>
+          <button onclick="setScheme('Application')" id="scheme-app" class="flex-1 text-[10px] font-bold px-3 py-2 rounded-lg transition-all text-[#8b949e] hover:text-white">APPLICATION</button>
+        </div>
 
-      <div class="relative w-full sm:w-80">
-        <input id="search" type="text" placeholder="Search..."
-          class="w-full bg-[#0d1117] border border-[var(--border)] pl-10 pr-4 py-3 rounded-xl text-sm outline-none focus:border-[var(--cyan)] transition-all placeholder:opacity-20 shadow-inner">
-        <span class="absolute left-4 top-3.5 opacity-20 text-sm">🔍</span>
+        <div class="relative w-full">
+          <input id="search" type="text" placeholder="Search..."
+            class="w-full bg-[#0d1117] border border-[var(--border)] pl-10 pr-4 py-3 rounded-xl text-sm outline-none focus:border-[var(--cyan)] transition-all placeholder:opacity-20 shadow-inner">
+          <span class="absolute left-4 top-3.5 opacity-20 text-sm">🔍</span>
+        </div>
       </div>
     </div>
   </header>
@@ -213,9 +215,6 @@
       const container = document.getElementById('content');
       container.innerHTML = '';
       
-      // Keep filter visible for all views now
-      document.getElementById('scheme-filter-container').style.display = 'flex';
-
       if (view === 'history') {
         const filtered = historyData.filter(i => {
           const mQ = i.name.toLowerCase().includes(query) || i.scheme.toLowerCase().includes(query);
@@ -257,16 +256,13 @@
       else if (view === 'paths') {
         const filtered = pathIndex.filter(i => {
           const mQ = i.url.toLowerCase().includes(query);
-          // Check if any permission in this URL matches the current scheme filter
           const hasMatchingScheme = currentScheme === 'All' || i.permissions.some(p => p.scheme === currentScheme);
           return mQ && hasMatchingScheme;
         });
 
         let html = `<div class="space-y-3">`;
         filtered.forEach(item => {
-          // Count only permissions that match the current filter for the badge
           const count = currentScheme === 'All' ? item.permissions.length : item.permissions.filter(p => p.scheme === currentScheme).length;
-          
           html += `<div onclick="showPathDetail('${btoa(item.url)}')" class="glass p-4 px-6 rounded-xl cursor-pointer card-hover flex justify-between items-center group">
             <div class="mono text-[13px] text-[var(--cyan)] truncate mr-8">${item.url}</div>
             <div class="mono text-[11px] font-bold opacity-20 group-hover:opacity-100 bg-white/5 px-3 py-1 rounded-full transition-all">${count} SCOPES</div>
@@ -296,15 +292,18 @@
       document.getElementById('m-type').innerText = 'API ENDPOINT';
       document.getElementById('m-type').className = "text-[11px] font-black text-[var(--cyan)] uppercase tracking-[0.3em] mb-2 px-2 py-0.5 bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 inline-block rounded";
       document.getElementById('m-name').innerText = url;
-      
-      // In the modal, we filter the authorized scopes list based on currentScheme too
       const filteredPerms = currentScheme === 'All' ? item.permissions : item.permissions.filter(p => p.scheme === currentScheme);
-
       document.getElementById('m-body').innerHTML = `<section class="max-w-4xl"><h4 class="text-[12px] font-black opacity-30 uppercase tracking-[0.3em] mb-6">Authorized Scopes</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${filteredPerms.map(p => {
         const pData = libraryData.find(ld => ld.name === p.name && ld.scheme === p.scheme);
         return `<button onclick="showPermissionDetail('${p.name}', '${p.scheme}')" class="glass p-6 rounded-2xl text-left hover:border-[var(--cyan)] group transition-all"><div class="flex justify-between items-start mb-2"><div class="mono text-sm font-bold text-white group-hover:text-[var(--cyan)]">${p.name}</div><span class="text-[8px] border px-1 rounded opacity-50">${p.scheme.toUpperCase()}</span></div><div class="text-xs opacity-40 line-clamp-2">${pData ? pData.description : 'Details...'}</div></button>`;
       }).join('')}</div></section>`;
       openModal();
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+      window.history.replaceState(null, null, ' ');
     }
 
     function openModal() {
@@ -313,12 +312,6 @@
       m.classList.add('flex');
       document.body.style.overflow = 'hidden';
       m.scrollTop = 0;
-    }
-
-    function closeModal() {
-      document.getElementById('modal').classList.add('hidden');
-      document.body.style.overflow = 'auto';
-      window.history.replaceState(null, null, ' ');
     }
 
     document.getElementById('search').addEventListener('input', render);
