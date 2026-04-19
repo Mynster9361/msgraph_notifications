@@ -169,6 +169,17 @@ $explorerLibrary | ConvertTo-Json -Depth 10 | Set-Content $CurrentStatePath -Enc
 } | ConvertTo-Json -Depth 10 | Set-Content $LastSeenPath -Encoding UTF8
 
 Write-Host "✓ Sync Complete. Library Size: $($explorerLibrary.Count)"
+
+# Set GitHub Actions output if running in CI
+if ($env:GITHUB_OUTPUT) {
+    if ($newEntries.Count -gt 0) {
+        "has_changes=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        Write-Host "  → GitHub Actions output: has_changes=true ($($newEntries.Count) new entries)"
+    } else {
+        "has_changes=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        Write-Host "  → GitHub Actions output: has_changes=false"
+    }
+}
 Write-StepEnd
 
 # ─────────────────────────────────────────────
