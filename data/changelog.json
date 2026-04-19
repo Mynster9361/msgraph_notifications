@@ -1,5 +1,33 @@
 [
   {
+    "scheme": "DelegatedWork",
+    "name": "EntraBackup.ReadWrite.Recovery",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-04-19",
+    "description": "Allows the app to  list the all the snapshots, create a recovery job and enumerate the changes of a specific recovery job, on behalf of the signed-in user."
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "EntraBackup.Read.All",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-04-19",
+    "description": "Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user."
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "EntraBackup.ReadWrite.Preview",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-04-19",
+    "description": "Allows the app to  list the all the snapshots, create a preview job and enumerate the changes of a specific preview job, on behalf of the signed-in user."
+  },
+  {
+    "scheme": "Application",
+    "name": "EntraBackup.Read.All",
+    "type": "New Application Scope",
+    "date": "2026-04-19",
+    "description": "Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user."
+  },
+  {
     "scheme": "Application",
     "name": "EduReports-Reflect.ReadAnonymous.All",
     "type": "New Application Scope",
