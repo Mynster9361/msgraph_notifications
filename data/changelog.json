@@ -1,5 +1,89 @@
 [
   {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to add or remove sponsors for agent identity blueprint on behalf of the signed-in user.",
+    "date": "2026-04-23",
+    "name": "AgentIdentityBlueprint.UpdateSponsors.All"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to add or remove sponsors for agent identities on behalf of the signed-in user.",
+    "date": "2026-04-23",
+    "name": "AgentIdentity.UpdateSponsors.All"
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "description": "Allows the app to read and write Copilot policy settings for the organization, without a signed-in user.",
+    "date": "2026-04-23",
+    "name": "CopilotPolicySettings.ReadWrite"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read the signed-in user's teamwork sections (folders) for organizing chats and channels in Teams.",
+    "date": "2026-04-23",
+    "name": "TeamworkSection.Read"
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "description": "Allows the app to read and write all users' teamwork sections (folders) for organizing chats and channels in Teams, without a signed-in user.",
+    "date": "2026-04-23",
+    "name": "TeamworkSection.ReadWrite.All"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and write Copilot policy settings for the organization, on behalf of the signed-in user.",
+    "date": "2026-04-23",
+    "name": "CopilotPolicySettings.ReadWrite"
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "description": "Allows the app to read all users' teamwork sections (folders) for organizing chats and channels in Teams, without a signed-in user.",
+    "date": "2026-04-23",
+    "name": "TeamworkSection.Read.All"
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "description": "Allows the app to read Copilot policy settings for the organization, without a signed-in user.",
+    "date": "2026-04-23",
+    "name": "CopilotPolicySettings.Read"
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "description": "Allows the app to add or remove sponsors for agent identities without a signed-in user.",
+    "date": "2026-04-23",
+    "name": "AgentIdentity.UpdateSponsors.All"
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "description": "Allows the app to add or remove sponsors for agent identity blueprint without a signed-in user.",
+    "date": "2026-04-23",
+    "name": "AgentIdentityBlueprint.UpdateSponsors.All"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and write the signed-in user's teamwork sections (folders) for organizing chats and channels in Teams.",
+    "date": "2026-04-23",
+    "name": "TeamworkSection.ReadWrite"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read Copilot policy settings for the organization, on behalf of the signed-in user.",
+    "date": "2026-04-23",
+    "name": "CopilotPolicySettings.Read"
+  },
+  {
     "scheme": "DelegatedWork",
     "name": "EntraBackup.ReadWrite.Recovery",
     "type": "New DelegatedWork Scope",

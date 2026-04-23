@@ -4,35 +4,95 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Sun, 19 Apr 2026 12:04:44 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 23 Apr 2026 07:21:03 GMT</lastBuildDate>
                 <item>
-            <title>[DelegatedWork] New Permission: EntraBackup.ReadWrite.Recovery</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.ReadWrite.Recovery-DelegatedWork</link>
-            <description>Allows the app to  list the all the snapshots, create a recovery job and enumerate the changes of a specific recovery job, on behalf of the signed-in user.</description>
-            <pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate>
-            <guid isPermaLink="false">EntraBackup.ReadWrite.Recovery-DelegatedWork-2026-04-19</guid>
+            <title>[DelegatedWork] New Permission: AgentIdentityBlueprint.UpdateSponsors.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.UpdateSponsors.All-DelegatedWork</link>
+            <description>Allows the app to add or remove sponsors for agent identity blueprint on behalf of the signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">AgentIdentityBlueprint.UpdateSponsors.All-DelegatedWork-2026-04-23</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: EntraBackup.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.Read.All-DelegatedWork</link>
-            <description>Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description>
-            <pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate>
-            <guid isPermaLink="false">EntraBackup.Read.All-DelegatedWork-2026-04-19</guid>
+            <title>[DelegatedWork] New Permission: AgentIdentity.UpdateSponsors.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentity.UpdateSponsors.All-DelegatedWork</link>
+            <description>Allows the app to add or remove sponsors for agent identities on behalf of the signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">AgentIdentity.UpdateSponsors.All-DelegatedWork-2026-04-23</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: EntraBackup.ReadWrite.Preview</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.ReadWrite.Preview-DelegatedWork</link>
-            <description>Allows the app to  list the all the snapshots, create a preview job and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description>
-            <pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate>
-            <guid isPermaLink="false">EntraBackup.ReadWrite.Preview-DelegatedWork-2026-04-19</guid>
+            <title>[Application] New Permission: CopilotPolicySettings.ReadWrite</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.ReadWrite-Application</link>
+            <description>Allows the app to read and write Copilot policy settings for the organization, without a signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">CopilotPolicySettings.ReadWrite-Application-2026-04-23</guid>
         </item>
         <item>
-            <title>[Application] New Permission: EntraBackup.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.Read.All-Application</link>
-            <description>Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description>
-            <pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate>
-            <guid isPermaLink="false">EntraBackup.Read.All-Application-2026-04-19</guid>
+            <title>[DelegatedWork] New Permission: TeamworkSection.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.Read-DelegatedWork</link>
+            <description>Allows the app to read the signed-in user&apos;s teamwork sections (folders) for organizing chats and channels in Teams.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">TeamworkSection.Read-DelegatedWork-2026-04-23</guid>
         </item>
+        <item>
+            <title>[Application] New Permission: TeamworkSection.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write all users&apos; teamwork sections (folders) for organizing chats and channels in Teams, without a signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">TeamworkSection.ReadWrite.All-Application-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: CopilotPolicySettings.ReadWrite</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.ReadWrite-DelegatedWork</link>
+            <description>Allows the app to read and write Copilot policy settings for the organization, on behalf of the signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">CopilotPolicySettings.ReadWrite-DelegatedWork-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: TeamworkSection.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.Read.All-Application</link>
+            <description>Allows the app to read all users&apos; teamwork sections (folders) for organizing chats and channels in Teams, without a signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">TeamworkSection.Read.All-Application-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: CopilotPolicySettings.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.Read-Application</link>
+            <description>Allows the app to read Copilot policy settings for the organization, without a signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">CopilotPolicySettings.Read-Application-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: AgentIdentity.UpdateSponsors.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentity.UpdateSponsors.All-Application</link>
+            <description>Allows the app to add or remove sponsors for agent identities without a signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">AgentIdentity.UpdateSponsors.All-Application-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: AgentIdentityBlueprint.UpdateSponsors.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.UpdateSponsors.All-Application</link>
+            <description>Allows the app to add or remove sponsors for agent identity blueprint without a signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">AgentIdentityBlueprint.UpdateSponsors.All-Application-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: TeamworkSection.ReadWrite</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.ReadWrite-DelegatedWork</link>
+            <description>Allows the app to read and write the signed-in user&apos;s teamwork sections (folders) for organizing chats and channels in Teams.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">TeamworkSection.ReadWrite-DelegatedWork-2026-04-23</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: CopilotPolicySettings.Read</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.Read-DelegatedWork</link>
+            <description>Allows the app to read Copilot policy settings for the organization, on behalf of the signed-in user.</description>
+            <pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate>
+            <guid isPermaLink="false">CopilotPolicySettings.Read-DelegatedWork-2026-04-23</guid>
+        </item>
+<item><title>[DelegatedWork] New Permission: EntraBackup.ReadWrite.Recovery</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.ReadWrite.Recovery-DelegatedWork</link><description>Allows the app to  list the all the snapshots, create a recovery job and enumerate the changes of a specific recovery job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.ReadWrite.Recovery-DelegatedWork-2026-04-19</guid></item>
+<item><title>[DelegatedWork] New Permission: EntraBackup.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.Read.All-DelegatedWork</link><description>Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.Read.All-DelegatedWork-2026-04-19</guid></item>
+<item><title>[DelegatedWork] New Permission: EntraBackup.ReadWrite.Preview</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.ReadWrite.Preview-DelegatedWork</link><description>Allows the app to  list the all the snapshots, create a preview job and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.ReadWrite.Preview-DelegatedWork-2026-04-19</guid></item>
+<item><title>[Application] New Permission: EntraBackup.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.Read.All-Application</link><description>Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.Read.All-Application-2026-04-19</guid></item>
 <item><title>[Application] New Permission: EduReports-Reflect.ReadAnonymous.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EduReports-Reflect.ReadAnonymous.All-Application</link><description>Allows the app to read all tenant users reflect check-ins submissions data (excludes responder-identifying information) without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">EduReports-Reflect.ReadAnonymous.All-Application-2026-03-25</guid></item>
 <item><title>[Application] New Permission: Policy.ReadWrite.SecurityDefaults</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.ReadWrite.SecurityDefaults-Application</link><description>Allows the app to read and write your organization's security defaults policy without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Policy.ReadWrite.SecurityDefaults-Application-2026-03-25</guid></item>
 <item><title>[Application] New Permission: TeamsAppInstallation.ManageSelectedForUser.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamsAppInstallation.ManageSelectedForUser.All-Application</link><description>Allows the app to read, install, upgrade, and uninstall selected Teams apps in any user account, without a signed-in user. Gives the ability to manage permission grants for accessing those specific users' data.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">TeamsAppInstallation.ManageSelectedForUser.All-Application-2026-03-25</guid></item>
@@ -67,17 +127,5 @@
 <item><title>[Application] New Permission: TeamsActivity.Send.Chat</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamsActivity.Send.Chat-Application</link><description></description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">TeamsActivity.Send.Chat-Application-2026-03-25</guid></item>
 <item><title>[DelegatedWork] New Permission: UserAuthMethod-QR.Read</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-QR.Read-DelegatedWork</link><description>Allows the app to read the signed-in user's QR authentication methods. This does not allow the app to see secret information like passwords, or to sign-in or otherwise use the authentication methods.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-QR.Read-DelegatedWork-2026-03-25</guid></item>
 <item><title>[Application] New Permission: CustomSecAttributeAssignment.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CustomSecAttributeAssignment.Read.All-Application</link><description>Allows the app to read custom security attribute assignments for all principals in the tenant without a signed in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">CustomSecAttributeAssignment.Read.All-Application-2026-03-25</guid></item>
-<item><title>[Application] New Permission: AgentIdentityBlueprint.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.ReadWrite.All-Application</link><description>Allows the app to read, update, create, and delete agent identity blueprints without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">AgentIdentityBlueprint.ReadWrite.All-Application-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: UserAuthMethod-TAP.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-TAP.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write Temporary Access Pass authentication methods of all users in your organization that the signed-in user has access to. This does not allow the app to see secret information like passwords, or to sign-in or otherwise use the authentication methods.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-TAP.ReadWrite.All-DelegatedWork-2026-03-25</guid></item>
-<item><title>[Application] New Permission: DeviceManagementManagedDevices.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-DeviceManagementManagedDevices.ReadWrite.All-Application</link><description>Allows the app to read and write the properties of devices managed by Microsoft Intune, without a signed-in user. Does not allow high impact operations such as remote wipe and password reset on the device's owner</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">DeviceManagementManagedDevices.ReadWrite.All-Application-2026-03-25</guid></item>
-<item><title>[DelegatedPersonal] New Permission: Policy.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.Read.All-DelegatedPersonal</link><description>Allows the app to read your organization's policies on behalf of the signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Policy.Read.All-DelegatedPersonal-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: TeamsAppInstallation.ReadWriteForTeam</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamsAppInstallation.ReadWriteForTeam-DelegatedWork</link><description>Allows the app to read, install, upgrade, and uninstall Teams apps in teams the signed-in user can access. Does not give the ability to read application-specific settings.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">TeamsAppInstallation.ReadWriteForTeam-DelegatedWork-2026-03-25</guid></item>
-<item><title>[Application] New Permission: EduAssignments.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EduAssignments.ReadWrite.All-Application</link><description>Allows the app to create, read, update and delete all class assignments with grades for all users without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">EduAssignments.ReadWrite.All-Application-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: AccessReview.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AccessReview.ReadWrite.All-DelegatedWork</link><description>Allows the app to read, update, delete and perform actions on access reviews, reviewers, decisions and settings that the signed-in user has access to in the organization.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">AccessReview.ReadWrite.All-DelegatedWork-2026-03-25</guid></item>
-<item><title>[Application] New Permission: SpiffeTrustDomain.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SpiffeTrustDomain.Read.All-Application</link><description>Allows the app to read your organization's SPIFFE trust domains and child resources without a signed in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">SpiffeTrustDomain.Read.All-Application-2026-03-25</guid></item>
-<item><title>[Application] New Permission: EduRoster.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EduRoster.ReadWrite.All-Application</link><description>Allows the app to read and write the structure of schools and classes in the organization's roster and education-specific information about all users to be read and written.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">EduRoster.ReadWrite.All-Application-2026-03-25</guid></item>
-<item><title>[Application] New Permission: CrossTenantUserProfileSharing.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantUserProfileSharing.ReadWrite.All-Application</link><description>Allows the application to list and query any shared user profile information associated with the current tenant without a signed-in user.  It also permits the application to export and remove external user data (e.g. customer content or system-generated logs), for any user associated with the current tenant without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">CrossTenantUserProfileSharing.ReadWrite.All-Application-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: Files.Read</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Files.Read-DelegatedWork</link><description>Allows the app to read the signed-in user's files.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Files.Read-DelegatedWork-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: PrintJob.ReadWriteBasic.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-PrintJob.ReadWriteBasic.All-DelegatedWork</link><description>Allows the application to read and update the metadata of print jobs on behalf of the signed-in user. Does not allow access to print job document content.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">PrintJob.ReadWriteBasic.All-DelegatedWork-2026-03-25</guid></item>
     </channel>
 </rss>
