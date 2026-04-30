@@ -1,5 +1,40 @@
 [
   {
+    "scheme": "Application",
+    "date": "2026-04-30",
+    "description": "Allows the app to read agent registration information without a signed-in user.",
+    "type": "New Application Scope",
+    "name": "AgentRegistration.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "date": "2026-04-30",
+    "description": "Allows the user to read and write all agent registration information",
+    "type": "New DelegatedWork Scope",
+    "name": "AgentRegistration.ReadWrite.All"
+  },
+  {
+    "scheme": "Application",
+    "date": "2026-04-30",
+    "description": "Allows the app to read and write agent registration information without a signed-in user.",
+    "type": "New Application Scope",
+    "name": "AgentRegistration.ReadWrite.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "date": "2026-04-30",
+    "description": "Allows the user to read all agent registration information",
+    "type": "New DelegatedWork Scope",
+    "name": "AgentRegistration.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "date": "2026-04-30",
+    "description": "Allows the application to read and write tenant-wide alert settings on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "name": "PrintAlertSettings.ReadWrite.All"
+  },
+  {
     "type": "New DelegatedWork Scope",
     "scheme": "DelegatedWork",
     "description": "Allows the app to add or remove sponsors for agent identity blueprint on behalf of the signed-in user.",
