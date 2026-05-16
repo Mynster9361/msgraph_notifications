@@ -4,42 +4,47 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Thu, 30 Apr 2026 08:01:41 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 16 May 2026 07:48:25 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: AgentRegistration.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.Read.All-Application</link>
-            <description>Allows the app to read agent registration information without a signed-in user.</description>
-            <pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate>
-            <guid isPermaLink="false">AgentRegistration.Read.All-Application-2026-04-30</guid>
+            <title>[DelegatedWork] New Permission: MailTips.ReadBasic.Shared</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-MailTips.ReadBasic.Shared-DelegatedWork</link>
+            <description>Allows the app to read mail tips on behalf of the signed-in user for mailboxes they have access to, including their own mailbox and shared mailboxes. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.</description>
+            <pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate>
+            <guid isPermaLink="false">MailTips.ReadBasic.Shared-DelegatedWork-2026-05-16</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: AgentRegistration.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the user to read and write all agent registration information</description>
-            <pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate>
-            <guid isPermaLink="false">AgentRegistration.ReadWrite.All-DelegatedWork-2026-04-30</guid>
+            <title>[Application] New Permission: MailTips.ReadBasic.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-MailTips.ReadBasic.All-Application</link>
+            <description>Allows the app to read mail tips for all users in the organization without a signed-in user. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.</description>
+            <pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate>
+            <guid isPermaLink="false">MailTips.ReadBasic.All-Application-2026-05-16</guid>
         </item>
         <item>
-            <title>[Application] New Permission: AgentRegistration.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.ReadWrite.All-Application</link>
-            <description>Allows the app to read and write agent registration information without a signed-in user.</description>
-            <pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate>
-            <guid isPermaLink="false">AgentRegistration.ReadWrite.All-Application-2026-04-30</guid>
+            <title>[DelegatedPersonal] New Permission: MailTips.ReadBasic.Shared</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-MailTips.ReadBasic.Shared-DelegatedPersonal</link>
+            <description>Allows the app to read mail tips on behalf of the signed-in user for mailboxes they have access to. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.</description>
+            <pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate>
+            <guid isPermaLink="false">MailTips.ReadBasic.Shared-DelegatedPersonal-2026-05-16</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: AgentRegistration.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.Read.All-DelegatedWork</link>
-            <description>Allows the user to read all agent registration information</description>
-            <pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate>
-            <guid isPermaLink="false">AgentRegistration.Read.All-DelegatedWork-2026-04-30</guid>
+            <title>[Application] New Permission: Group-NestingSupport.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-NestingSupport.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write groups&apos; disableNesting property without a signed-in user.</description>
+            <pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate>
+            <guid isPermaLink="false">Group-NestingSupport.ReadWrite.All-Application-2026-05-16</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: PrintAlertSettings.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-PrintAlertSettings.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the application to read and write tenant-wide alert settings on behalf of the signed-in user.</description>
-            <pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate>
-            <guid isPermaLink="false">PrintAlertSettings.ReadWrite.All-DelegatedWork-2026-04-30</guid>
+            <title>[DelegatedWork] New Permission: Group-NestingSupport.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-NestingSupport.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read and write groups&apos; disableNesting property on behalf of the signed-in user.</description>
+            <pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate>
+            <guid isPermaLink="false">Group-NestingSupport.ReadWrite.All-DelegatedWork-2026-05-16</guid>
         </item>
+<item><title>[Application] New Permission: AgentRegistration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.Read.All-Application</link><description>Allows the app to read agent registration information without a signed-in user.</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.Read.All-Application-2026-04-30</guid></item>
+<item><title>[DelegatedWork] New Permission: AgentRegistration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.ReadWrite.All-DelegatedWork</link><description>Allows the user to read and write all agent registration information</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.ReadWrite.All-DelegatedWork-2026-04-30</guid></item>
+<item><title>[Application] New Permission: AgentRegistration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.ReadWrite.All-Application</link><description>Allows the app to read and write agent registration information without a signed-in user.</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.ReadWrite.All-Application-2026-04-30</guid></item>
+<item><title>[DelegatedWork] New Permission: AgentRegistration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.Read.All-DelegatedWork</link><description>Allows the user to read all agent registration information</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.Read.All-DelegatedWork-2026-04-30</guid></item>
+<item><title>[DelegatedWork] New Permission: PrintAlertSettings.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-PrintAlertSettings.ReadWrite.All-DelegatedWork</link><description>Allows the application to read and write tenant-wide alert settings on behalf of the signed-in user.</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">PrintAlertSettings.ReadWrite.All-DelegatedWork-2026-04-30</guid></item>
 <item><title>[DelegatedWork] New Permission: AgentIdentityBlueprint.UpdateSponsors.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.UpdateSponsors.All-DelegatedWork</link><description>Allows the app to add or remove sponsors for agent identity blueprint on behalf of the signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">AgentIdentityBlueprint.UpdateSponsors.All-DelegatedWork-2026-04-23</guid></item>
 <item><title>[DelegatedWork] New Permission: AgentIdentity.UpdateSponsors.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentity.UpdateSponsors.All-DelegatedWork</link><description>Allows the app to add or remove sponsors for agent identities on behalf of the signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">AgentIdentity.UpdateSponsors.All-DelegatedWork-2026-04-23</guid></item>
 <item><title>[Application] New Permission: CopilotPolicySettings.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.ReadWrite-Application</link><description>Allows the app to read and write Copilot policy settings for the organization, without a signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">CopilotPolicySettings.ReadWrite-Application-2026-04-23</guid></item>
@@ -80,10 +85,5 @@
 <item><title>[Application] New Permission: RealTimeActivityFeed.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-RealTimeActivityFeed.Read.All-Application</link><description>Allows the app to get direct access to real-time enriched data in a meeting, without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">RealTimeActivityFeed.Read.All-Application-2026-03-25</guid></item>
 <item><title>[DelegatedWork] New Permission: CopilotSettings-LimitedMode.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotSettings-LimitedMode.ReadWrite-DelegatedWork</link><description>Allows the app to read and write organization-wide copilot limited mode setting on behalf of the signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">CopilotSettings-LimitedMode.ReadWrite-DelegatedWork-2026-03-25</guid></item>
 <item><title>[DelegatedWork] New Permission: Device.Command</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Device.Command-DelegatedWork</link><description>Allows the app to launch another app or communicate with another app on a user's device on behalf of the signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Device.Command-DelegatedWork-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: CloudPC.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CloudPC.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write the properties of Cloud PCs on behalf of the signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">CloudPC.ReadWrite.All-DelegatedWork-2026-03-25</guid></item>
-<item><title>[Application] New Permission: SecurityIncident.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIncident.Read.All-Application</link><description>Allows the app to read all security incidents, without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">SecurityIncident.Read.All-Application-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: EduRoster.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EduRoster.ReadWrite-DelegatedWork</link><description>Allows the app to read and write the structure of schools and classes in an organization's roster and education-specific information about users to be read and written on behalf of the user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">EduRoster.ReadWrite-DelegatedWork-2026-03-25</guid></item>
-<item><title>[Application] New Permission: SecurityIdentitiesSensors.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIdentitiesSensors.ReadWrite.All-Application</link><description>Allows the app to read and write identity security sensors without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">SecurityIdentitiesSensors.ReadWrite.All-Application-2026-03-25</guid></item>
-<item><title>[DelegatedPersonal] New Permission: Device.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Device.Read.All-DelegatedPersonal</link><description>Allows the app to read your organization's devices' configuration information on behalf of the signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Device.Read.All-DelegatedPersonal-2026-03-25</guid></item>
     </channel>
 </rss>

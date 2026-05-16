@@ -1,5 +1,40 @@
 [
   {
+    "name": "MailTips.ReadBasic.Shared",
+    "date": "2026-05-16",
+    "description": "Allows the app to read mail tips on behalf of the signed-in user for mailboxes they have access to, including their own mailbox and shared mailboxes. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "name": "MailTips.ReadBasic.All",
+    "date": "2026-05-16",
+    "description": "Allows the app to read mail tips for all users in the organization without a signed-in user. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.",
+    "scheme": "Application",
+    "type": "New Application Scope"
+  },
+  {
+    "name": "MailTips.ReadBasic.Shared",
+    "date": "2026-05-16",
+    "description": "Allows the app to read mail tips on behalf of the signed-in user for mailboxes they have access to. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.",
+    "scheme": "DelegatedPersonal",
+    "type": "New DelegatedPersonal Scope"
+  },
+  {
+    "name": "Group-NestingSupport.ReadWrite.All",
+    "date": "2026-05-16",
+    "description": "Allows the app to read and write groups' disableNesting property without a signed-in user.",
+    "scheme": "Application",
+    "type": "New Application Scope"
+  },
+  {
+    "name": "Group-NestingSupport.ReadWrite.All",
+    "date": "2026-05-16",
+    "description": "Allows the app to read and write groups' disableNesting property on behalf of the signed-in user.",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope"
+  },
+  {
     "scheme": "Application",
     "date": "2026-04-30",
     "description": "Allows the app to read agent registration information without a signed-in user.",
