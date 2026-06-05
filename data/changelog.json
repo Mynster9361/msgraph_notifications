@@ -1,5 +1,75 @@
 [
   {
+    "description": "Allows the app to read all the identity security sensor migration information without a signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "Application",
+    "type": "New Application Scope",
+    "name": "SecurityIdentitiesMigration.Read.All"
+  },
+  {
+    "description": "Allows the app to read and write identity notification settings, customize email templates, and send test emails on behalf of the signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope",
+    "name": "IdentityNotifications.ReadWrite.All"
+  },
+  {
+    "description": "Allows the app to read and write identity security sensor migration without a signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "Application",
+    "type": "New Application Scope",
+    "name": "SecurityIdentitiesMigration.ReadWrite.All"
+  },
+  {
+    "description": "Allows the app to read identity notification settings, email templates, and prerequisites on behalf of the signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope",
+    "name": "IdentityNotifications.Read.All"
+  },
+  {
+    "description": "Allows the app to read and write your organization's federated token validation policy on behalf of the signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope",
+    "name": "Policy.ReadWrite.FedTokenValidation"
+  },
+  {
+    "description": "Allows the app to read and write identity security sensor migration on behalf of the signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope",
+    "name": "SecurityIdentitiesMigration.ReadWrite.All"
+  },
+  {
+    "description": "Allows the app to read and write identity notification settings, customize email templates, and send test emails without a signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "Application",
+    "type": "New Application Scope",
+    "name": "IdentityNotifications.ReadWrite.All"
+  },
+  {
+    "description": "Allows the app to read all the identity security sensor migration information of signed user",
+    "date": "2026-06-03",
+    "scheme": "DelegatedWork",
+    "type": "New DelegatedWork Scope",
+    "name": "SecurityIdentitiesMigration.Read.All"
+  },
+  {
+    "description": "Allows the app to read identity notification settings, email templates, and prerequisites without a signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "Application",
+    "type": "New Application Scope",
+    "name": "IdentityNotifications.Read.All"
+  },
+  {
+    "description": "Allows the app to read and write your organization's federated token validation policy without a signed-in user.",
+    "date": "2026-06-03",
+    "scheme": "Application",
+    "type": "New Application Scope",
+    "name": "Policy.ReadWrite.FedTokenValidation"
+  },
+  {
     "name": "MailTips.ReadBasic.Shared",
     "date": "2026-05-16",
     "description": "Allows the app to read mail tips on behalf of the signed-in user for mailboxes they have access to, including their own mailbox and shared mailboxes. Mail tips include automatic replies, mailbox status, custom tips, and delivery information.",
