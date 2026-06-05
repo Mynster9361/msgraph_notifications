@@ -148,8 +148,8 @@
     async function init() {
       try {
         const [hRes, lRes] = await Promise.all([
-          fetch('data/changelog.json'),
-          fetch('data/current-state.json')
+          fetch('data/changelog.json', { cache: 'no-cache' }),
+          fetch('data/current-state.json', { cache: 'no-cache' })
         ]);
         historyData = await hRes.json();
         libraryData = await lRes.json();
