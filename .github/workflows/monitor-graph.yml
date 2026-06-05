@@ -114,14 +114,14 @@ jobs:
           test -f data/last-seen.json && echo "  ✓ data/last-seen.json" || echo "  ℹ data/last-seen.json not yet created"
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           # Upload the entire repo root (index.html + data/ folder)
           path: '.'
 
       - name: Deploy to GitHub Pages
         id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: Print deployment URL
         run: |
