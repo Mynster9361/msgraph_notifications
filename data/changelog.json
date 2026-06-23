@@ -1,5 +1,40 @@
 [
   {
+    "description": "Create custom emoji on behalf of the signed-in user.",
+    "scheme": "DelegatedWork",
+    "name": "TeamworkCustomEmoji.Create",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-06-23"
+  },
+  {
+    "description": "Create custom emoji without a signed-in user.",
+    "scheme": "Application",
+    "name": "TeamworkCustomEmoji.Create.All",
+    "type": "New Application Scope",
+    "date": "2026-06-23"
+  },
+  {
+    "description": "Allows the app to manage self-service entitlement management resources on behalf of the signed-in user. This includes operations such as requesting access and approving access of others.",
+    "scheme": "DelegatedWork",
+    "name": "EntitlementMgmt-SubjectAccess.ReadWrite",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-06-23"
+  },
+  {
+    "description": "Read custom emoji on behalf of the signed-in user.",
+    "scheme": "DelegatedWork",
+    "name": "TeamworkCustomEmoji.Read",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-06-23"
+  },
+  {
+    "description": "Read custom emoji without a signed-in user.",
+    "scheme": "Application",
+    "name": "TeamworkCustomEmoji.Read.All",
+    "type": "New Application Scope",
+    "date": "2026-06-23"
+  },
+  {
     "description": "Allows the app to read all the identity security sensor migration information without a signed-in user.",
     "date": "2026-06-03",
     "scheme": "Application",
