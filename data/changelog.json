@@ -1,5 +1,19 @@
 [
   {
+    "scheme": "Application",
+    "name": "SecurityAlert.Create.All",
+    "type": "New Application Scope",
+    "description": "Allows the app to create security alerts in Microsoft 365 Defender, without a signed-in user.",
+    "date": "2026-07-01"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "SecurityAlert.Create.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to create security alerts in Microsoft 365 Defender, on behalf of the signed-in user.",
+    "date": "2026-07-01"
+  },
+  {
     "description": "Create custom emoji on behalf of the signed-in user.",
     "scheme": "DelegatedWork",
     "name": "TeamworkCustomEmoji.Create",
