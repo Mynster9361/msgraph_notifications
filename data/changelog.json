@@ -1,5 +1,19 @@
 [
   {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to create new registrations for applications on behalf of the signed-in user.",
+    "name": "AppRegistration.Create",
+    "date": "2026-07-14",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New Application Scope",
+    "description": "Allows the app to create new registrations for applications without a signed-in user.",
+    "name": "AppRegistration.Create",
+    "date": "2026-07-14",
+    "scheme": "Application"
+  },
+  {
     "scheme": "Application",
     "name": "SecurityAlert.Create.All",
     "type": "New Application Scope",

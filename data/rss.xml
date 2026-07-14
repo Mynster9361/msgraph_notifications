@@ -4,21 +4,23 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Wed, 01 Jul 2026 07:23:10 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Jul 2026 06:40:06 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: SecurityAlert.Create.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-Application</link>
-            <description>Allows the app to create security alerts in Microsoft 365 Defender, without a signed-in user.</description>
-            <pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate>
-            <guid isPermaLink="false">SecurityAlert.Create.All-Application-2026-07-01</guid>
+            <title>[DelegatedWork] New Permission: AppRegistration.Create</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AppRegistration.Create-DelegatedWork</link>
+            <description>Allows the app to create new registrations for applications on behalf of the signed-in user.</description>
+            <pubDate>Tue, 14 Jul 2026 06:40:06 GMT</pubDate>
+            <guid isPermaLink="false">AppRegistration.Create-DelegatedWork-2026-07-14</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: SecurityAlert.Create.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-DelegatedWork</link>
-            <description>Allows the app to create security alerts in Microsoft 365 Defender, on behalf of the signed-in user.</description>
-            <pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate>
-            <guid isPermaLink="false">SecurityAlert.Create.All-DelegatedWork-2026-07-01</guid>
+            <title>[Application] New Permission: AppRegistration.Create</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-AppRegistration.Create-Application</link>
+            <description>Allows the app to create new registrations for applications without a signed-in user.</description>
+            <pubDate>Tue, 14 Jul 2026 06:40:06 GMT</pubDate>
+            <guid isPermaLink="false">AppRegistration.Create-Application-2026-07-14</guid>
         </item>
+<item><title>[Application] New Permission: SecurityAlert.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-Application</link><description>Allows the app to create security alerts in Microsoft 365 Defender, without a signed-in user.</description><pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate><guid isPermaLink="false">SecurityAlert.Create.All-Application-2026-07-01</guid></item>
+<item><title>[DelegatedWork] New Permission: SecurityAlert.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-DelegatedWork</link><description>Allows the app to create security alerts in Microsoft 365 Defender, on behalf of the signed-in user.</description><pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate><guid isPermaLink="false">SecurityAlert.Create.All-DelegatedWork-2026-07-01</guid></item>
 <item><title>[DelegatedWork] New Permission: TeamworkCustomEmoji.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkCustomEmoji.Create-DelegatedWork</link><description>Create custom emoji on behalf of the signed-in user.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">TeamworkCustomEmoji.Create-DelegatedWork-2026-06-23</guid></item>
 <item><title>[Application] New Permission: TeamworkCustomEmoji.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkCustomEmoji.Create.All-Application</link><description>Create custom emoji without a signed-in user.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">TeamworkCustomEmoji.Create.All-Application-2026-06-23</guid></item>
 <item><title>[DelegatedWork] New Permission: EntitlementMgmt-SubjectAccess.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntitlementMgmt-SubjectAccess.ReadWrite-DelegatedWork</link><description>Allows the app to manage self-service entitlement management resources on behalf of the signed-in user. This includes operations such as requesting access and approving access of others.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">EntitlementMgmt-SubjectAccess.ReadWrite-DelegatedWork-2026-06-23</guid></item>
@@ -65,7 +67,5 @@
 <item><title>[Application] New Permission: TeamsAppInstallation.ManageSelectedForUser.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamsAppInstallation.ManageSelectedForUser.All-Application</link><description>Allows the app to read, install, upgrade, and uninstall selected Teams apps in any user account, without a signed-in user. Gives the ability to manage permission grants for accessing those specific users' data.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">TeamsAppInstallation.ManageSelectedForUser.All-Application-2026-03-25</guid></item>
 <item><title>[DelegatedWork] New Permission: OnlineMeetings.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-OnlineMeetings.ReadWrite-DelegatedWork</link><description>Allows the app to read and create online meetings on behalf of the signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">OnlineMeetings.ReadWrite-DelegatedWork-2026-03-25</guid></item>
 <item><title>[Application] New Permission: AgentIdentityBlueprint.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.Create-Application</link><description>Allows creating new agent identity blueprints without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">AgentIdentityBlueprint.Create-Application-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: Sites.Archive.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Sites.Archive.All-DelegatedWork</link><description>Allow the application to archive/unarchive site collections on behalf of the signed in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Sites.Archive.All-DelegatedWork-2026-03-25</guid></item>
-<item><title>[DelegatedWork] New Permission: Application.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Application.ReadWrite.All-DelegatedWork</link><description>Allows the app to create, read, update and delete applications and service principals on behalf of the signed-in user. Does not allow management of consent grants.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">Application.ReadWrite.All-DelegatedWork-2026-03-25</guid></item>
     </channel>
 </rss>
