@@ -1,5 +1,33 @@
 [
   {
+    "type": "New Application Scope",
+    "name": "UserAuthMethod-ResourceKey.Read.All",
+    "scheme": "Application",
+    "date": "2026-07-17",
+    "description": "Allows the app to read the keys associated with the user representing a resource account."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "name": "UserAuthMethod-ResourceKey.ReadWrite.All",
+    "scheme": "DelegatedWork",
+    "date": "2026-07-17",
+    "description": "Allows the app to read and delete the keys associated with the user representing a resource account."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "name": "UserAuthMethod-ResourceKey.Read.All",
+    "scheme": "DelegatedWork",
+    "date": "2026-07-17",
+    "description": "Allows the app to read the keys associated with the user representing a resource account."
+  },
+  {
+    "type": "New Application Scope",
+    "name": "UserAuthMethod-ResourceKey.ReadWrite.All",
+    "scheme": "Application",
+    "date": "2026-07-17",
+    "description": "Allows the app to read and delete the keys associated with the user representing a resource account."
+  },
+  {
     "type": "New DelegatedWork Scope",
     "description": "Allows the app to create new registrations for applications on behalf of the signed-in user.",
     "name": "AppRegistration.Create",
