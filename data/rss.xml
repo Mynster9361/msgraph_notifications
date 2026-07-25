@@ -4,35 +4,46 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Fri, 17 Jul 2026 06:43:35 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 25 Jul 2026 06:43:00 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: UserAuthMethod-ResourceKey.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.Read.All-Application</link>
-            <description>Allows the app to read the keys associated with the user representing a resource account.</description>
-            <pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate>
-            <guid isPermaLink="false">UserAuthMethod-ResourceKey.Read.All-Application-2026-07-17</guid>
+            <title>[Application] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-Application</link>
+            <description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-Application-2026-07-25</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: UserAuthMethod-ResourceKey.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to read and delete the keys associated with the user representing a resource account.</description>
-            <pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate>
-            <guid isPermaLink="false">UserAuthMethod-ResourceKey.ReadWrite.All-DelegatedWork-2026-07-17</guid>
+            <title>[Application] New Permission: LifecyclePolicies-AgentId.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-Application</link>
+            <description>Allows the app to read identity lifecycle policies for agent identities in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-Application-2026-07-25</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: UserAuthMethod-ResourceKey.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.Read.All-DelegatedWork</link>
-            <description>Allows the app to read the keys associated with the user representing a resource account.</description>
-            <pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate>
-            <guid isPermaLink="false">UserAuthMethod-ResourceKey.Read.All-DelegatedWork-2026-07-17</guid>
+            <title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-DelegatedWork</link>
+            <description>Allows the app to read identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description>
+            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-DelegatedWork-2026-07-25</guid>
         </item>
         <item>
-            <title>[Application] New Permission: UserAuthMethod-ResourceKey.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.ReadWrite.All-Application</link>
-            <description>Allows the app to read and delete the keys associated with the user representing a resource account.</description>
-            <pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate>
-            <guid isPermaLink="false">UserAuthMethod-ResourceKey.ReadWrite.All-Application-2026-07-17</guid>
+            <title>[Application] New Permission: Calls.ReportSyntheticMedia.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calls.ReportSyntheticMedia.All-Application</link>
+            <description>Allows the app to report synthetic media detections for participants in calls, without a signed-in user.</description>
+            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
+            <guid isPermaLink="false">Calls.ReportSyntheticMedia.All-Application-2026-07-25</guid>
         </item>
+        <item>
+            <title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description>
+            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork-2026-07-25</guid>
+        </item>
+<item><title>[Application] New Permission: UserAuthMethod-ResourceKey.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.Read.All-Application</link><description>Allows the app to read the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.Read.All-Application-2026-07-17</guid></item>
+<item><title>[DelegatedWork] New Permission: UserAuthMethod-ResourceKey.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and delete the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.ReadWrite.All-DelegatedWork-2026-07-17</guid></item>
+<item><title>[DelegatedWork] New Permission: UserAuthMethod-ResourceKey.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.Read.All-DelegatedWork</link><description>Allows the app to read the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.Read.All-DelegatedWork-2026-07-17</guid></item>
+<item><title>[Application] New Permission: UserAuthMethod-ResourceKey.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.ReadWrite.All-Application</link><description>Allows the app to read and delete the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.ReadWrite.All-Application-2026-07-17</guid></item>
 <item><title>[DelegatedWork] New Permission: AppRegistration.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AppRegistration.Create-DelegatedWork</link><description>Allows the app to create new registrations for applications on behalf of the signed-in user.</description><pubDate>Tue, 14 Jul 2026 06:40:06 GMT</pubDate><guid isPermaLink="false">AppRegistration.Create-DelegatedWork-2026-07-14</guid></item>
 <item><title>[Application] New Permission: AppRegistration.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AppRegistration.Create-Application</link><description>Allows the app to create new registrations for applications without a signed-in user.</description><pubDate>Tue, 14 Jul 2026 06:40:06 GMT</pubDate><guid isPermaLink="false">AppRegistration.Create-Application-2026-07-14</guid></item>
 <item><title>[Application] New Permission: SecurityAlert.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-Application</link><description>Allows the app to create security alerts in Microsoft 365 Defender, without a signed-in user.</description><pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate><guid isPermaLink="false">SecurityAlert.Create.All-Application-2026-07-01</guid></item>
@@ -74,10 +85,5 @@
 <item><title>[Application] New Permission: AgentIdentityBlueprint.UpdateSponsors.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.UpdateSponsors.All-Application</link><description>Allows the app to add or remove sponsors for agent identity blueprint without a signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">AgentIdentityBlueprint.UpdateSponsors.All-Application-2026-04-23</guid></item>
 <item><title>[DelegatedWork] New Permission: TeamworkSection.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.ReadWrite-DelegatedWork</link><description>Allows the app to read and write the signed-in user's teamwork sections (folders) for organizing chats and channels in Teams.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">TeamworkSection.ReadWrite-DelegatedWork-2026-04-23</guid></item>
 <item><title>[DelegatedWork] New Permission: CopilotPolicySettings.Read</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.Read-DelegatedWork</link><description>Allows the app to read Copilot policy settings for the organization, on behalf of the signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">CopilotPolicySettings.Read-DelegatedWork-2026-04-23</guid></item>
-<item><title>[DelegatedWork] New Permission: EntraBackup.ReadWrite.Recovery</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.ReadWrite.Recovery-DelegatedWork</link><description>Allows the app to  list the all the snapshots, create a recovery job and enumerate the changes of a specific recovery job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.ReadWrite.Recovery-DelegatedWork-2026-04-19</guid></item>
-<item><title>[DelegatedWork] New Permission: EntraBackup.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.Read.All-DelegatedWork</link><description>Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.Read.All-DelegatedWork-2026-04-19</guid></item>
-<item><title>[DelegatedWork] New Permission: EntraBackup.ReadWrite.Preview</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.ReadWrite.Preview-DelegatedWork</link><description>Allows the app to  list the all the snapshots, create a preview job and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.ReadWrite.Preview-DelegatedWork-2026-04-19</guid></item>
-<item><title>[Application] New Permission: EntraBackup.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntraBackup.Read.All-Application</link><description>Allows the app to list the all the snapshots, jobs and enumerate the changes of a specific preview job, on behalf of the signed-in user.</description><pubDate>Sun, 19 Apr 2026 12:04:44 GMT</pubDate><guid isPermaLink="false">EntraBackup.Read.All-Application-2026-04-19</guid></item>
-<item><title>[Application] New Permission: EduReports-Reflect.ReadAnonymous.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EduReports-Reflect.ReadAnonymous.All-Application</link><description>Allows the app to read all tenant users reflect check-ins submissions data (excludes responder-identifying information) without a signed-in user.</description><pubDate>Wed, 25 Mar 2026 18:31:23 GMT</pubDate><guid isPermaLink="false">EduReports-Reflect.ReadAnonymous.All-Application-2026-03-25</guid></item>
     </channel>
 </rss>

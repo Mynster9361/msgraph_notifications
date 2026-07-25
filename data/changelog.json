@@ -1,6 +1,41 @@
 [
   {
     "type": "New Application Scope",
+    "description": "Allows the app to read, create, update and delete identity lifecycle policies for agent identities in the organization, without a signed-in user.",
+    "name": "LifecyclePolicies-AgentId.ReadWrite.All",
+    "date": "2026-07-25",
+    "scheme": "Application"
+  },
+  {
+    "type": "New Application Scope",
+    "description": "Allows the app to read identity lifecycle policies for agent identities in the organization, without a signed-in user.",
+    "name": "LifecyclePolicies-AgentId.Read.All",
+    "date": "2026-07-25",
+    "scheme": "Application"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read identity lifecycle policies for agent identities that the signed-in user has access to in the organization.",
+    "name": "LifecyclePolicies-AgentId.Read.All",
+    "date": "2026-07-25",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New Application Scope",
+    "description": "Allows the app to report synthetic media detections for participants in calls, without a signed-in user.",
+    "name": "Calls.ReportSyntheticMedia.All",
+    "date": "2026-07-25",
+    "scheme": "Application"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read, create, update and delete identity lifecycle policies for agent identities that the signed-in user has access to in the organization.",
+    "name": "LifecyclePolicies-AgentId.ReadWrite.All",
+    "date": "2026-07-25",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New Application Scope",
     "name": "UserAuthMethod-ResourceKey.Read.All",
     "scheme": "Application",
     "date": "2026-07-17",
