@@ -4,42 +4,40 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Sat, 25 Jul 2026 06:43:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 Jul 2026 06:48:48 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-Application</link>
-            <description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities in the organization, without a signed-in user.</description>
-            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
-            <guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-Application-2026-07-25</guid>
+            <title>[DelegatedWork] New Permission: CaseManagement.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.Read.All-DelegatedWork</link>
+            <description>Allows the app to read all cases, relations, tasks, attachments and activities, on behalf of the signed-in user.</description>
+            <pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate>
+            <guid isPermaLink="false">CaseManagement.Read.All-DelegatedWork-2026-07-30</guid>
         </item>
         <item>
-            <title>[Application] New Permission: LifecyclePolicies-AgentId.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-Application</link>
-            <description>Allows the app to read identity lifecycle policies for agent identities in the organization, without a signed-in user.</description>
-            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
-            <guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-Application-2026-07-25</guid>
+            <title>[Application] New Permission: CaseManagement.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.Read.All-Application</link>
+            <description>Allows the app to read all cases, relations, tasks, attachments and activities, without a signed-in user.</description>
+            <pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate>
+            <guid isPermaLink="false">CaseManagement.Read.All-Application-2026-07-30</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-DelegatedWork</link>
-            <description>Allows the app to read identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description>
-            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
-            <guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-DelegatedWork-2026-07-25</guid>
+            <title>[Application] New Permission: CaseManagement.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.ReadWrite.All-Application</link>
+            <description>Allows the app to read and write to all cases, relations, tasks, attachments and activities, without a signed-in user.</description>
+            <pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate>
+            <guid isPermaLink="false">CaseManagement.ReadWrite.All-Application-2026-07-30</guid>
         </item>
         <item>
-            <title>[Application] New Permission: Calls.ReportSyntheticMedia.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calls.ReportSyntheticMedia.All-Application</link>
-            <description>Allows the app to report synthetic media detections for participants in calls, without a signed-in user.</description>
-            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
-            <guid isPermaLink="false">Calls.ReportSyntheticMedia.All-Application-2026-07-25</guid>
+            <title>[DelegatedWork] New Permission: CaseManagement.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read and write to all cases, relations, tasks, attachments and activities, on behalf of the signed-in user.</description>
+            <pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate>
+            <guid isPermaLink="false">CaseManagement.ReadWrite.All-DelegatedWork-2026-07-30</guid>
         </item>
-        <item>
-            <title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description>
-            <pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate>
-            <guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork-2026-07-25</guid>
-        </item>
+<item><title>[Application] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-Application</link><description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities in the organization, without a signed-in user.</description><pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate><guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-Application-2026-07-25</guid></item>
+<item><title>[Application] New Permission: LifecyclePolicies-AgentId.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-Application</link><description>Allows the app to read identity lifecycle policies for agent identities in the organization, without a signed-in user.</description><pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate><guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-Application-2026-07-25</guid></item>
+<item><title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-DelegatedWork</link><description>Allows the app to read identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description><pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate><guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-DelegatedWork-2026-07-25</guid></item>
+<item><title>[Application] New Permission: Calls.ReportSyntheticMedia.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Calls.ReportSyntheticMedia.All-Application</link><description>Allows the app to report synthetic media detections for participants in calls, without a signed-in user.</description><pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate><guid isPermaLink="false">Calls.ReportSyntheticMedia.All-Application-2026-07-25</guid></item>
+<item><title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork</link><description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description><pubDate>Sat, 25 Jul 2026 06:43:00 GMT</pubDate><guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork-2026-07-25</guid></item>
 <item><title>[Application] New Permission: UserAuthMethod-ResourceKey.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.Read.All-Application</link><description>Allows the app to read the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.Read.All-Application-2026-07-17</guid></item>
 <item><title>[DelegatedWork] New Permission: UserAuthMethod-ResourceKey.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and delete the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.ReadWrite.All-DelegatedWork-2026-07-17</guid></item>
 <item><title>[DelegatedWork] New Permission: UserAuthMethod-ResourceKey.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-UserAuthMethod-ResourceKey.Read.All-DelegatedWork</link><description>Allows the app to read the keys associated with the user representing a resource account.</description><pubDate>Fri, 17 Jul 2026 06:43:35 GMT</pubDate><guid isPermaLink="false">UserAuthMethod-ResourceKey.Read.All-DelegatedWork-2026-07-17</guid></item>
@@ -81,9 +79,5 @@
 <item><title>[DelegatedWork] New Permission: CopilotPolicySettings.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.ReadWrite-DelegatedWork</link><description>Allows the app to read and write Copilot policy settings for the organization, on behalf of the signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">CopilotPolicySettings.ReadWrite-DelegatedWork-2026-04-23</guid></item>
 <item><title>[Application] New Permission: TeamworkSection.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.Read.All-Application</link><description>Allows the app to read all users' teamwork sections (folders) for organizing chats and channels in Teams, without a signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">TeamworkSection.Read.All-Application-2026-04-23</guid></item>
 <item><title>[Application] New Permission: CopilotPolicySettings.Read</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.Read-Application</link><description>Allows the app to read Copilot policy settings for the organization, without a signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">CopilotPolicySettings.Read-Application-2026-04-23</guid></item>
-<item><title>[Application] New Permission: AgentIdentity.UpdateSponsors.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentity.UpdateSponsors.All-Application</link><description>Allows the app to add or remove sponsors for agent identities without a signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">AgentIdentity.UpdateSponsors.All-Application-2026-04-23</guid></item>
-<item><title>[Application] New Permission: AgentIdentityBlueprint.UpdateSponsors.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentIdentityBlueprint.UpdateSponsors.All-Application</link><description>Allows the app to add or remove sponsors for agent identity blueprint without a signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">AgentIdentityBlueprint.UpdateSponsors.All-Application-2026-04-23</guid></item>
-<item><title>[DelegatedWork] New Permission: TeamworkSection.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkSection.ReadWrite-DelegatedWork</link><description>Allows the app to read and write the signed-in user's teamwork sections (folders) for organizing chats and channels in Teams.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">TeamworkSection.ReadWrite-DelegatedWork-2026-04-23</guid></item>
-<item><title>[DelegatedWork] New Permission: CopilotPolicySettings.Read</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotPolicySettings.Read-DelegatedWork</link><description>Allows the app to read Copilot policy settings for the organization, on behalf of the signed-in user.</description><pubDate>Thu, 23 Apr 2026 07:21:03 GMT</pubDate><guid isPermaLink="false">CopilotPolicySettings.Read-DelegatedWork-2026-04-23</guid></item>
     </channel>
 </rss>

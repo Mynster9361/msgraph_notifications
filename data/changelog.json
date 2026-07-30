@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-07-30",
+    "scheme": "DelegatedWork",
+    "name": "CaseManagement.Read.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read all cases, relations, tasks, attachments and activities, on behalf of the signed-in user."
+  },
+  {
+    "date": "2026-07-30",
+    "scheme": "Application",
+    "name": "CaseManagement.Read.All",
+    "type": "New Application Scope",
+    "description": "Allows the app to read all cases, relations, tasks, attachments and activities, without a signed-in user."
+  },
+  {
+    "date": "2026-07-30",
+    "scheme": "Application",
+    "name": "CaseManagement.ReadWrite.All",
+    "type": "New Application Scope",
+    "description": "Allows the app to read and write to all cases, relations, tasks, attachments and activities, without a signed-in user."
+  },
+  {
+    "date": "2026-07-30",
+    "scheme": "DelegatedWork",
+    "name": "CaseManagement.ReadWrite.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read and write to all cases, relations, tasks, attachments and activities, on behalf of the signed-in user."
+  },
+  {
     "type": "New Application Scope",
     "description": "Allows the app to read, create, update and delete identity lifecycle policies for agent identities in the organization, without a signed-in user.",
     "name": "LifecyclePolicies-AgentId.ReadWrite.All",
