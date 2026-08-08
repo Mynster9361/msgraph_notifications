@@ -1,5 +1,61 @@
 [
   {
+    "type": "New Application Scope",
+    "description": "Allows the app to read all basic group memberships in the organization, without signed-in user.",
+    "date": "2026-08-08",
+    "name": "GroupMember.ReadBasic.All",
+    "scheme": "Application"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to create, read and update groups' preferred data location property that you have access to in the organization, on behalf of the signed-in user.",
+    "date": "2026-08-08",
+    "name": "Group-PreferredDataLocation.ReadWrite.All",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read basic group memberships that you have access to in the organization, on behalf of the signed-in user.",
+    "date": "2026-08-08",
+    "name": "GroupMember.ReadBasic.All",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New Application Scope",
+    "description": "Allows the app to create, read and update all groups' preferred data location property, without a signed-in user.",
+    "date": "2026-08-08",
+    "name": "Group-PreferredDataLocation.ReadWrite.All",
+    "scheme": "Application"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read all group basic properties on behalf of the signed-in user.",
+    "date": "2026-08-08",
+    "name": "Group.ReadBasic.All",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read, write, and delete the user's mailbox items, on behalf of the signed-in user.",
+    "date": "2026-08-08",
+    "name": "MailboxItem.ReadWrite",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "type": "New Application Scope",
+    "description": "Allows the app to read, write, and delete all users' mailbox items, without a signed-in user.",
+    "date": "2026-08-08",
+    "name": "MailboxItem.ReadWrite.All",
+    "scheme": "Application"
+  },
+  {
+    "type": "New Application Scope",
+    "description": "Allows the app to read all group basic properties. All of these operations can be performed by the app without a signed-in user.",
+    "date": "2026-08-08",
+    "name": "Group.ReadBasic.All",
+    "scheme": "Application"
+  },
+  {
     "date": "2026-07-30",
     "scheme": "DelegatedWork",
     "name": "CaseManagement.Read.All",
