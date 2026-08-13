@@ -4,63 +4,43 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Sat, 08 Aug 2026 06:31:55 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 Aug 2026 07:09:08 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: GroupMember.ReadBasic.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-GroupMember.ReadBasic.All-Application</link>
-            <description>Allows the app to read all basic group memberships in the organization, without signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">GroupMember.ReadBasic.All-Application-2026-08-08</guid>
+            <title>[DelegatedWork] New Permission: Zone.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Zone.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read, create, update, and delete Zones and manage their environments in Microsoft Defender for Cloud for the signed-in user.</description>
+            <pubDate>Thu, 13 Aug 2026 07:09:08 GMT</pubDate>
+            <guid isPermaLink="false">Zone.ReadWrite.All-DelegatedWork-2026-08-13</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: Group-PreferredDataLocation.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-PreferredDataLocation.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to create, read and update groups&apos; preferred data location property that you have access to in the organization, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">Group-PreferredDataLocation.ReadWrite.All-DelegatedWork-2026-08-08</guid>
+            <title>[Application] New Permission: Zone.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Zone.ReadWrite.All-Application</link>
+            <description>Allows the app to read, create, update, and delete Zones and manage their environments in Microsoft Defender for Cloud without a signed-in user.</description>
+            <pubDate>Thu, 13 Aug 2026 07:09:08 GMT</pubDate>
+            <guid isPermaLink="false">Zone.ReadWrite.All-Application-2026-08-13</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: GroupMember.ReadBasic.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-GroupMember.ReadBasic.All-DelegatedWork</link>
-            <description>Allows the app to read basic group memberships that you have access to in the organization, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">GroupMember.ReadBasic.All-DelegatedWork-2026-08-08</guid>
+            <title>[Application] New Permission: Zone.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Zone.Read.All-Application</link>
+            <description>Allows the app to read all Zones and their environments in Microsoft Defender for Cloud without a signed-in user.</description>
+            <pubDate>Thu, 13 Aug 2026 07:09:08 GMT</pubDate>
+            <guid isPermaLink="false">Zone.Read.All-Application-2026-08-13</guid>
         </item>
         <item>
-            <title>[Application] New Permission: Group-PreferredDataLocation.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-PreferredDataLocation.ReadWrite.All-Application</link>
-            <description>Allows the app to create, read and update all groups&apos; preferred data location property, without a signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">Group-PreferredDataLocation.ReadWrite.All-Application-2026-08-08</guid>
+            <title>[DelegatedWork] New Permission: Zone.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Zone.Read.All-DelegatedWork</link>
+            <description>Allows the app to read all Zones and their environments in Microsoft Defender for Cloud for the signed-in user.</description>
+            <pubDate>Thu, 13 Aug 2026 07:09:08 GMT</pubDate>
+            <guid isPermaLink="false">Zone.Read.All-DelegatedWork-2026-08-13</guid>
         </item>
-        <item>
-            <title>[DelegatedWork] New Permission: Group.ReadBasic.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Group.ReadBasic.All-DelegatedWork</link>
-            <description>Allows the app to read all group basic properties on behalf of the signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">Group.ReadBasic.All-DelegatedWork-2026-08-08</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: MailboxItem.ReadWrite</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-MailboxItem.ReadWrite-DelegatedWork</link>
-            <description>Allows the app to read, write, and delete the user&apos;s mailbox items, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">MailboxItem.ReadWrite-DelegatedWork-2026-08-08</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: MailboxItem.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-MailboxItem.ReadWrite.All-Application</link>
-            <description>Allows the app to read, write, and delete all users&apos; mailbox items, without a signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">MailboxItem.ReadWrite.All-Application-2026-08-08</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: Group.ReadBasic.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Group.ReadBasic.All-Application</link>
-            <description>Allows the app to read all group basic properties. All of these operations can be performed by the app without a signed-in user.</description>
-            <pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate>
-            <guid isPermaLink="false">Group.ReadBasic.All-Application-2026-08-08</guid>
-        </item>
+<item><title>[Application] New Permission: GroupMember.ReadBasic.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-GroupMember.ReadBasic.All-Application</link><description>Allows the app to read all basic group memberships in the organization, without signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">GroupMember.ReadBasic.All-Application-2026-08-08</guid></item>
+<item><title>[DelegatedWork] New Permission: Group-PreferredDataLocation.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-PreferredDataLocation.ReadWrite.All-DelegatedWork</link><description>Allows the app to create, read and update groups' preferred data location property that you have access to in the organization, on behalf of the signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">Group-PreferredDataLocation.ReadWrite.All-DelegatedWork-2026-08-08</guid></item>
+<item><title>[DelegatedWork] New Permission: GroupMember.ReadBasic.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-GroupMember.ReadBasic.All-DelegatedWork</link><description>Allows the app to read basic group memberships that you have access to in the organization, on behalf of the signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">GroupMember.ReadBasic.All-DelegatedWork-2026-08-08</guid></item>
+<item><title>[Application] New Permission: Group-PreferredDataLocation.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-PreferredDataLocation.ReadWrite.All-Application</link><description>Allows the app to create, read and update all groups' preferred data location property, without a signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">Group-PreferredDataLocation.ReadWrite.All-Application-2026-08-08</guid></item>
+<item><title>[DelegatedWork] New Permission: Group.ReadBasic.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Group.ReadBasic.All-DelegatedWork</link><description>Allows the app to read all group basic properties on behalf of the signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">Group.ReadBasic.All-DelegatedWork-2026-08-08</guid></item>
+<item><title>[DelegatedWork] New Permission: MailboxItem.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-MailboxItem.ReadWrite-DelegatedWork</link><description>Allows the app to read, write, and delete the user's mailbox items, on behalf of the signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">MailboxItem.ReadWrite-DelegatedWork-2026-08-08</guid></item>
+<item><title>[Application] New Permission: MailboxItem.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-MailboxItem.ReadWrite.All-Application</link><description>Allows the app to read, write, and delete all users' mailbox items, without a signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">MailboxItem.ReadWrite.All-Application-2026-08-08</guid></item>
+<item><title>[Application] New Permission: Group.ReadBasic.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Group.ReadBasic.All-Application</link><description>Allows the app to read all group basic properties. All of these operations can be performed by the app without a signed-in user.</description><pubDate>Sat, 08 Aug 2026 06:31:55 GMT</pubDate><guid isPermaLink="false">Group.ReadBasic.All-Application-2026-08-08</guid></item>
 <item><title>[DelegatedWork] New Permission: CaseManagement.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.Read.All-DelegatedWork</link><description>Allows the app to read all cases, relations, tasks, attachments and activities, on behalf of the signed-in user.</description><pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate><guid isPermaLink="false">CaseManagement.Read.All-DelegatedWork-2026-07-30</guid></item>
 <item><title>[Application] New Permission: CaseManagement.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.Read.All-Application</link><description>Allows the app to read all cases, relations, tasks, attachments and activities, without a signed-in user.</description><pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate><guid isPermaLink="false">CaseManagement.Read.All-Application-2026-07-30</guid></item>
 <item><title>[Application] New Permission: CaseManagement.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.ReadWrite.All-Application</link><description>Allows the app to read and write to all cases, relations, tasks, attachments and activities, without a signed-in user.</description><pubDate>Thu, 30 Jul 2026 06:48:48 GMT</pubDate><guid isPermaLink="false">CaseManagement.ReadWrite.All-Application-2026-07-30</guid></item>
@@ -99,9 +79,5 @@
 <item><title>[Application] New Permission: Group-NestingSupport.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-NestingSupport.ReadWrite.All-Application</link><description>Allows the app to read and write groups' disableNesting property without a signed-in user.</description><pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate><guid isPermaLink="false">Group-NestingSupport.ReadWrite.All-Application-2026-05-16</guid></item>
 <item><title>[DelegatedWork] New Permission: Group-NestingSupport.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Group-NestingSupport.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write groups' disableNesting property on behalf of the signed-in user.</description><pubDate>Sat, 16 May 2026 07:48:25 GMT</pubDate><guid isPermaLink="false">Group-NestingSupport.ReadWrite.All-DelegatedWork-2026-05-16</guid></item>
 <item><title>[Application] New Permission: AgentRegistration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.Read.All-Application</link><description>Allows the app to read agent registration information without a signed-in user.</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.Read.All-Application-2026-04-30</guid></item>
-<item><title>[DelegatedWork] New Permission: AgentRegistration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.ReadWrite.All-DelegatedWork</link><description>Allows the user to read and write all agent registration information</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.ReadWrite.All-DelegatedWork-2026-04-30</guid></item>
-<item><title>[Application] New Permission: AgentRegistration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.ReadWrite.All-Application</link><description>Allows the app to read and write agent registration information without a signed-in user.</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.ReadWrite.All-Application-2026-04-30</guid></item>
-<item><title>[DelegatedWork] New Permission: AgentRegistration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AgentRegistration.Read.All-DelegatedWork</link><description>Allows the user to read all agent registration information</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">AgentRegistration.Read.All-DelegatedWork-2026-04-30</guid></item>
-<item><title>[DelegatedWork] New Permission: PrintAlertSettings.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-PrintAlertSettings.ReadWrite.All-DelegatedWork</link><description>Allows the application to read and write tenant-wide alert settings on behalf of the signed-in user.</description><pubDate>Thu, 30 Apr 2026 08:01:41 GMT</pubDate><guid isPermaLink="false">PrintAlertSettings.ReadWrite.All-DelegatedWork-2026-04-30</guid></item>
     </channel>
 </rss>

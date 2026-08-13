@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-08-13",
+    "name": "Zone.ReadWrite.All",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read, create, update, and delete Zones and manage their environments in Microsoft Defender for Cloud for the signed-in user.",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "date": "2026-08-13",
+    "name": "Zone.ReadWrite.All",
+    "scheme": "Application",
+    "description": "Allows the app to read, create, update, and delete Zones and manage their environments in Microsoft Defender for Cloud without a signed-in user.",
+    "type": "New Application Scope"
+  },
+  {
+    "date": "2026-08-13",
+    "name": "Zone.Read.All",
+    "scheme": "Application",
+    "description": "Allows the app to read all Zones and their environments in Microsoft Defender for Cloud without a signed-in user.",
+    "type": "New Application Scope"
+  },
+  {
+    "date": "2026-08-13",
+    "name": "Zone.Read.All",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read all Zones and their environments in Microsoft Defender for Cloud for the signed-in user.",
+    "type": "New DelegatedWork Scope"
+  },
+  {
     "type": "New Application Scope",
     "description": "Allows the app to read all basic group memberships in the organization, without signed-in user.",
     "date": "2026-08-08",
