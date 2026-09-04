@@ -1,5 +1,54 @@
 [
   {
+    "date": "2026-09-04",
+    "name": "Device-CloudLicensing.Read.All",
+    "type": "New Application Scope",
+    "description": "Allows the app to read all Cloud Licensing resources for devices, including allotments, assignments and usageRights.",
+    "scheme": "Application"
+  },
+  {
+    "date": "2026-09-04",
+    "name": "LockboxSettings.ReadWrite.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read and modify lockbox configuration settings on behalf of the signed-in user",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "date": "2026-09-04",
+    "name": "LockboxRequest.Read.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read lockbox requests on behalf of the signed-in user",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "date": "2026-09-04",
+    "name": "Device-CloudLicensing.Read.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read all Cloud Licensing resources for devices-including allotments, assignments, and usageRights-on behalf of the signed-in user.",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "date": "2026-09-04",
+    "name": "LockboxRequest.ReadWrite.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read and manage lockbox requests on behalf of the signed-in user",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "date": "2026-09-04",
+    "name": "LockboxSettings.Read.All",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read lockbox configuration settings on behalf of the signed-in user",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "date": "2026-09-04",
+    "name": "Device-CloudLicensing.Read",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the app to read Cloud Licensing resources for devices owned by the signed-in user-including allotments, assignments and usageRights-on their behalf.",
+    "scheme": "DelegatedWork"
+  },
+  {
     "date": "2026-08-13",
     "name": "Zone.ReadWrite.All",
     "scheme": "DelegatedWork",
