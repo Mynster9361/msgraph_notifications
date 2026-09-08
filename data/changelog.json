@@ -1,5 +1,33 @@
 [
   {
+    "description": "Allows the app to read and write your tenant's all cross tenant content migration job details without a signed-in user.",
+    "scheme": "Application",
+    "name": "CrossTenantContentMigration.ReadWrite.All",
+    "date": "2026-09-08",
+    "type": "New Application Scope"
+  },
+  {
+    "description": "Allows the app to read and write your tenant's all cross tenant content migration job details on behalf of the signed-in user.",
+    "scheme": "DelegatedWork",
+    "name": "CrossTenantContentMigration.ReadWrite.All",
+    "date": "2026-09-08",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "description": "Allows the app to read your tenant's all cross tenant content migration job details without a signed-in user.",
+    "scheme": "Application",
+    "name": "CrossTenantContentMigration.Read.All",
+    "date": "2026-09-08",
+    "type": "New Application Scope"
+  },
+  {
+    "description": "Allows the app to read your tenant's all cross tenant content migration job details on behalf of the signed-in user.",
+    "scheme": "DelegatedWork",
+    "name": "CrossTenantContentMigration.Read.All",
+    "date": "2026-09-08",
+    "type": "New DelegatedWork Scope"
+  },
+  {
     "date": "2026-09-04",
     "name": "Device-CloudLicensing.Read.All",
     "type": "New Application Scope",
