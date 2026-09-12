@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-12",
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "name": "Calendars.Read.All",
+    "description": "Allows the app to read work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user."
+  },
+  {
+    "date": "2026-09-12",
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "name": "Calendars.ReadWrite.All",
+    "description": "Allows the app to read, create, update, and delete work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user."
+  },
+  {
     "description": "Allows the app to read and write your tenant's all cross tenant content migration job details without a signed-in user.",
     "scheme": "Application",
     "name": "CrossTenantContentMigration.ReadWrite.All",

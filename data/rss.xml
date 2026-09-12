@@ -4,35 +4,25 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Tue, 08 Sep 2026 10:13:42 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 12 Sep 2026 09:43:30 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: CrossTenantContentMigration.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.ReadWrite.All-Application</link>
-            <description>Allows the app to read and write your tenant&apos;s all cross tenant content migration job details without a signed-in user.</description>
-            <pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate>
-            <guid isPermaLink="false">CrossTenantContentMigration.ReadWrite.All-Application-2026-09-08</guid>
+            <title>[Application] New Permission: Calendars.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.Read.All-Application</link>
+            <description>Allows the app to read work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 12 Sep 2026 09:43:30 GMT</pubDate>
+            <guid isPermaLink="false">Calendars.Read.All-Application-2026-09-12</guid>
         </item>
         <item>
-            <title>[DelegatedWork] New Permission: CrossTenantContentMigration.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to read and write your tenant&apos;s all cross tenant content migration job details on behalf of the signed-in user.</description>
-            <pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate>
-            <guid isPermaLink="false">CrossTenantContentMigration.ReadWrite.All-DelegatedWork-2026-09-08</guid>
+            <title>[Application] New Permission: Calendars.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.ReadWrite.All-Application</link>
+            <description>Allows the app to read, create, update, and delete work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 12 Sep 2026 09:43:30 GMT</pubDate>
+            <guid isPermaLink="false">Calendars.ReadWrite.All-Application-2026-09-12</guid>
         </item>
-        <item>
-            <title>[Application] New Permission: CrossTenantContentMigration.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.Read.All-Application</link>
-            <description>Allows the app to read your tenant&apos;s all cross tenant content migration job details without a signed-in user.</description>
-            <pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate>
-            <guid isPermaLink="false">CrossTenantContentMigration.Read.All-Application-2026-09-08</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: CrossTenantContentMigration.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.Read.All-DelegatedWork</link>
-            <description>Allows the app to read your tenant&apos;s all cross tenant content migration job details on behalf of the signed-in user.</description>
-            <pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate>
-            <guid isPermaLink="false">CrossTenantContentMigration.Read.All-DelegatedWork-2026-09-08</guid>
-        </item>
+<item><title>[Application] New Permission: CrossTenantContentMigration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.ReadWrite.All-Application</link><description>Allows the app to read and write your tenant's all cross tenant content migration job details without a signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.ReadWrite.All-Application-2026-09-08</guid></item>
+<item><title>[DelegatedWork] New Permission: CrossTenantContentMigration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write your tenant's all cross tenant content migration job details on behalf of the signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.ReadWrite.All-DelegatedWork-2026-09-08</guid></item>
+<item><title>[Application] New Permission: CrossTenantContentMigration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.Read.All-Application</link><description>Allows the app to read your tenant's all cross tenant content migration job details without a signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.Read.All-Application-2026-09-08</guid></item>
+<item><title>[DelegatedWork] New Permission: CrossTenantContentMigration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.Read.All-DelegatedWork</link><description>Allows the app to read your tenant's all cross tenant content migration job details on behalf of the signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.Read.All-DelegatedWork-2026-09-08</guid></item>
 <item><title>[Application] New Permission: Device-CloudLicensing.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Device-CloudLicensing.Read.All-Application</link><description>Allows the app to read all Cloud Licensing resources for devices, including allotments, assignments and usageRights.</description><pubDate>Fri, 04 Sep 2026 10:06:20 GMT</pubDate><guid isPermaLink="false">Device-CloudLicensing.Read.All-Application-2026-09-04</guid></item>
 <item><title>[DelegatedWork] New Permission: LockboxSettings.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-LockboxSettings.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and modify lockbox configuration settings on behalf of the signed-in user</description><pubDate>Fri, 04 Sep 2026 10:06:20 GMT</pubDate><guid isPermaLink="false">LockboxSettings.ReadWrite.All-DelegatedWork-2026-09-04</guid></item>
 <item><title>[DelegatedWork] New Permission: LockboxRequest.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-LockboxRequest.Read.All-DelegatedWork</link><description>Allows the app to read lockbox requests on behalf of the signed-in user</description><pubDate>Fri, 04 Sep 2026 10:06:20 GMT</pubDate><guid isPermaLink="false">LockboxRequest.Read.All-DelegatedWork-2026-09-04</guid></item>
@@ -77,7 +67,5 @@
 <item><title>[Application] New Permission: SecurityIdentitiesMigration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIdentitiesMigration.Read.All-Application</link><description>Allows the app to read all the identity security sensor migration information without a signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">SecurityIdentitiesMigration.Read.All-Application-2026-06-03</guid></item>
 <item><title>[DelegatedWork] New Permission: IdentityNotifications.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-IdentityNotifications.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write identity notification settings, customize email templates, and send test emails on behalf of the signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">IdentityNotifications.ReadWrite.All-DelegatedWork-2026-06-03</guid></item>
 <item><title>[Application] New Permission: SecurityIdentitiesMigration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIdentitiesMigration.ReadWrite.All-Application</link><description>Allows the app to read and write identity security sensor migration without a signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">SecurityIdentitiesMigration.ReadWrite.All-Application-2026-06-03</guid></item>
-<item><title>[DelegatedWork] New Permission: IdentityNotifications.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-IdentityNotifications.Read.All-DelegatedWork</link><description>Allows the app to read identity notification settings, email templates, and prerequisites on behalf of the signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">IdentityNotifications.Read.All-DelegatedWork-2026-06-03</guid></item>
-<item><title>[DelegatedWork] New Permission: Policy.ReadWrite.FedTokenValidation</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.ReadWrite.FedTokenValidation-DelegatedWork</link><description>Allows the app to read and write your organization's federated token validation policy on behalf of the signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">Policy.ReadWrite.FedTokenValidation-DelegatedWork-2026-06-03</guid></item>
     </channel>
 </rss>
