@@ -4,21 +4,72 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Sat, 12 Sep 2026 09:43:30 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 26 Sep 2026 10:27:26 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: Calendars.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.Read.All-Application</link>
-            <description>Allows the app to read work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user.</description>
-            <pubDate>Sat, 12 Sep 2026 09:43:30 GMT</pubDate>
-            <guid isPermaLink="false">Calendars.Read.All-Application-2026-09-12</guid>
+            <title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-DelegatedWork</link>
+            <description>Allows the app to read identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-DelegatedWork-2026-09-26</guid>
         </item>
         <item>
-            <title>[Application] New Permission: Calendars.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.ReadWrite.All-Application</link>
-            <description>Allows the app to read, create, update, and delete work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user.</description>
-            <pubDate>Sat, 12 Sep 2026 09:43:30 GMT</pubDate>
-            <guid isPermaLink="false">Calendars.ReadWrite.All-Application-2026-09-12</guid>
+            <title>[Application] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-Application</link>
+            <description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-Application-2026-09-26</guid>
         </item>
+        <item>
+            <title>[DelegatedWork] New Permission: LifecyclePolicies-AgentId.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read, create, update and delete identity lifecycle policies for agent identities that the signed-in user has access to in the organization.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.ReadWrite.All-DelegatedWork-2026-09-26</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: LifecyclePolicies-Guests.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-Guests.Read.All-Application</link>
+            <description>Allows the app to read identity lifecycle policies for external guests in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-Guests.Read.All-Application-2026-09-26</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: LifecyclePolicies-Guests.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-Guests.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to create, update, and delete identity lifecycle policies for external guests on behalf of the signed-in user.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-Guests.ReadWrite.All-DelegatedWork-2026-09-26</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: LifecyclePolicies-Guests.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-Guests.Read.All-DelegatedWork</link>
+            <description>Allows the app to read identity lifecycle policies for external guests on behalf of the signed-in user.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-Guests.Read.All-DelegatedWork-2026-09-26</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: LifecyclePolicies-Guests.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-Guests.ReadWrite.All-Application</link>
+            <description>Allows the app to create, update, and delete identity lifecycle policies for external guests in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-Guests.ReadWrite.All-Application-2026-09-26</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: IdentityRiskEvent.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-IdentityRiskEvent.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to read and update identity risk event information for all users in your organization on behalf of the signed-in user. Update operations include confirming risk event detections.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">IdentityRiskEvent.ReadWrite.All-DelegatedWork-2026-09-26</guid>
+        </item>
+        <item>
+            <title>[Application] New Permission: LifecyclePolicies-AgentId.Read.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-LifecyclePolicies-AgentId.Read.All-Application</link>
+            <description>Allows the app to read identity lifecycle policies for agent identities in the organization, without a signed-in user.</description>
+            <pubDate>Sat, 26 Sep 2026 10:27:26 GMT</pubDate>
+            <guid isPermaLink="false">LifecyclePolicies-AgentId.Read.All-Application-2026-09-26</guid>
+        </item>
+<item><title>[Application] New Permission: Calendars.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.Read.All-Application</link><description>Allows the app to read work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user.</description><pubDate>Sat, 12 Sep 2026 09:43:30 GMT</pubDate><guid isPermaLink="false">Calendars.Read.All-Application-2026-09-12</guid></item>
+<item><title>[Application] New Permission: Calendars.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Calendars.ReadWrite.All-Application</link><description>Allows the app to read, create, update, and delete work hours and locations settings, recurrences, and occurrences for all users in the organization, without a signed-in user.</description><pubDate>Sat, 12 Sep 2026 09:43:30 GMT</pubDate><guid isPermaLink="false">Calendars.ReadWrite.All-Application-2026-09-12</guid></item>
 <item><title>[Application] New Permission: CrossTenantContentMigration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.ReadWrite.All-Application</link><description>Allows the app to read and write your tenant's all cross tenant content migration job details without a signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.ReadWrite.All-Application-2026-09-08</guid></item>
 <item><title>[DelegatedWork] New Permission: CrossTenantContentMigration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write your tenant's all cross tenant content migration job details on behalf of the signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.ReadWrite.All-DelegatedWork-2026-09-08</guid></item>
 <item><title>[Application] New Permission: CrossTenantContentMigration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantContentMigration.Read.All-Application</link><description>Allows the app to read your tenant's all cross tenant content migration job details without a signed-in user.</description><pubDate>Tue, 08 Sep 2026 10:13:42 GMT</pubDate><guid isPermaLink="false">CrossTenantContentMigration.Read.All-Application-2026-09-08</guid></item>
@@ -58,14 +109,5 @@
 <item><title>[DelegatedWork] New Permission: AppRegistration.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AppRegistration.Create-DelegatedWork</link><description>Allows the app to create new registrations for applications on behalf of the signed-in user.</description><pubDate>Tue, 14 Jul 2026 06:40:06 GMT</pubDate><guid isPermaLink="false">AppRegistration.Create-DelegatedWork-2026-07-14</guid></item>
 <item><title>[Application] New Permission: AppRegistration.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AppRegistration.Create-Application</link><description>Allows the app to create new registrations for applications without a signed-in user.</description><pubDate>Tue, 14 Jul 2026 06:40:06 GMT</pubDate><guid isPermaLink="false">AppRegistration.Create-Application-2026-07-14</guid></item>
 <item><title>[Application] New Permission: SecurityAlert.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-Application</link><description>Allows the app to create security alerts in Microsoft 365 Defender, without a signed-in user.</description><pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate><guid isPermaLink="false">SecurityAlert.Create.All-Application-2026-07-01</guid></item>
-<item><title>[DelegatedWork] New Permission: SecurityAlert.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityAlert.Create.All-DelegatedWork</link><description>Allows the app to create security alerts in Microsoft 365 Defender, on behalf of the signed-in user.</description><pubDate>Wed, 01 Jul 2026 07:23:10 GMT</pubDate><guid isPermaLink="false">SecurityAlert.Create.All-DelegatedWork-2026-07-01</guid></item>
-<item><title>[DelegatedWork] New Permission: TeamworkCustomEmoji.Create</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkCustomEmoji.Create-DelegatedWork</link><description>Create custom emoji on behalf of the signed-in user.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">TeamworkCustomEmoji.Create-DelegatedWork-2026-06-23</guid></item>
-<item><title>[Application] New Permission: TeamworkCustomEmoji.Create.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkCustomEmoji.Create.All-Application</link><description>Create custom emoji without a signed-in user.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">TeamworkCustomEmoji.Create.All-Application-2026-06-23</guid></item>
-<item><title>[DelegatedWork] New Permission: EntitlementMgmt-SubjectAccess.ReadWrite</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-EntitlementMgmt-SubjectAccess.ReadWrite-DelegatedWork</link><description>Allows the app to manage self-service entitlement management resources on behalf of the signed-in user. This includes operations such as requesting access and approving access of others.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">EntitlementMgmt-SubjectAccess.ReadWrite-DelegatedWork-2026-06-23</guid></item>
-<item><title>[DelegatedWork] New Permission: TeamworkCustomEmoji.Read</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkCustomEmoji.Read-DelegatedWork</link><description>Read custom emoji on behalf of the signed-in user.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">TeamworkCustomEmoji.Read-DelegatedWork-2026-06-23</guid></item>
-<item><title>[Application] New Permission: TeamworkCustomEmoji.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-TeamworkCustomEmoji.Read.All-Application</link><description>Read custom emoji without a signed-in user.</description><pubDate>Tue, 23 Jun 2026 07:07:56 GMT</pubDate><guid isPermaLink="false">TeamworkCustomEmoji.Read.All-Application-2026-06-23</guid></item>
-<item><title>[Application] New Permission: SecurityIdentitiesMigration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIdentitiesMigration.Read.All-Application</link><description>Allows the app to read all the identity security sensor migration information without a signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">SecurityIdentitiesMigration.Read.All-Application-2026-06-03</guid></item>
-<item><title>[DelegatedWork] New Permission: IdentityNotifications.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-IdentityNotifications.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write identity notification settings, customize email templates, and send test emails on behalf of the signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">IdentityNotifications.ReadWrite.All-DelegatedWork-2026-06-03</guid></item>
-<item><title>[Application] New Permission: SecurityIdentitiesMigration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-SecurityIdentitiesMigration.ReadWrite.All-Application</link><description>Allows the app to read and write identity security sensor migration without a signed-in user.</description><pubDate>Wed, 03 Jun 2026 10:40:57 GMT</pubDate><guid isPermaLink="false">SecurityIdentitiesMigration.ReadWrite.All-Application-2026-06-03</guid></item>
     </channel>
 </rss>
