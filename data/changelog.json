@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-09-29",
+    "scheme": "DelegatedWork",
+    "name": "Device.ProvisionForVDI",
+    "type": "New DelegatedWork Scope",
+    "description": "Allows the onboarded VDI app to provision a device on behalf of a signed-in user."
+  },
+  {
     "type": "New DelegatedWork Scope",
     "description": "Allows the app to read identity lifecycle policies for agent identities that the signed-in user has access to in the organization.",
     "name": "LifecyclePolicies-AgentId.Read.All",
