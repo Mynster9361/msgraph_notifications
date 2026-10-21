@@ -1,5 +1,96 @@
 [
   {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "IdentityVerification.Read",
+    "description": "Allows the app to read the signed-in user's identity verification status on their behalf."
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "date": "2026-10-21",
+    "name": "IdentityVerification.Read.All",
+    "description": "Allows the app to read identity verification status and verification events for all users in your organization without a signed-in user."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "HardDeletionSetting.ReadWrite.Enable",
+    "description": "Allows the app to enable hard deletion protection settings on users, applications, groups, and service principals on behalf of the signed-in user. Requires Global Administrator or Backup Administrator role."
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "date": "2026-10-21",
+    "name": "IdentityVerification.ReadWrite.All",
+    "description": "Allows the app to read and update identity verification status and verification events for all users in your organization without a signed-in user."
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "date": "2026-10-21",
+    "name": "PrivilegedAccess-CustomExt.ReadWrite.All",
+    "description": "Allows the app to read and write Privileged Access (PIM) custom extensions for your organization, without a signed-in user."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "PrivilegedAccess-CustomExt.ReadWrite.All",
+    "description": "Allows the app to read and write Privileged Access (PIM) custom extensions for your organization, without a signed-in user."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "PrivilegedAccess-CustomExt.Read.All",
+    "description": "Allows the app to read Privileged Access (PIM) custom extensions for your organization, without a signed-in user."
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "date": "2026-10-21",
+    "name": "PrivilegedAccess-CustomExt.Read.All",
+    "description": "Allows the app to read Privileged Access (PIM) custom extensions for your organization, without a signed-in user."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "IdentityVerification.Read.All",
+    "description": "Allows the app to read identity verification status and verification events for users in your organization on behalf of the signed-in user."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "IdentityVerification.ReadWrite.All",
+    "description": "Allows the app to read and update identity verification status and verification events for users in your organization on behalf of the signed-in user."
+  },
+  {
+    "type": "New DelegatedWork Scope",
+    "scheme": "DelegatedWork",
+    "date": "2026-10-21",
+    "name": "CredentialProvenance.ReadWrite.All",
+    "description": "Allows the app to read and write identity-verification provenance (Chain of Trust) on user credentials on behalf of the signed-in user."
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "date": "2026-10-21",
+    "name": "CredentialProvenance.ReadWrite.All",
+    "description": "Allows the app to read and write identity-verification provenance (Chain of Trust) on user credentials without a signed-in user."
+  },
+  {
+    "type": "New Application Scope",
+    "scheme": "Application",
+    "date": "2026-10-21",
+    "name": "HardDeletionSetting.ReadWrite.Enable",
+    "description": "Allows the app to enable hard deletion protection settings on users, applications, groups, and service principals without a signed-in user. Requires Global Administrator or Backup Administrator role."
+  },
+  {
     "date": "2026-09-29",
     "scheme": "DelegatedWork",
     "name": "Device.ProvisionForVDI",
