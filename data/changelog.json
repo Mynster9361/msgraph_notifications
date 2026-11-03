@@ -1,5 +1,208 @@
 [
   {
+    "name": "CopilotCostManagement.Read.All",
+    "description": "Allows the app to read all organizational Copilot cost management data on behalf of the signed-in user, including any user's credit balance, per-user rankings and raw usage grouped by service or activity session, native session identifiers when available, first and last activity timestamps, usage by security group, spending policies, their configuration and assignments, and the identities of policy creators, modifiers, and alert recipients. This is the broadest Copilot cost management read permission.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "Perception.Read.All",
+    "description": "Allows the app to read Agentic Security playbook definitions, sessions, agent runs, inputs, outputs and messages on behalf of the signed-in user, subject to the user's access.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CaseManagement.ConfigManage.All",
+    "description": "Allows the app to create, read, update, and delete case management configuration, such as SLA policies, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-CreditReq.ReadWrite.All",
+    "description": "Allows the app to read, approve, and reject credit requests in the organization, on behalf of the signed-in user. Approving a request records the decision but does not itself assign credits.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CopilotCostManagement-Policy.Read.All",
+    "description": "Allows the app to read Copilot spending policies and their configuration on behalf of the signed-in user, including budget limits and alert thresholds. This also exposes the identities of the users who created and last modified each policy and of the users who receive its alert notifications.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CrossTenantIdentityMapping.ReadWrite.All",
+    "description": "Allows the app to read and write your tenant's cross tenant identity mapping job details as itself, without a signed-in user. Used by authorized services that integrate with cross tenant identity mapping.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-Policy.ReadWrite.All",
+    "description": "Allows the app to read, create, update, and delete Copilot spending policies on behalf of the signed-in user. It can set the initial audience, read and change alert recipients, and select a billing method. New or changed policies may take effect immediately and restrict user spending. The app can also see who created and last modified each policy.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CopilotCostManagement-CreditReq.Read.All",
+    "description": "Allows the app to read credit requests submitted in the organization, on behalf of the signed-in user. This exposes request details and the identities associated with each request.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "Perception.Manage.All",
+    "description": "Allows the app to read Agentic Security resources, create sessions and request cancellation without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-UserData.Read.All",
+    "description": "Allows the app to read identity-attributed Copilot cost management data for the organization on behalf of the signed-in user, including any named user's Copilot credit balance, per-user consumption rankings, usage aggregated by security group, and raw per-user consumption grouped by service or activity session. This exposes users' consumption, group identifiers, native session identifiers when available, and first and last activity timestamps.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CopilotCostManagement-Assignment.ReadWrite.All",
+    "description": "Allows the app to read and change which users and security groups each Copilot spending policy applies to, without a signed-in user. Adding or removing an assignment immediately changes which users are subject to that policy's spending limits, and may grant or remove their ability to consume Copilot credits. This also exposes the identifiers of the security groups targeted by each policy.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "Repository.ReadWrite.All",
+    "description": "Allows the app to read and manage connected security content source-control repositories, including connecting and disconnecting repositories, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-Assignment.ReadWrite.All",
+    "description": "Allows the app to read and change which users and security groups each Copilot spending policy applies to, on behalf of the signed-in user. Adding or removing an assignment immediately changes which users are subject to that policy's spending limits, and may grant or remove their ability to consume Copilot credits. This also exposes the identifiers of the security groups targeted by each policy.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CrossTenantIdentityMapping.Read.All",
+    "description": "Allows the app to read your tenant's cross tenant identity mapping job details as itself, without a signed-in user. Used by authorized services that integrate with cross tenant identity mapping.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CaseManagement.ConfigManage.All",
+    "description": "Allows the app to create, read, update, and delete case management configuration, such as SLA policies, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CrossTenantIdentityMapping.ReadWrite.All",
+    "description": "Allows the app to read and write your tenant's all cross tenant identity mapping job details on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "Repository.Read.All",
+    "description": "Allows the app to read connected security content source-control repositories and their deployment status, and to discover candidate repositories accessible with a supplied provider credential, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CrossTenantIdentityMapping.Read.All",
+    "description": "Allows the app to read your tenant's all cross tenant identity mapping job details on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "MCP.Server.Access",
+    "description": "Allows the app to connect to and call the Microsoft Graph Model Context Protocol (MCP) server on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "Perception.Manage.All",
+    "description": "Allows the app to read Agentic Security resources, create sessions and request cancellation on behalf of the signed-in user, subject to the user's access.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CopilotCostManagement-Policy.Read.All",
+    "description": "Allows the app to read Copilot spending policies and their configuration without a signed-in user, including budget limits and alert thresholds. This also exposes the identities of the users who created and last modified each policy and of the users who receive its alert notifications.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-Assignment.Read.All",
+    "description": "Allows the app to read which users and security groups each Copilot spending policy applies to, without a signed-in user. This exposes the identifiers of the security groups and the users that are targeted by each policy.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-Policy.ReadWrite.All",
+    "description": "Allows the app to read, create, and update Copilot spending policies without a signed-in user. It can manage alert settings and recipients, set the initial audience, and select a billing method. New or changed policies may take effect immediately and restrict user spending. The app can also see who created and last modified each policy. Deleting a spending policy requires a signed-in administrator.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "Perception.Read.All",
+    "description": "Allows the app to read Agentic Security playbook definitions, sessions, agent runs, inputs, outputs and messages without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement-UserData.Read.All",
+    "description": "Reserved for application access to identity-attributed Copilot cost management data. No API paths currently accept this application permission; it does not grant app-only access to user balances, user or group usage reports, or raw per-user service and session details. Those reads currently require delegated permissions.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "CopilotCostManagement.Read.All",
+    "description": "Allows the app to read the organization's Copilot tenant credit balance and aggregate usage reports by service and funding class without a signed-in user. This application permission does not grant access to user or group usage reports, raw per-user service or session details, individual user balances, or spending policies and their assignments.",
+    "type": "New Application Scope",
+    "date": "2026-11-03",
+    "scheme": "Application"
+  },
+  {
+    "name": "Repository.ReadWrite.All",
+    "description": "Allows the app to read and manage connected security content source-control repositories, including connecting and disconnecting repositories, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "Repository.Read.All",
+    "description": "Allows the app to read connected security content source-control repositories and their deployment status, and to discover candidate repositories accessible with a supplied provider credential, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
+    "name": "CopilotCostManagement-Assignment.Read.All",
+    "description": "Allows the app to read which users and security groups each Copilot spending policy applies to, on behalf of the signed-in user. This exposes the identifiers of the security groups and the users that are targeted by each policy.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-03",
+    "scheme": "DelegatedWork"
+  },
+  {
     "type": "New DelegatedWork Scope",
     "scheme": "DelegatedWork",
     "date": "2026-10-21",
