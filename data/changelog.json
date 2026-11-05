@@ -1,5 +1,117 @@
 [
   {
+    "scheme": "DelegatedWork",
+    "name": "AutomationRules.ReadWrite.All",
+    "description": "Allows the app to read and write all security automation rules, on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationPlaybooks.ReadWriteExecutions.All",
+    "description": "Allows the app to create and read all security playbook executions on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationPlaybooks.ReadWrite.All",
+    "description": "Allows the app to list security playbooks and read, create, update, and delete generated playbooks on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationIntegrations.Read.All",
+    "description": "Allows the app to read all security automation integrations without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationIntegrations.Read.All",
+    "description": "Allows the app to read all security automation integrations on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationPlaybooks.ReadWrite.All",
+    "description": "Allows the app to list security playbooks and read, create, update, and delete generated playbooks without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationPlaybooks.ReadExecutions.All",
+    "description": "Allows the app to read all security playbook executions without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationRules.Read.All",
+    "description": "Allows the app to read all security automation rules, without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationPlaybooks.ReadExecutions.All",
+    "description": "Allows the app to read all security playbook executions on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationPlaybooks.ReadWriteExecutions.All",
+    "description": "Allows the app to create and read all security playbook executions without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationRules.Read.All",
+    "description": "Allows the app to read all security automation rules, on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationRules.ReadWrite.All",
+    "description": "Allows the app to read and write all security automation rules, without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationPlaybooks.Read.All",
+    "description": "Allows the app to list security playbooks and read generated playbook content, including scripts, tests, and documentation, on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "name": "AutomationIntegrations.ReadWrite.All",
+    "description": "Allows the app to read, create, update, and delete all security automation integrations on behalf of the signed-in user.",
+    "date": "2026-11-05",
+    "type": "New DelegatedWork Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationPlaybooks.Read.All",
+    "description": "Allows the app to list security playbooks and read generated playbook content, including scripts, tests, and documentation, without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
+    "scheme": "Application",
+    "name": "AutomationIntegrations.ReadWrite.All",
+    "description": "Allows the app to read, create, update, and delete all security automation integrations without a signed-in user.",
+    "date": "2026-11-05",
+    "type": "New Application Scope"
+  },
+  {
     "name": "CopilotCostManagement.Read.All",
     "description": "Allows the app to read all organizational Copilot cost management data on behalf of the signed-in user, including any user's credit balance, per-user rankings and raw usage grouped by service or activity session, native session identifiers when available, first and last activity timestamps, usage by security group, spending policies, their configuration and assignments, and the identities of policy creators, modifiers, and alert recipients. This is the broadest Copilot cost management read permission.",
     "type": "New DelegatedWork Scope",
