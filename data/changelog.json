@@ -1,5 +1,131 @@
 [
   {
+    "scheme": "Application",
+    "description": "Allows the app to read resource policy evaluation impact reports for the organization, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyReport.Read.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyConfiguration.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and write resource policy assignments, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyAssignment.ReadWrite.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read and write the tenant-wide resource policy configuration, including setting the privileged-read app ID used by all fetch() calls during policy evaluation, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyConfiguration.ReadWrite.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and query Entra Resource Policy evaluation audit events for your organization, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyEvaluationEvent.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read resource policy evaluation impact reports for the organization, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyReport.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyConfiguration.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and write resource policy definitions, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyDefinition.ReadWrite.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read all resource policy assignments, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyAssignment.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read resource policy assignments, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyAssignment.Read.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read all resource policy definitions, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyDefinition.Read.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read and write all resource policy definitions, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyDefinition.ReadWrite.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read and query Entra Resource Policy evaluation audit events for your organization, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyEvaluationEvent.Read.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to evaluate resource policies, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyEvaluation.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and write the tenant-wide resource policy configuration, including setting the privileged-read app ID used by all fetch() calls during policy evaluation, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyConfiguration.ReadWrite.All"
+  },
+  {
+    "scheme": "Application",
+    "description": "Allows the app to read and write all resource policy assignments, without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyAssignment.ReadWrite.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to evaluate resource policies, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyEvaluation.Read.All"
+  },
+  {
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read resource policy definitions, on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-07",
+    "name": "ResourcePolicyDefinition.Read.All"
+  },
+  {
     "scheme": "DelegatedWork",
     "name": "AutomationRules.ReadWrite.All",
     "description": "Allows the app to read and write all security automation rules, on behalf of the signed-in user.",
