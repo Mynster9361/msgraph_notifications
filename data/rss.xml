@@ -4,133 +4,39 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Sat, 07 Nov 2026 12:01:40 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 12 Nov 2026 14:10:19 GMT</lastBuildDate>
                 <item>
-            <title>[Application] New Permission: ResourcePolicyReport.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyReport.Read.All-Application</link>
-            <description>Allows the app to read resource policy evaluation impact reports for the organization, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyReport.Read.All-Application-2026-11-07</guid>
+            <title>[DelegatedWork] New Permission: ThreatHunting.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatHunting.ReadWrite.All-DelegatedWork</link>
+            <description>Allows the app to run hunting queries and to read and write hunting functions, on behalf of the signed-in user.</description>
+            <pubDate>Thu, 12 Nov 2026 14:10:19 GMT</pubDate>
+            <guid isPermaLink="false">ThreatHunting.ReadWrite.All-DelegatedWork-2026-11-12</guid>
         </item>
         <item>
-            <title>[Application] New Permission: ResourcePolicyConfiguration.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.Read.All-Application</link>
-            <description>Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyConfiguration.Read.All-Application-2026-11-07</guid>
+            <title>[Application] New Permission: ThreatHunting.ReadWrite.All</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatHunting.ReadWrite.All-Application</link>
+            <description>Allows the app to run hunting queries and to read and write shared hunting functions, without a signed-in user.</description>
+            <pubDate>Thu, 12 Nov 2026 14:10:19 GMT</pubDate>
+            <guid isPermaLink="false">ThreatHunting.ReadWrite.All-Application-2026-11-12</guid>
         </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyAssignment.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to read and write resource policy assignments, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyAssignment.ReadWrite.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyConfiguration.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.ReadWrite.All-Application</link>
-            <description>Allows the app to read and write the tenant-wide resource policy configuration, including setting the privileged-read app ID used by all fetch() calls during policy evaluation, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyConfiguration.ReadWrite.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyEvaluationEvent.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluationEvent.Read.All-DelegatedWork</link>
-            <description>Allows the app to read and query Entra Resource Policy evaluation audit events for your organization, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyEvaluationEvent.Read.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyReport.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyReport.Read.All-DelegatedWork</link>
-            <description>Allows the app to read resource policy evaluation impact reports for the organization, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyReport.Read.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyConfiguration.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.Read.All-DelegatedWork</link>
-            <description>Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyConfiguration.Read.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyDefinition.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to read and write resource policy definitions, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyDefinition.ReadWrite.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyAssignment.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.Read.All-Application</link>
-            <description>Allows the app to read all resource policy assignments, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyAssignment.Read.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyAssignment.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.Read.All-DelegatedWork</link>
-            <description>Allows the app to read resource policy assignments, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyAssignment.Read.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyDefinition.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.Read.All-Application</link>
-            <description>Allows the app to read all resource policy definitions, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyDefinition.Read.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyDefinition.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.ReadWrite.All-Application</link>
-            <description>Allows the app to read and write all resource policy definitions, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyDefinition.ReadWrite.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyEvaluationEvent.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluationEvent.Read.All-Application</link>
-            <description>Allows the app to read and query Entra Resource Policy evaluation audit events for your organization, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyEvaluationEvent.Read.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyEvaluation.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluation.Read.All-Application</link>
-            <description>Allows the app to evaluate resource policies, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyEvaluation.Read.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyConfiguration.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to read and write the tenant-wide resource policy configuration, including setting the privileged-read app ID used by all fetch() calls during policy evaluation, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyConfiguration.ReadWrite.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[Application] New Permission: ResourcePolicyAssignment.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.ReadWrite.All-Application</link>
-            <description>Allows the app to read and write all resource policy assignments, without a signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyAssignment.ReadWrite.All-Application-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyEvaluation.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluation.Read.All-DelegatedWork</link>
-            <description>Allows the app to evaluate resource policies, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyEvaluation.Read.All-DelegatedWork-2026-11-07</guid>
-        </item>
-        <item>
-            <title>[DelegatedWork] New Permission: ResourcePolicyDefinition.Read.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.Read.All-DelegatedWork</link>
-            <description>Allows the app to read resource policy definitions, on behalf of the signed-in user.</description>
-            <pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate>
-            <guid isPermaLink="false">ResourcePolicyDefinition.Read.All-DelegatedWork-2026-11-07</guid>
-        </item>
+<item><title>[Application] New Permission: ResourcePolicyReport.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyReport.Read.All-Application</link><description>Allows the app to read resource policy evaluation impact reports for the organization, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyReport.Read.All-Application-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyConfiguration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.Read.All-Application</link><description>Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyConfiguration.Read.All-Application-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyAssignment.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write resource policy assignments, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyAssignment.ReadWrite.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyConfiguration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.ReadWrite.All-Application</link><description>Allows the app to read and write the tenant-wide resource policy configuration, including setting the privileged-read app ID used by all fetch() calls during policy evaluation, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyConfiguration.ReadWrite.All-Application-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyEvaluationEvent.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluationEvent.Read.All-DelegatedWork</link><description>Allows the app to read and query Entra Resource Policy evaluation audit events for your organization, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyEvaluationEvent.Read.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyReport.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyReport.Read.All-DelegatedWork</link><description>Allows the app to read resource policy evaluation impact reports for the organization, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyReport.Read.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyConfiguration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.Read.All-DelegatedWork</link><description>Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyConfiguration.Read.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyDefinition.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write resource policy definitions, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyDefinition.ReadWrite.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyAssignment.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.Read.All-Application</link><description>Allows the app to read all resource policy assignments, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyAssignment.Read.All-Application-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyAssignment.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.Read.All-DelegatedWork</link><description>Allows the app to read resource policy assignments, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyAssignment.Read.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyDefinition.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.Read.All-Application</link><description>Allows the app to read all resource policy definitions, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyDefinition.Read.All-Application-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyDefinition.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.ReadWrite.All-Application</link><description>Allows the app to read and write all resource policy definitions, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyDefinition.ReadWrite.All-Application-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyEvaluationEvent.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluationEvent.Read.All-Application</link><description>Allows the app to read and query Entra Resource Policy evaluation audit events for your organization, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyEvaluationEvent.Read.All-Application-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyEvaluation.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluation.Read.All-Application</link><description>Allows the app to evaluate resource policies, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyEvaluation.Read.All-Application-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyConfiguration.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write the tenant-wide resource policy configuration, including setting the privileged-read app ID used by all fetch() calls during policy evaluation, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyConfiguration.ReadWrite.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[Application] New Permission: ResourcePolicyAssignment.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.ReadWrite.All-Application</link><description>Allows the app to read and write all resource policy assignments, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyAssignment.ReadWrite.All-Application-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyEvaluation.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyEvaluation.Read.All-DelegatedWork</link><description>Allows the app to evaluate resource policies, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyEvaluation.Read.All-DelegatedWork-2026-11-07</guid></item>
+<item><title>[DelegatedWork] New Permission: ResourcePolicyDefinition.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyDefinition.Read.All-DelegatedWork</link><description>Allows the app to read resource policy definitions, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyDefinition.Read.All-DelegatedWork-2026-11-07</guid></item>
 <item><title>[DelegatedWork] New Permission: AutomationRules.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AutomationRules.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write all security automation rules, on behalf of the signed-in user.</description><pubDate>Thu, 05 Nov 2026 13:40:05 GMT</pubDate><guid isPermaLink="false">AutomationRules.ReadWrite.All-DelegatedWork-2026-11-05</guid></item>
 <item><title>[DelegatedWork] New Permission: AutomationPlaybooks.ReadWriteExecutions.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AutomationPlaybooks.ReadWriteExecutions.All-DelegatedWork</link><description>Allows the app to create and read all security playbook executions on behalf of the signed-in user.</description><pubDate>Thu, 05 Nov 2026 13:40:05 GMT</pubDate><guid isPermaLink="false">AutomationPlaybooks.ReadWriteExecutions.All-DelegatedWork-2026-11-05</guid></item>
 <item><title>[DelegatedWork] New Permission: AutomationPlaybooks.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-AutomationPlaybooks.ReadWrite.All-DelegatedWork</link><description>Allows the app to list security playbooks and read, create, update, and delete generated playbooks on behalf of the signed-in user.</description><pubDate>Thu, 05 Nov 2026 13:40:05 GMT</pubDate><guid isPermaLink="false">AutomationPlaybooks.ReadWrite.All-DelegatedWork-2026-11-05</guid></item>
@@ -161,7 +67,5 @@
 <item><title>[Application] New Permission: Repository.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Repository.ReadWrite.All-Application</link><description>Allows the app to read and manage connected security content source-control repositories, including connecting and disconnecting repositories, without a signed-in user.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">Repository.ReadWrite.All-Application-2026-11-03</guid></item>
 <item><title>[DelegatedWork] New Permission: CopilotCostManagement-Assignment.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotCostManagement-Assignment.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and change which users and security groups each Copilot spending policy applies to, on behalf of the signed-in user. Adding or removing an assignment immediately changes which users are subject to that policy's spending limits, and may grant or remove their ability to consume Copilot credits. This also exposes the identifiers of the security groups targeted by each policy.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CopilotCostManagement-Assignment.ReadWrite.All-DelegatedWork-2026-11-03</guid></item>
 <item><title>[Application] New Permission: CrossTenantIdentityMapping.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantIdentityMapping.Read.All-Application</link><description>Allows the app to read your tenant's cross tenant identity mapping job details as itself, without a signed-in user. Used by authorized services that integrate with cross tenant identity mapping.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CrossTenantIdentityMapping.Read.All-Application-2026-11-03</guid></item>
-<item><title>[DelegatedWork] New Permission: CaseManagement.ConfigManage.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CaseManagement.ConfigManage.All-DelegatedWork</link><description>Allows the app to create, read, update, and delete case management configuration, such as SLA policies, on behalf of the signed-in user.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CaseManagement.ConfigManage.All-DelegatedWork-2026-11-03</guid></item>
-<item><title>[DelegatedWork] New Permission: CrossTenantIdentityMapping.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantIdentityMapping.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write your tenant's all cross tenant identity mapping job details on behalf of the signed-in user.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CrossTenantIdentityMapping.ReadWrite.All-DelegatedWork-2026-11-03</guid></item>
     </channel>
 </rss>
