@@ -4,21 +4,37 @@
         <title>MS Graph Registry Updates</title>
         <link>https://Mynster9361.github.io/msgraph_notifications</link>
         <description>Real-time notifications for new Microsoft Graph Permissions</description>
-        <lastBuildDate>Thu, 12 Nov 2026 14:10:19 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 24 Nov 2026 16:39:40 GMT</lastBuildDate>
                 <item>
-            <title>[DelegatedWork] New Permission: ThreatHunting.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatHunting.ReadWrite.All-DelegatedWork</link>
-            <description>Allows the app to run hunting queries and to read and write hunting functions, on behalf of the signed-in user.</description>
-            <pubDate>Thu, 12 Nov 2026 14:10:19 GMT</pubDate>
-            <guid isPermaLink="false">ThreatHunting.ReadWrite.All-DelegatedWork-2026-11-12</guid>
+            <title>[Application] New Permission: Policy.ReadWrite.AuthFeatureToggle</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.ReadWrite.AuthFeatureToggle-Application</link>
+            <description>Allows the app to read and update your organization&apos;s feature toggle policy without a signed-in user.</description>
+            <pubDate>Tue, 24 Nov 2026 16:39:40 GMT</pubDate>
+            <guid isPermaLink="false">Policy.ReadWrite.AuthFeatureToggle-Application-2026-11-24</guid>
         </item>
         <item>
-            <title>[Application] New Permission: ThreatHunting.ReadWrite.All</title>
-            <link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatHunting.ReadWrite.All-Application</link>
-            <description>Allows the app to run hunting queries and to read and write shared hunting functions, without a signed-in user.</description>
-            <pubDate>Thu, 12 Nov 2026 14:10:19 GMT</pubDate>
-            <guid isPermaLink="false">ThreatHunting.ReadWrite.All-Application-2026-11-12</guid>
+            <title>[Application] New Permission: Policy.Read.AuthFeatureToggle</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.Read.AuthFeatureToggle-Application</link>
+            <description>Allows the app to read your organization&apos;s feature toggle policy without a signed-in user.</description>
+            <pubDate>Tue, 24 Nov 2026 16:39:40 GMT</pubDate>
+            <guid isPermaLink="false">Policy.Read.AuthFeatureToggle-Application-2026-11-24</guid>
         </item>
+        <item>
+            <title>[DelegatedWork] New Permission: Policy.ReadWrite.AuthFeatureToggle</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.ReadWrite.AuthFeatureToggle-DelegatedWork</link>
+            <description>Allows the app to read and update your organization&apos;s feature toggle policy on behalf of the signed-in user.</description>
+            <pubDate>Tue, 24 Nov 2026 16:39:40 GMT</pubDate>
+            <guid isPermaLink="false">Policy.ReadWrite.AuthFeatureToggle-DelegatedWork-2026-11-24</guid>
+        </item>
+        <item>
+            <title>[DelegatedWork] New Permission: Policy.Read.AuthFeatureToggle</title>
+            <link>https://Mynster9361.github.io/msgraph_notifications#perm-Policy.Read.AuthFeatureToggle-DelegatedWork</link>
+            <description>Allows the app to read your organization&apos;s feature toggle policy on behalf of the signed-in user.</description>
+            <pubDate>Tue, 24 Nov 2026 16:39:40 GMT</pubDate>
+            <guid isPermaLink="false">Policy.Read.AuthFeatureToggle-DelegatedWork-2026-11-24</guid>
+        </item>
+<item><title>[DelegatedWork] New Permission: ThreatHunting.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatHunting.ReadWrite.All-DelegatedWork</link><description>Allows the app to run hunting queries and to read and write hunting functions, on behalf of the signed-in user.</description><pubDate>Thu, 12 Nov 2026 14:10:19 GMT</pubDate><guid isPermaLink="false">ThreatHunting.ReadWrite.All-DelegatedWork-2026-11-12</guid></item>
+<item><title>[Application] New Permission: ThreatHunting.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ThreatHunting.ReadWrite.All-Application</link><description>Allows the app to run hunting queries and to read and write shared hunting functions, without a signed-in user.</description><pubDate>Thu, 12 Nov 2026 14:10:19 GMT</pubDate><guid isPermaLink="false">ThreatHunting.ReadWrite.All-Application-2026-11-12</guid></item>
 <item><title>[Application] New Permission: ResourcePolicyReport.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyReport.Read.All-Application</link><description>Allows the app to read resource policy evaluation impact reports for the organization, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyReport.Read.All-Application-2026-11-07</guid></item>
 <item><title>[Application] New Permission: ResourcePolicyConfiguration.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyConfiguration.Read.All-Application</link><description>Allows the app to read the tenant-wide resource policy configuration, including the configured privileged-read app ID, without a signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyConfiguration.Read.All-Application-2026-11-07</guid></item>
 <item><title>[DelegatedWork] New Permission: ResourcePolicyAssignment.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-ResourcePolicyAssignment.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and write resource policy assignments, on behalf of the signed-in user.</description><pubDate>Sat, 07 Nov 2026 12:01:40 GMT</pubDate><guid isPermaLink="false">ResourcePolicyAssignment.ReadWrite.All-DelegatedWork-2026-11-07</guid></item>
@@ -63,9 +79,5 @@
 <item><title>[DelegatedWork] New Permission: CopilotCostManagement-CreditReq.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotCostManagement-CreditReq.Read.All-DelegatedWork</link><description>Allows the app to read credit requests submitted in the organization, on behalf of the signed-in user. This exposes request details and the identities associated with each request.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CopilotCostManagement-CreditReq.Read.All-DelegatedWork-2026-11-03</guid></item>
 <item><title>[Application] New Permission: Perception.Manage.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Perception.Manage.All-Application</link><description>Allows the app to read Agentic Security resources, create sessions and request cancellation without a signed-in user.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">Perception.Manage.All-Application-2026-11-03</guid></item>
 <item><title>[DelegatedWork] New Permission: CopilotCostManagement-UserData.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotCostManagement-UserData.Read.All-DelegatedWork</link><description>Allows the app to read identity-attributed Copilot cost management data for the organization on behalf of the signed-in user, including any named user's Copilot credit balance, per-user consumption rankings, usage aggregated by security group, and raw per-user consumption grouped by service or activity session. This exposes users' consumption, group identifiers, native session identifiers when available, and first and last activity timestamps.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CopilotCostManagement-UserData.Read.All-DelegatedWork-2026-11-03</guid></item>
-<item><title>[Application] New Permission: CopilotCostManagement-Assignment.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotCostManagement-Assignment.ReadWrite.All-Application</link><description>Allows the app to read and change which users and security groups each Copilot spending policy applies to, without a signed-in user. Adding or removing an assignment immediately changes which users are subject to that policy's spending limits, and may grant or remove their ability to consume Copilot credits. This also exposes the identifiers of the security groups targeted by each policy.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CopilotCostManagement-Assignment.ReadWrite.All-Application-2026-11-03</guid></item>
-<item><title>[Application] New Permission: Repository.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-Repository.ReadWrite.All-Application</link><description>Allows the app to read and manage connected security content source-control repositories, including connecting and disconnecting repositories, without a signed-in user.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">Repository.ReadWrite.All-Application-2026-11-03</guid></item>
-<item><title>[DelegatedWork] New Permission: CopilotCostManagement-Assignment.ReadWrite.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CopilotCostManagement-Assignment.ReadWrite.All-DelegatedWork</link><description>Allows the app to read and change which users and security groups each Copilot spending policy applies to, on behalf of the signed-in user. Adding or removing an assignment immediately changes which users are subject to that policy's spending limits, and may grant or remove their ability to consume Copilot credits. This also exposes the identifiers of the security groups targeted by each policy.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CopilotCostManagement-Assignment.ReadWrite.All-DelegatedWork-2026-11-03</guid></item>
-<item><title>[Application] New Permission: CrossTenantIdentityMapping.Read.All</title><link>https://Mynster9361.github.io/msgraph_notifications#perm-CrossTenantIdentityMapping.Read.All-Application</link><description>Allows the app to read your tenant's cross tenant identity mapping job details as itself, without a signed-in user. Used by authorized services that integrate with cross tenant identity mapping.</description><pubDate>Tue, 03 Nov 2026 13:10:51 GMT</pubDate><guid isPermaLink="false">CrossTenantIdentityMapping.Read.All-Application-2026-11-03</guid></item>
     </channel>
 </rss>

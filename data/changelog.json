@@ -1,5 +1,33 @@
 [
   {
+    "name": "Policy.ReadWrite.AuthFeatureToggle",
+    "scheme": "Application",
+    "description": "Allows the app to read and update your organization's feature toggle policy without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-24"
+  },
+  {
+    "name": "Policy.Read.AuthFeatureToggle",
+    "scheme": "Application",
+    "description": "Allows the app to read your organization's feature toggle policy without a signed-in user.",
+    "type": "New Application Scope",
+    "date": "2026-11-24"
+  },
+  {
+    "name": "Policy.ReadWrite.AuthFeatureToggle",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read and update your organization's feature toggle policy on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-24"
+  },
+  {
+    "name": "Policy.Read.AuthFeatureToggle",
+    "scheme": "DelegatedWork",
+    "description": "Allows the app to read your organization's feature toggle policy on behalf of the signed-in user.",
+    "type": "New DelegatedWork Scope",
+    "date": "2026-11-24"
+  },
+  {
     "type": "New DelegatedWork Scope",
     "date": "2026-11-12",
     "description": "Allows the app to run hunting queries and to read and write hunting functions, on behalf of the signed-in user.",
